@@ -1,2 +1,2 @@
 # On n'a pas encore décidé le sujet.
-#Yo c Max!!!!!!!!
+On hésite entre deux choix.
