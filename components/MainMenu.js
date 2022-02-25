@@ -10,7 +10,7 @@ class MainMenu extends Component {
           source={{
             uri: 'https://photo-voiture.motorlegend.com/hd/dodge-zeo-concept-45328.jpg',
           }}
-          style={{ width: 200, height: 200 }}
+          style={{ width: 1920, height: 1080 }}
         />
       </View>
     );
