@@ -7,9 +7,9 @@ class MainMenu extends Component {
   render() {
     return (
       <View>
-        <ImageBackgorund source = {image} resizeMode="cover" style={styles.image}>
-        <Text style={{textAlign: 'center'}}> Bienvenue dans l'encyclopedie automobile </Text>
-        </ImageBackground>
+      <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+      <Text style={styles.text}>Inside</Text>
+    </ImageBackground>
       </View>
     );
   }
