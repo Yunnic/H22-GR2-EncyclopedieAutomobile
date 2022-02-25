@@ -9,7 +9,7 @@ class MainMenu extends Component {
         </Text>
         <Image
           source={{
-            uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
+            uri: 'https://photo-voiture.motorlegend.com/hd/dodge-zeo-concept-45328.jpg',
           }}
           style={{ width: 200, height: 200 }}
         />
