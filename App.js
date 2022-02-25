@@ -1,16 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Cat from './components/Cat';
+import MainMenu from './components/MainMenu';
 
-let a = 5 + 2 + "a"
+//let a = 5 + 2 + "a"
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>ceci est {a}</Text>
+      //<Text>ceci est {a}</Text>
       <StatusBar style="auto" />
-      <Cat />
+      <MainMenu />
     </View>
   );
 }
