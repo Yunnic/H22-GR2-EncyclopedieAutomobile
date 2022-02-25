@@ -6,7 +6,7 @@ const image = { uri: "https://photo-voiture.motorlegend.com/hd/dodge-zeo-concept
 class MainMenu extends Component {
   render() {
     return (
-      <View>
+      <View style={styles.container}>
       <ImageBackground source={image} resizeMode="cover" style= {{width : 1920, height : 1080 }}>
       <Text style = {styles.text} >Bienvenue dans l'encyclopedie automobile !</Text>
     </ImageBackground>
@@ -18,6 +18,7 @@ class MainMenu extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItemsVertical : 'bottom',
   },
   image: {
     flex: 1,
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     fontSize: 42,
     lineHeight: 84,
     fontWeight: "regular",
-    textAlign: "center",  
+    textAlign: "center",
   }
 });
 
