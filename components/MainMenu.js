@@ -5,13 +5,14 @@ class MainMenu extends Component {
   render() {
     return (
       <View>
-        <Text Bienvenue dans l/'encyclopedie automobile />
-        <Image
+        <Text> Bienvenue dans lencyclopedie automobile
+        </Text>
+        <Image>
           source={{
             uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
           }}
           style={{ width: 200, height: 200 }}
-        />
+        </Image>
       </View>
     );
   }
