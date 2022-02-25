@@ -5,7 +5,7 @@ class MainMenu extends Component {
   render() {
     return (
       <View>
-        <Text> Bienvenue dans lencyclopedie automobile
+        <Text> Bienvenue dans l'encyclopedie automobile
         </Text>
         <Image
           source={{
