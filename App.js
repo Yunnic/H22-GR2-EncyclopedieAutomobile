@@ -9,8 +9,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       //<Text>ceci est {a}</Text>
-      <StatusBar style="auto" />
       <MainMenu />
+      <StatusBar style="auto" />
     </View>
   );
 }
