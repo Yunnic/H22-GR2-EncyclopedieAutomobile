@@ -8,6 +8,7 @@ class MainMenu extends Component {
     return (
       <View>
       <ImageBackground source={image} resizeMode="cover" style= {{width : 1920, height : 1080 }}>
+      <Text style = {styles.text} >Bienvenue dans l'encyclopedie automobile !</Text>
     </ImageBackground>
       </View>
     );
@@ -26,9 +27,8 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 42,
     lineHeight: 84,
-    fontWeight: "bold",
+    fontWeight: "regular",
     textAlign: "center",
-    backgroundColor: "#000000c0"
   }
 });
 
