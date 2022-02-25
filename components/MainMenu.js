@@ -4,9 +4,7 @@ import { Text, View } from 'react-native';
 class MainMenu extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text> Bienvenue dans l'encyclopedie automobile ! </Text>
-      </View>
+      <Text> Bienvenue dans l'encyclopedie automobile ! </Text>
     );
   }
 }
