@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     lineHeight: 84,
     fontWeight: "regular",
     textAlign: "center",
+    justifyContent : "center"
   }
 });
 
