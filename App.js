@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     backgroundColor: '#fff',
     alignItems: 'center',
-    alignItemsVertical : 'center'
+    alignItemsVertical : 'center',
     justifyContent: 'center',
   },
 });
