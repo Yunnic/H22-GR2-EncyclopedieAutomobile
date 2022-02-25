@@ -8,7 +8,7 @@ let a = 5 + 2 + "a"
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>ceci est {a}</Text>
+      <Text> </Text>
       <StatusBar style="auto" />
       <MainMenu />
     </View>
