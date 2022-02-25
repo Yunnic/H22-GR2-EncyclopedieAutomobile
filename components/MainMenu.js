@@ -5,6 +5,7 @@ class MainMenu extends Component {
   render() {
     return (
       <Text> Bienvenue dans l'encyclopedie automobile ! </Text>
+      //<Image>
     );
   }
 }
