@@ -28,8 +28,7 @@ const styles = StyleSheet.create({
     fontSize: 42,
     lineHeight: 84,
     fontWeight: "regular",
-    textAlign: "center",
-    textAlignVertical : "bottom",  
+    textAlign: "center",  
   }
 });
 
