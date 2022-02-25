@@ -8,7 +8,6 @@ class MainMenu extends Component {
     return (
       <View>
       <ImageBackground source={image} resizeMode="cover" style= {{width : 1920, height : 1080 }}>
-    //  <Text style={styles.text}>Inside</Text>
     </ImageBackground>
       </View>
     );
