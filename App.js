@@ -1,23 +1,68 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {Component} from 'react';
+import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native';
+const config = require('./config.json');
 
-let a = 5 + 2 + "a"
+export default class App extends Component {
+  constructor(props) {
+    super(props);
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>ceci est {a}</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    this.state = {
+      data: [],
+      isLoading: true
+    };
+  }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  //https://reactnative.dev/docs/network
+  async getDataFromApi(id, type) {
+
+    const infoRequest = {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }
+
+      //on utilise seulement le code en dessous lorsqu'on doit envoyer des donnees
+      /*
+      body: JSON.stringify({
+      firstParam: 'yourValue',
+      secondParam: 'yourOtherValue'
+      })
+      */
+    }
+
+    try {
+      const response = await fetch(
+        //[lien]/encyclopedie_voiture/{ID}/{Type}
+        `${config.api.invokeUrl}/encyclopedie_voiture/${id}/${type}`,
+        infoRequest
+      );
+
+      const json = await response.json();
+      console.log(json);
+      this.setState({ data: json.Item });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      this.setState({ isLoading: false });
+    }
+  }
+
+  componentDidMount() {
+    this.getDataFromApi("1233", ":)");
+    console.log(this.setState.data);
+  }
+
+  render() {
+    const { data, isLoading } = this.state;
+
+    return (
+      <View style={{ flex: 1, padding: 24 }}>
+        {isLoading ? <ActivityIndicator/> : (
+          <Text>{data.ID}, {data.Type}, {data.test}, {data.Test}</Text>
+        )}
+      </View>
+    );
+  }
+};
