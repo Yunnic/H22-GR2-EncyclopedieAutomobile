@@ -8,6 +8,7 @@ let a = 5 + 2 + "a"
 export default function App() {
   return (
     <View style={styles.container}>
+      <Text> aaaa </Text>
       <StatusBar style="auto" />
       <MainMenu />
     </View>
