@@ -7,6 +7,8 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
+    //isLoading : indique si la page est charché
+    //data : info reçu de la base de données
     this.state = {
       data: [],
       isLoading: true
@@ -49,11 +51,16 @@ export default class App extends Component {
     }
   }
 
+  //Cette fonction est appelée après que la classe est inséré dans la vue.
   componentDidMount() {
+    //prend l'info en ligne
     this.getDataFromApi("1233", ":)");
+
+    //sout sur version web (ctrl+shift+i, dans console)
     console.log(this.setState.data);
   }
 
+  //À noter : à chaque fois que la classe change, cette fonction est appelée
   render() {
     const { data, isLoading } = this.state;
 
