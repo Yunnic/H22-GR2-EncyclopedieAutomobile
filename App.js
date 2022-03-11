@@ -51,45 +51,11 @@ export default class App extends Component {
     }
   }
 
-  async postDataFromApi(Model, Generation) {
-
-    const infoRequest = {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-
-      body: JSON.stringify({
-      "Model": Model,
-      "Generation": Generation,
-      })
-    }
-
-    try {
-      const response = await fetch(
-        //[lien]/encyclopedie_voiture/{ID}/{Type}
-        `${config.api.invokeUrl}/encyclopedieautomobile/${Model}/${Generation}`,
-        infoRequest
-      );
-
-      const json = await response.json();
-      console.log(json);
-      //this.setState({ data: json.Item });
-    } catch (error) {
-      console.log(error);
-    } finally {
-      this.setState({ isLoading: false });
-    }
-  }
-
   //Cette fonction est appelée après que la classe est inséré dans la vue.
   componentDidMount() {
-    //envoie info
-    this.postDataFromApi("BMWM31", "G80");
 
     //prend l'info en ligne (ca peut prendre du temps)
-    this.getDataFromApi("BMWM3", "G80");
+    this.getDataFromApi("M3", "G80");
 
     //sout sur version web (ctrl+shift+i, dans console)
     console.log(this.setState.data);
