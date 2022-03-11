@@ -16,7 +16,7 @@ export default class App extends Component {
   }
 
   //https://reactnative.dev/docs/network
-  async getDataFromApi(id, type) {
+  async getDataFromApi(Model, Generation) {
 
     const infoRequest = {
       method: 'GET',
@@ -37,7 +37,7 @@ export default class App extends Component {
     try {
       const response = await fetch(
         //[lien]/encyclopedie_voiture/{ID}/{Type}
-        `${config.api.invokeUrl}/encyclopedie_voiture/${id}/${type}`,
+        `${config.api.invokeUrl}/encyclopedieautomobile/${Model}/${Generation}`,
         infoRequest
       );
 
@@ -54,7 +54,7 @@ export default class App extends Component {
   //Cette fonction est appelée après que la classe est inséré dans la vue.
   componentDidMount() {
     //prend l'info en ligne (ca peut prendre du temps)
-    this.getDataFromApi("1233", ":)");
+    this.getDataFromApi("BMWM3", "G80");
 
     //sout sur version web (ctrl+shift+i, dans console)
     console.log(this.setState.data);
@@ -63,13 +63,13 @@ export default class App extends Component {
   //À noter : à chaque fois que la classe change, cette fonction est appelée
   render() {
     const { data, isLoading } = this.state;
-    
+
     //ActivityIndicator : icone de chargement
     //le truc après ? est si ça n'a pas chargé, truc après : est si c'est chargé
     return (
       <View style={{ flex: 1, padding: 24 }}>
         {isLoading ? <ActivityIndicator/> : (
-          <Text>{data.ID}, {data.Type}, {data.test}, {data.Test}</Text>
+          <Text>{data.Model}, {data.Generation}</Text>
         )}
       </View>
     );
