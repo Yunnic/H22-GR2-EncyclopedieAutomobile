@@ -16,7 +16,7 @@ export default class App extends Component {
   }
 
   //https://reactnative.dev/docs/network
-  async getDataFromApi(Model, Generation) {
+  async getDataFromApi(Brand, Model) {
 
     const infoRequest = {
       method: 'GET',
@@ -36,8 +36,7 @@ export default class App extends Component {
 
     try {
       const response = await fetch(
-        //[lien]/encyclopedie_voiture/{ID}/{Type}
-        `${config.api.invokeUrl}/encyclopedieautomobile/${Model}/${Generation}`,
+        `${config.api.invokeUrl}/encyclopedie_automobile/${Brand}/${Model}`,
         infoRequest
       );
 
@@ -55,7 +54,7 @@ export default class App extends Component {
   componentDidMount() {
 
     //prend l'info en ligne (ca peut prendre du temps)
-    this.getDataFromApi("M3", "G80");
+    this.getDataFromApi("BMW", "M3");
 
     //sout sur version web (ctrl+shift+i, dans console)
     console.log(this.setState.data);
@@ -70,7 +69,7 @@ export default class App extends Component {
     return (
       <View style={{ flex: 1, padding: 24 }}>
         {isLoading ? <ActivityIndicator/> : (
-          <Text>{data.Model}, {data.Generation}</Text>
+          <Text>{JSON.stringify(data)}</Text>
         )}
       </View>
     );
