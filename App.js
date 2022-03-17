@@ -4,6 +4,7 @@ import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-nativ
 import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import TestPage from './components/page/TestPage.js';
+import TestPage2 from './components/page/TestPage2.js';
 
 
 export default class App extends Component {
@@ -17,7 +18,8 @@ export default class App extends Component {
     return (
       <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={TestPage}/>
+        <Stack.Screen name="Page 1" component={TestPage}/>
+        <Stack.Screen name="Page 2" component={TestPage2}/>
       </Stack.Navigator>
     </NavigationContainer>
     );

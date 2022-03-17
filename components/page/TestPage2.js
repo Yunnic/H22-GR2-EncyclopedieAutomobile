@@ -73,9 +73,10 @@ export default class TestPage extends Component {
         {isLoading ? <ActivityIndicator/> :
           <View>
             <Text>{JSON.stringify(data)}</Text>
+            <Text>Page 2!!!!!! :)</Text>
             <Button
-              title="Aller page 2!"
-              onPress={() => this.props.navigation.navigate("Page 2")} // Navigue à p.2
+              title="Aller page 1!"
+              onPress={() => this.props.navigation.navigate("Page 1")} // Navigue à p.2
             />
           </View>
         }
