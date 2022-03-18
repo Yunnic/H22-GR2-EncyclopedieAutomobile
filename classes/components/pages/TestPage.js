@@ -8,7 +8,7 @@ export default class TestPage extends Page {
 
   constructor(props) {
     //Si vous voulez changer le style du premier view, remplacer null par style.
-    super(props, null);
+    super(props);
   }
 
   async load() {

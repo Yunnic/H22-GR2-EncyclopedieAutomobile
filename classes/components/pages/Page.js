@@ -4,7 +4,7 @@ import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 export default class Page extends Component {
 
-  constructor(props, baseStyle) {
+  constructor(props) {
     super(props);
 
     //isLoading : indique si la page est chargé
@@ -14,7 +14,7 @@ export default class Page extends Component {
       isLoading: true
     };
 
-    this.baseStyle = (baseStyle != null) ? baseStyle : StyleSheet.create({
+    this.baseStyle = StyleSheet.create({
       container: {
         flex: 1,
         justifyContent: 'center',
@@ -49,7 +49,9 @@ export default class Page extends Component {
 
   loadingPageView() {
     return (
-      <ActivityIndicator size = "large"/>
+      <View style = {this.baseStyle.container}>
+        <ActivityIndicator size = "large"/>
+      </View>
     )
   };
 
@@ -60,9 +62,7 @@ export default class Page extends Component {
     //ActivityIndicator : icone de chargement
     //le truc après ? est si ça n'a pas chargé, truc après : est si c'est chargé
     return (
-      <View style = {this.baseStyle.container}>
-        {isLoading ? this.loadingPageView() : this.loadedPageView(data)}
-      </View>
+      isLoading ? this.loadingPageView() : this.loadedPageView(data)
     );
   }
 };

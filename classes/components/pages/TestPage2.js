@@ -1,37 +1,43 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View } from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Image } from 'react-native';
 import ApiCommunicator from '../../api/ApiCommunicator.js';
 import Page from './Page.js';
 
 const styles = StyleSheet.create({
-  test: {
+  container: {
     flex: 1,
-    justifyContent: 'center',
     marginHorizontal: 16,
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50,
+  },
+  logo: {
+    width: 66,
+    height: 58,
   },
 });
 
 export default class TestPage extends Page {
 
   constructor(props) {
-    super(props, StyleSheet.create({
-      container: {
-        flex: 1,
-        marginHorizontal: 16,
-      }
-    }));
+    super(props);
   }
 
   async load() {
-    const newData = await ApiCommunicator.getCar("BMW", "M3");
+    const newData = await ApiCommunicator.getBrand("BMW");
     this.loadPage(newData);
   }
 
   loadedPageView(data) {
     return(
-      <View style = {this.baseStyle.container}>
-        <Text>{JSON.stringify(data)}</Text>
+      <View style = {styles.container}>
+        <Text>{data.Name}</Text>
+        <Image
+          style = {styles.logo}
+          source = {{uri: data.Logo}}
+        />
         <Text>:)</Text>
         <Button
           title="Aller page 1!"
