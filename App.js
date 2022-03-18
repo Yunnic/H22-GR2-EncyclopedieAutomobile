@@ -3,8 +3,8 @@ import React, {Component} from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import TestPage from './classes/components/page/TestPage.js';
-import TestPage2 from './classes/components/page/TestPage2.js';
+import TestPage from './classes/components/pages/TestPage.js';
+import TestPage2 from './classes/components/pages/TestPage2.js';
 
 
 export default class App extends Component {
