@@ -5,11 +5,11 @@ const ApiCommunicator = {
 
   //https://reactnative.dev/docs/network
   getInfoFromApi : async function (methodString, urlPath, body) {
-    const infoRequest = {
+    let infoRequest = {
       method: methodString,
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       }
     }
 

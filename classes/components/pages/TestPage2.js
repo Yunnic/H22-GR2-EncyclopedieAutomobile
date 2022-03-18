@@ -26,18 +26,32 @@ export default class TestPage extends Page {
   }
 
   async load() {
-    const newData = await ApiCommunicator.getBrand("Mitsubishi");
+
+    const prjExpr = "#nm, Logo"
+    const filtExpr = "contains(#nm, :nmText)"
+    const exprAttNames = {
+      "#nm": "Name"
+    }
+    const exprAttVal = {
+      ":nmText": "Vo"
+    }
+
+    const newData1 = await ApiCommunicator.getBrand("Mitsubishi");
+    const newData2 = await ApiCommunicator.searchBrand(prjExpr, filtExpr,
+      exprAttNames, exprAttVal, null)
+    const newData = {"newData1": newData1, "newData2": newData2};
     this.loadPage(newData);
   }
 
   loadedPageView(data) {
     return(
       <View style = {styles.container}>
-        <Text>{data.Name}</Text>
+        <Text>{data.newData1.Name}</Text>
         <Image
           style = {styles.logo}
-          source = {{uri: data.Logo}}
+          source = {{uri: data.newData1.Logo}}
         />
+        <Text>{JSON.stringify(data.newData2)}</Text>
         <Button
           title="Aller page 1!"
 
