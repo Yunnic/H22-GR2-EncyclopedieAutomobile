@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View } from 'react-native';
-const ApiCommunicator = require('../../api/ApiCommunicator.js');
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 export default class Page extends Component {
 
