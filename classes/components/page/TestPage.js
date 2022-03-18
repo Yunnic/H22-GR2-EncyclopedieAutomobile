@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View } from 'react-native';
-const config = require('../../config.json');
+const config = require('../../../config.json');
 
 
 const styles = StyleSheet.create({
@@ -44,6 +44,7 @@ export default class TestPage extends Component {
 
       const json = await response.json();
       console.log(json);
+      console.log("a");
       this.setState({ data: json.Item });
     } catch (error) {
       console.log(error);
@@ -56,7 +57,7 @@ export default class TestPage extends Component {
   componentDidMount() {
 
     //prend l'info en ligne (ca peut prendre du temps)
-    this.getDataFromApi("BMW", "M3");
+    this.getDataFromApi("BMW a", "M3");
 
     //sout sur version web (ctrl+shift+i, dans console)
     console.log(this.setState.data);

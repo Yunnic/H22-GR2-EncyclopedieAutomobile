@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View } from 'react-native';
-const config = require('../../config.json');
+const config = require('../../../config.json');
 
 
 const styles = StyleSheet.create({
@@ -76,7 +76,7 @@ export default class TestPage extends Component {
             <Text>Page 2!!!!!! :)</Text>
             <Button
               title="Aller page 1!"
-              onPress={() => this.props.navigation.navigate("Page 1")} // Navigue à p.2
+              onPress={() => this.props.navigation.navigate("Page 1")} // Navigue à p.1
             />
           </View>
         }
