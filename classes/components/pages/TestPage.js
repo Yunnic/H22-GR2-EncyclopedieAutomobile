@@ -1,62 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View } from 'react-native';
-const ApiCommunicator = require('../../api/ApiCommunicator.js');
+import ApiCommunicator from '../../api/ApiCommunicator.js';
+import Page from './Page.js';
 
-
-const styles = StyleSheet.create({
-  test: {
-    flex: 1,
-    justifyContent: 'center',
-    marginHorizontal: 16,
-  },
-});
-
-export default class TestPage extends Component {
+export default class TestPage extends Page {
 
   constructor(props) {
-    super(props);
-
-    //isLoading : indique si la page est chargé
-    //data : info reçu de la base de données
-    this.state = {
-      data: [],
-      isLoading: true
-    };
+    //Si vous voulez changer le style du premier view, remplacer null par style.
+    super(props, null);
   }
 
   async load() {
-    const newData = await ApiCommunicator.default.getCar("BMW a", "M3");
-
-    this.setState({
-      data: newData,
-      isLoading: false
-    });
+    const newData = await ApiCommunicator.getCar("BMW a", "M3");
+    this.loadPage(newData);
   }
 
-  //Cette fonction est appelée après que la classe est inséré dans la vue.
-  componentDidMount() {
-    this.load();
-  }
+  loadedPageView(data) {
+    return(
+      <View style = {this.baseStyle.container}>
+        <Text>{JSON.stringify(data)}</Text>
+        <Button
+          title="Aller page 2!"
 
-  //À noter : à chaque fois que la classe change, cette fonction est appelée
-  render() {
-    const { data, isLoading } = this.state;
-
-    //ActivityIndicator : icone de chargement
-    //le truc après ? est si ça n'a pas chargé, truc après : est si c'est chargé
-    return (
-      <View style = {styles.test}>
-        {isLoading ? <ActivityIndicator/> :
-          <View>
-            <Text>{JSON.stringify(data)}</Text>
-            <Button
-              title="Aller page 2!"
-              onPress={() => this.props.navigation.navigate("Page 2")} // Navigue à p.2
-            />
-          </View>
-        }
+          // Navigue à p.2
+          onPress={() => this.props.navigation.navigate("Page 2")}
+        />
       </View>
-    );
+    )
   }
 };
