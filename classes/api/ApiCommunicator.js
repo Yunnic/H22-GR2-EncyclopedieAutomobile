@@ -25,11 +25,7 @@ const ApiCommunicator = {
 
       const json = await response.json();
 
-      if ("Item" in json) {
-        return json.Item;
-      } else {
-        return null;
-      }
+      return json;
 
     } catch (error) {
       console.log(error);
@@ -39,14 +35,60 @@ const ApiCommunicator = {
   getCar: async function (brand, model) {
     const urlPath = `${brand}/${model}`;
 
-    const item = await ApiCommunicator.getInfoFromApi('GET', urlPath, null);
-    return item;
+    const json = await ApiCommunicator.getInfoFromApi('GET', urlPath, null);
+
+    if (json != null && "Item" in json) {
+      return json.Item;
+    }
+
+    return null;
   },
 
-  //ne fonctionne pas pour l'instant (pas implémenté encore)
   getBrand: async function (brand) {
-    const item = await ApiCommunicator.getInfoFromApi('GET', brand, null);
-    return item;
+    const json = await ApiCommunicator.getInfoFromApi('GET', brand, null);
+
+    if (json != null && "Item" in json) {
+      return json.Item;
+    }
+
+    return null;
+  },
+
+  searchBrand: async function (prjExpr, filtExpr, exprAttNames,
+    exprAttVal, exclStartKey) {
+
+    const urlPath = `search/brand`;
+    /* exemple de body:
+
+    recherche de marques qui possède vo dans leur nom apres Mitsubishi (aucun).
+    {
+      "prjExpr": "#nm, Logo",
+      "filtExpr": "contains(#nm, :nmText)",
+      "exprAttNames": {
+        "#nm": "Name"
+      },
+      "exprAttVal": {
+        ":nmText": "Vo"
+      },
+      "exclStartKey": {
+        "Name": "Mitsubishi"
+      }
+    }
+    */
+
+    const body = {
+      "prjExpr": prjExpr,
+      "filtExpr": filtExpr,
+      "exprAttNames": exprAttNames,
+      "exprAttVal": exprAttVal
+    }
+
+    if (exclStartKey != null) {
+      body["ExclusiveStartKey"] = exclStartKey;
+    }
+
+    const json = await ApiCommunicator.getInfoFromApi('POST', urlPath, body);
+    return json;
   }
 }
 

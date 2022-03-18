@@ -26,7 +26,7 @@ export default class TestPage extends Page {
   }
 
   async load() {
-    const newData = await ApiCommunicator.getBrand("BMW");
+    const newData = await ApiCommunicator.getBrand("Mitsubishi");
     this.loadPage(newData);
   }
 
@@ -38,7 +38,6 @@ export default class TestPage extends Page {
           style = {styles.logo}
           source = {{uri: data.Logo}}
         />
-        <Text>:)</Text>
         <Button
           title="Aller page 1!"
 
