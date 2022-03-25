@@ -14,6 +14,8 @@ export default class Page extends Component {
       isLoading: true
     };
 
+    this.goToError = true;
+
     this.baseStyle = StyleSheet.create({
       container: {
         flex: 1,
@@ -24,19 +26,41 @@ export default class Page extends Component {
   }
 
   loadPage(newData) {
-    this.setState({
-      data: newData,
-      isLoading: false
-    });
+    const catchedError = this.errorCatcher(newData);
+    if (catchedError != null) {
+      this.errorHandler(catchedError);
+    } else {
+      this.setState({
+        data: newData,
+        isLoading: false
+      });
+    }
   }
 
   async load() {
     this.loadPage(null);
   }
 
+  errorHandler(catchedError) {
+    if (this.goToError) {
+      this.props.navigation.reset({
+        index: 0,
+        routes: [{ name: 'Error', params: {"catchedError": catchedError} }],
+      });
+    }
+  }
+
+  errorCatcher() {
+    return null;
+  }
+
   //Cette fonction est appelée après que la classe est inséré dans la vue.
   componentDidMount() {
-    this.load();
+    try {
+      this.load();
+    } catch (e) {
+      this.errorHandler(e)
+    }
   }
 
   loadedPageView(data) {
@@ -58,11 +82,7 @@ export default class Page extends Component {
   //À noter : à chaque fois que la classe change, cette fonction est appelée
   render() {
     const { data, isLoading } = this.state;
-
-    //ActivityIndicator : icone de chargement
     //le truc après ? est si ça n'a pas chargé, truc après : est si c'est chargé
-    return (
-      isLoading ? this.loadingPageView() : this.loadedPageView(data)
-    );
+    return isLoading ? this.loadingPageView() : this.loadedPageView(data);
   }
 };

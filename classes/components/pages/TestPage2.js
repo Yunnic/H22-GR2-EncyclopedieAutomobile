@@ -33,20 +33,28 @@ export default class TestPage extends Page {
       "#nm": "Name"
     }
     const exprAttVal = {
-      ":nmText": "Vo"
+      ":nmText": "vo"
     }
 
-    const newData1 = await ApiCommunicator.getBrand("Mitsubishi");
+    const newData1 = await ApiCommunicator.getBrand("mitsubishi");
     const newData2 = await ApiCommunicator.searchBrand(prjExpr, filtExpr,
       exprAttNames, exprAttVal, null)
     const newData = {"newData1": newData1, "newData2": newData2};
     this.loadPage(newData);
   }
 
+  errorCatcher(data) {
+    if (data.newData1 == undefined || data.newData2 == undefined) {
+      return "Data is missing!";
+    }
+
+    return null;
+  }
+
   loadedPageView(data) {
     return(
       <View style = {styles.container}>
-        <Text>{data.newData1.Name}</Text>
+        <Text>{data.newData1.ShownName}</Text>
         <Image
           style = {styles.logo}
           source = {{uri: data.newData1.Logo}}

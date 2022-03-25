@@ -8,22 +8,31 @@ export default class TestPage extends Page {
 
   constructor(props) {
     super(props);
-  }
 
-  async load() {
-    const newData = await ApiCommunicator.getCar("T", "A");
-    this.loadPage(newData);
+    this.goToError = false;
+
+    this.errorStyle = StyleSheet.create({
+      text: {
+        color: 'red'
+      }
+    });
   }
 
   loadedPageView(data) {
+    const route = this.props.route;
+    const {catchedError} = route.params;
     return(
       <View style = {this.baseStyle.container}>
-        <Text>{JSON.stringify(data)}</Text>
+        <Text style = {this.errorStyle.text}>{"ERROR : " + catchedError}</Text>
         <Button
-          title="Aller page 2!"
+          style = {this.errorStyle.text}
+          title = "Retourner à la page principale"
 
           // Navigue à p.2
-          onPress={() => this.props.navigation.navigate("Page 2")}
+          onPress={() => this.props.navigation.reset({
+            index: 0,
+            routes: [{ name: 'Page 1'}]
+          })}
         />
       </View>
     )

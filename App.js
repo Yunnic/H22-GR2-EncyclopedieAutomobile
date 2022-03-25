@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import TestPage from './classes/components/pages/TestPage.js';
 import TestPage2 from './classes/components/pages/TestPage2.js';
+import ErrorPage from './classes/components/pages/ErrorPage.js';
 
 
 export default class App extends Component {
@@ -20,6 +21,7 @@ export default class App extends Component {
       <Stack.Navigator>
         <Stack.Screen name="Page 1" component={TestPage}/>
         <Stack.Screen name="Page 2" component={TestPage2}/>
+        <Stack.Screen name="Error" component={ErrorPage}/>
       </Stack.Navigator>
     </NavigationContainer>
     );

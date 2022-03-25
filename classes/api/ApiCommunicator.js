@@ -8,8 +8,8 @@ const ApiCommunicator = {
     let infoRequest = {
       method: methodString,
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
       }
     }
 
@@ -87,7 +87,7 @@ const ApiCommunicator = {
       body["ExclusiveStartKey"] = exclStartKey;
     }
 
-    const json = await ApiCommunicator.getInfoFromApi('POST', urlPath, body);
+    const json = await ApiCommunicator.getInfoFromApi('POST', urlPath, JSON.stringify(body));
     return json;
   }
 }
