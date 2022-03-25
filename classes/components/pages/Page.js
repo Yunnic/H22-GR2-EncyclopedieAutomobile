@@ -74,7 +74,7 @@ export default class Page extends Component {
   loadingPageView() {
     return (
       <View style = {this.baseStyle.container}>
-        <ActivityIndicator size = "large"/>
+        <ActivityIndicator size="large" color="#0000ff"/>
       </View>
     )
   };
