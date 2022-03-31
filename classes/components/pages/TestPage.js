@@ -11,7 +11,8 @@ export default class TestPage extends Page {
   }
 
   async load() {
-    const newData = await ApiCommunicator.getCar("T", "A");
+    const newData = await ApiCommunicator.getCar("bmw", "m240i g42");
+    console.log(newData);
     this.loadPage(newData);
   }
 

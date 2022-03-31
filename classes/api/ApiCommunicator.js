@@ -54,41 +54,63 @@ const ApiCommunicator = {
     return null;
   },
 
-  searchBrand: async function (prjExpr, filtExpr, exprAttNames,
+  search: async function(urlPath, prjExpr, filtExpr, exprAttNames, exprAttVal,
+    exclStartKey, keyCondiExpr) {
+
+      const optional = {
+        "ExclusiveStartKey": exclStartKey,
+        "KeyConditionExpression": keyCondiExpr
+      };
+
+      const body = {
+        "prjExpr": prjExpr,
+        "filtExpr": filtExpr,
+        "exprAttNames": exprAttNames,
+        "exprAttVal": exprAttVal
+      }
+
+      for (const optionalIndice in optional) {
+        const optionalValue = optional[optionalIndice]
+        if (optionalValue != null) {
+          body[optionalIndice] = optionalValue;
+        }
+      }
+
+      const json = await ApiCommunicator.getInfoFromApi('POST', urlPath, JSON.stringify(body));
+      return json;
+  },
+
+  searchBrands: async function (prjExpr, filtExpr, exprAttNames,
     exprAttVal, exclStartKey) {
 
     const urlPath = `search/brand`;
-    /* exemple de body:
 
-    recherche de marques qui possède vo dans leur nom apres Mitsubishi (aucun).
-    {
-      "prjExpr": "#nm, Logo",
-      "filtExpr": "contains(#nm, :nmText)",
-      "exprAttNames": {
-        "#nm": "Name"
-      },
-      "exprAttVal": {
-        ":nmText": "Vo"
-      },
-      "exclStartKey": {
-        "Name": "Mitsubishi"
-      }
-    }
-    */
+    const found = await ApiCommunicator.search(urlPath, prjExpr,
+      filtExpr, exprAttNames, exprAttVal, exclStartKey);
 
-    const body = {
-      "prjExpr": prjExpr,
-      "filtExpr": filtExpr,
-      "exprAttNames": exprAttNames,
-      "exprAttVal": exprAttVal
-    }
+    return found;
+  },
 
-    if (exclStartKey != null) {
-      body["ExclusiveStartKey"] = exclStartKey;
-    }
+  searchModels: async function (prjExpr, filtExpr, exprAttNames,
+    exprAttVal, exclStartKey) {
 
-    const json = await ApiCommunicator.getInfoFromApi('POST', urlPath, JSON.stringify(body));
-    return json;
+    const urlPath = `search/model`;
+
+    const found = await ApiCommunicator.search(urlPath, prjExpr,
+      filtExpr, exprAttNames, exprAttVal, exclStartKey);
+
+    return found;
+  },
+
+  searchBrandModels: async function (brand, prjExpr, filtExpr, exprAttNames,
+    exprAttVal, exclStartKey, keyCondiExpr) {
+
+    const urlPath = `search/brand/model`;
+
+    const found = await ApiCommunicator.search(urlPath, prjExpr,
+      filtExpr, exprAttNames, exprAttVal, exclStartKey, keyCondiExpr);
+
+    return found;
   }
 }
 
