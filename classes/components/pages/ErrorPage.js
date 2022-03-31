@@ -23,12 +23,12 @@ export default class TestPage extends Page {
     const {catchedError} = route.params;
     return(
       <View style = {this.baseStyle.container}>
-        <Text style = {this.errorStyle.text}>{"ERROR : " + catchedError}</Text>
+        <Text style = {this.errorStyle.text}>{"ERREUR : " + catchedError}</Text>
         <Button
           style = {this.errorStyle.text}
           title = "Retourner à la page principale"
 
-          // Navigue à p.2
+          // Navigue à p.1
           onPress={() => this.props.navigation.reset({
             index: 0,
             routes: [{ name: 'Page 1'}]

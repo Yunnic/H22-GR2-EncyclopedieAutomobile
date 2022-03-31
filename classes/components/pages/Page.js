@@ -25,6 +25,7 @@ export default class Page extends Component {
     });
   }
 
+  //Charge la page après que tous les données sont obtenues
   loadPage(newData) {
     const catchedError = this.errorCatcher(newData);
     if (catchedError != null) {
@@ -37,10 +38,12 @@ export default class Page extends Component {
     }
   }
 
+  //Charge la page. Normalement, cette fonction est remplacé par une autre.
   async load() {
     this.loadPage(null);
   }
 
+  //S'occupe des erreurs.
   errorHandler(catchedError) {
     if (this.goToError) {
       this.props.navigation.reset({
@@ -50,8 +53,13 @@ export default class Page extends Component {
     }
   }
 
-  errorCatcher() {
-    return null;
+  //Créer erreur lorsqu'il manque une valeur.
+  errorCatcher(newData) {
+    for (const indice in newData) {
+      if (newData[indice] == undefined) {
+        return `Valeur prise en ligne n'est pas valide : ${indice} !`
+      }
+    }
   }
 
   //Cette fonction est appelée après que la classe est inséré dans la vue.
@@ -63,6 +71,7 @@ export default class Page extends Component {
     }
   }
 
+  //La vue de la page lorsqu'elle est chargé.
   loadedPageView(data) {
     return (
       <View>
@@ -71,6 +80,7 @@ export default class Page extends Component {
     )
   };
 
+  //La vue de la page lorsqu'elle charge
   loadingPageView() {
     return (
       <View style = {this.baseStyle.container}>
@@ -80,6 +90,7 @@ export default class Page extends Component {
   };
 
   //À noter : à chaque fois que la classe change, cette fonction est appelée
+  //Montre la page
   render() {
     const { data, isLoading } = this.state;
     //le truc après ? est si ça n'a pas chargé, truc après : est si c'est chargé
