@@ -58,13 +58,13 @@ const ApiCommunicator = {
     exclStartKey, keyCondiExpr) {
 
       const optional = {
-        "ExclusiveStartKey": exclStartKey,
-        "KeyConditionExpression": keyCondiExpr
+        "exclStartKey": exclStartKey,
+        "keyCondiExpr": keyCondiExpr,
+        "filtExpr": filtExpr
       };
 
       const body = {
         "prjExpr": prjExpr,
-        "filtExpr": filtExpr,
         "exprAttNames": exprAttNames,
         "exprAttVal": exprAttVal
       }
@@ -102,8 +102,8 @@ const ApiCommunicator = {
     return found;
   },
 
-  searchBrandModels: async function (brand, prjExpr, filtExpr, exprAttNames,
-    exprAttVal, exclStartKey, keyCondiExpr) {
+  searchBrandModels: async function (prjExpr, keyCondiExpr, filtExpr,
+    exprAttNames, exprAttVal, exclStartKey) {
 
     const urlPath = `search/brand/model`;
 

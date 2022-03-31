@@ -1,3 +1,5 @@
+//Il se peut que le code ne soit pas très lisible, c'est un test.
+
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Image } from 'react-native';
@@ -45,21 +47,30 @@ export default class TestPage extends Page {
       ":snText": "mw"
     }
 
+    const prjExpr3 = "ShownName, #br, #md"
+    const keyCondiExpr3 = "#br = :brText AND #md between :mdText1 AND :mdText2"
+    const exprAttNames3 = {
+      "#md": "Model",
+      "#br": "Brand"
+    }
+    const exprAttVal3 = {
+      ":brText": "bmw",
+      ":mdText1": "m2",
+      ":mdText2": "m3"
+    }
+
     const newData1 = await ApiCommunicator.getBrand("mitsubishi");
     const newData2 = await ApiCommunicator.searchBrands(prjExpr1, filtExpr1,
       exprAttNames1, exprAttVal1, null);
     const newData3 = await ApiCommunicator.searchModels(prjExpr2, filtExpr2,
       exprAttNames2, exprAttVal2, null);
-    const newData = {"newData1": newData1, "newData2": newData2, "newData3": newData3};
+    const newData4 = await ApiCommunicator.searchBrandModels(prjExpr3,
+      keyCondiExpr3, null, exprAttNames3, exprAttVal3, null);
+    const newData = {
+      "newData1": newData1, "newData2": newData2,
+      "newData3": newData3, "newData4": newData4
+    };
     this.loadPage(newData);
-  }
-
-  errorCatcher(data) {
-    if (data.newData1 == undefined || data.newData2 == undefined || data.newData3 == undefined) {
-      return "Data is missing!";
-    }
-
-    return null;
   }
 
   loadedPageView(data) {
@@ -75,6 +86,9 @@ export default class TestPage extends Page {
 
         <Text>Recherche 2 (Model) : "mw" :</Text>
         <Text>{JSON.stringify(data.newData3)}</Text>
+
+        <Text>Recherche 3 (BrandModel) : "bmw" avec model de "m2" à "m3" :</Text>
+        <Text>{JSON.stringify(data.newData4)}</Text>
         <Button
           title="Retourner à la page 1!"
 
