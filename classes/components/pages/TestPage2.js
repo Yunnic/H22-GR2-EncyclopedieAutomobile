@@ -47,16 +47,17 @@ export default class TestPage extends Page {
       ":snText": "mw"
     }
 
-    const prjExpr3 = "ShownName, #br, #md"
+    const prjExpr3 = "ShownName, #br, #md, #pe"
     const keyCondiExpr3 = "#br = :brText AND #md between :mdText1 AND :mdText2"
     const exprAttNames3 = {
       "#md": "Model",
-      "#br": "Brand"
+      "#br": "Brand",
+      "#pe": "Photo extérieur"
     }
     const exprAttVal3 = {
       ":brText": "bmw",
       ":mdText1": "m2",
-      ":mdText2": "m3"
+      ":mdText2": "m2z"
     }
 
     const newData1 = await ApiCommunicator.getBrand("mitsubishi");

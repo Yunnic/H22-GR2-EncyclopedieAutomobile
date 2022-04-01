@@ -19,6 +19,7 @@ export default class TestPage extends Page {
     return(
       <View style = {this.baseStyle.container}>
         <Text>{JSON.stringify(data)}</Text>
+        <Text>{data["Starting Price"]}</Text>
         <Button
           title="Aller page 2!"
 
