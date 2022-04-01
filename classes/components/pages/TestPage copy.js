@@ -19,8 +19,8 @@ export default class TestPage extends Page {
   loadedPageView(data) {
     return(
       <View style = {this.baseStyle.container}>
-        <Text>sreere : {data.caracteristiques["ShownName"]}</Text>
-        <Text>{data.caracteristiques["Starting Price"]}</Text>
+        <Text>{data["ShownName"]}</Text>
+        <Text>{data["Starting Price"]}</Text>
         <Page2></Page2>
         <Button
           title="Aller page 2!"

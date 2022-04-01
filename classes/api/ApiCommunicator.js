@@ -1,3 +1,4 @@
+import Voiture from '../Voiture/Voiture.js';
 const config = require('../../config.json');
 
 //Ce n'est techniquement pas une classe mais c'est proche (singleton)
@@ -38,7 +39,8 @@ const ApiCommunicator = {
     const json = await ApiCommunicator.getInfoFromApi('GET', urlPath, null);
 
     if (json != null && "Item" in json) {
-      return json.Item;
+      const voiture = new Voiture(json.Item)
+      return voiture;
     }
 
     return null;
