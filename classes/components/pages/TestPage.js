@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View } from 'react-native';
 import ApiCommunicator from '../../api/ApiCommunicator.js';
+import ImageTitre from '../vueVoiture/imageTitre.js';
 import Page from './Page.js';
 
 export default class TestPage extends Page {
@@ -18,7 +19,8 @@ export default class TestPage extends Page {
   loadedPageView(data) {
     return(
       <View style = {this.baseStyle.container}>
-        <Text>{JSON.stringify(data)}</Text>
+          <Text>{JSON.stringify(data)}</Text>
+          <ImageTitre></ImageTitre>
         <Button
           title="Aller page 2!"
 
