@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, Image } from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, Image, SafeAreaView} from 'react-native';
 import ApiCommunicator from '../../api/ApiCommunicator.js';
 import Page from './Page.js';
 
@@ -9,6 +9,21 @@ export default class TestPage extends Page {
   constructor(props) {
     super(props);
 
+  /*  const DATA = [
+        {
+          title: 'First Item',
+          source: 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png',
+        },
+        {
+          title: 'Second Item',
+          source: 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png',
+        },
+        {
+          title: 'Third Item',
+          source: 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png',
+        },
+      ];
+*/
     this.baseStyle = StyleSheet.create({
         container : {
             flex: 1,
@@ -58,30 +73,50 @@ export default class TestPage extends Page {
     });
   }
 
+
   /*async load() {
     const newData = await ApiCommunicator.getCar("bmw", "m240i g42");
     this.loadPage(newData);
+
+    <FlatList
+        data={DATA}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+      />
+
+      const renderItem = ({ item }) => (
+    <Item title={item.title} />
+  );
   }*/
 
   loadedPageView(data) {
     return(
       <View style = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Encyclopedie Automobile </Text>
-        <Pressable style = {this.baseStyle.button} onPress = {()=> console.log("a")}>
+        <Pressable style = {this.baseStyle.button} onPress = {() => this.props.navigation.navigate("Page 1")}>
         <Image
             style = {this.baseStyle.tinyLogo}
             source = {{uri : 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png'}}
             />
             <Text style = {this.baseStyle.text}>Favoris</Text>
         </Pressable>
-        
-        <Button
-        style = {this.baseStyle.title}
-        title="Aller page 1!"
 
-        // Navigue à p.2
-        onPress={() => this.props.navigation.navigate("Page 1")}
-        />
+        <Pressable style = {this.baseStyle.button} onPress = {() => this.props.navigation.navigate("Page 1")}>
+        <Image
+            style = {this.baseStyle.tinyLogo}
+            source = {{uri : 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png'}}
+            />
+            <Text style = {this.baseStyle.text}>Favoris</Text>
+        </Pressable>
+
+        <Pressable style = {this.baseStyle.button} onPress = {() => this.props.navigation.navigate("Page 1")}>
+        <Image
+            style = {this.baseStyle.tinyLogo}
+            source = {{uri : 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png'}}
+            />
+            <Text style = {this.baseStyle.text}>Favoris</Text>
+        </Pressable>
+
       </View>
     )
   }
