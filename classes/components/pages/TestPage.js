@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View } from 'react-native';
 import ApiCommunicator from '../../api/ApiCommunicator.js';
 import Page from './Page.js';
+import Page2 from './TestPage2.js';
 
 export default class TestPage extends Page {
 
@@ -19,6 +20,7 @@ export default class TestPage extends Page {
     return(
       <View style = {this.baseStyle.container}>
         <Text>{JSON.stringify(data)}</Text>
+        <Page2></Page2>
         <Button
           title="Aller page 2!"
 
