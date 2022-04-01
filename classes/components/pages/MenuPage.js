@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable } from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, Image } from 'react-native';
 import ApiCommunicator from '../../api/ApiCommunicator.js';
 import Page from './Page.js';
 
@@ -16,15 +16,27 @@ export default class TestPage extends Page {
             justifyContent : 'center',
             paddingVertical: 25,
             paddingHorizontal : 25,
+            backgroundColor : "#4d4d4d",
         },
         title: {
           marginTop: 16,
+          marginBottom: 160,
           textAlign: "center",
           fontSize: 30,
           fontWeight: "bold",
           lineHeight: 20,
           textAlignVertical: "center",
+          color : "white",
         },
+        text: {
+            marginTop: 16,
+            textAlign: "center",
+            fontSize: 30,
+            fontWeight: "bold",
+            lineHeight: 20,
+            textAlignVertical: "center",
+            color : "white",
+          },
         button : {
             marginTop: 10,
             marginBottom: 10,
@@ -35,12 +47,14 @@ export default class TestPage extends Page {
             paddingHorizontal: 50,
             justifyContent : 'center',
             backgroundColor : "black",
-            borderColor: "#20232a",
+            borderColor: "transparent",
             borderRadius: 12,
-            backgroundColor: "#61dafb",
-            color: "#20232a"
-        }
-    
+            backgroundColor: "green",
+        },
+        tinyLogo: {
+            width: 50,
+            height: 50,
+          },
     });
   }
 
@@ -52,9 +66,13 @@ export default class TestPage extends Page {
   loadedPageView(data) {
     return(
       <View style = {this.baseStyle.container}>
-        <Text title = {this.baseStyle.title}> Encyclopedie Automobile </Text>
+        <Text style = {this.baseStyle.title}> Encyclopedie Automobile </Text>
         <Pressable style = {this.baseStyle.button} onPress = {()=> console.log("a")}>
-            <Text style = {this.baseStyle.title}>Allo</Text>
+        <Image
+            style = {this.baseStyle.tinyLogo}
+            source = {{uri : 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png'}}
+            />
+            <Text style = {this.baseStyle.text}>Favoris</Text>
         </Pressable>
         
         <Button
