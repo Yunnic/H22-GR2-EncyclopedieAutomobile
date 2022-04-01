@@ -9,6 +9,12 @@ export default class TestPage extends Page {
 
   constructor(props) {
     super(props);
+
+    this.styles = StyleSheet.create({
+      text: {
+        fontSize: 30
+      }
+    });
   }
 
   async load() {
@@ -19,8 +25,8 @@ export default class TestPage extends Page {
   loadedPageView(data) {
     return(
       <View style = {this.baseStyle.container}>
-        <Text>sreere : {data.caracteristiques["ShownName"]}</Text>
-        <Text>{data.caracteristiques["Starting Price"]}</Text>
+        <Text style = {this.styles.text}>Nom : {data.caracteristiques["ShownName"]}</Text>
+        <Text style = {this.styles.text}>Prix : {data.caracteristiques["Starting Price"]}</Text>
         <Page2></Page2>
         <Button
           title="Aller page 2!"
