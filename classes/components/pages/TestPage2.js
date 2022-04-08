@@ -2,13 +2,14 @@
 
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Image } from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Image, ScrollView } from 'react-native';
 import ApiCommunicator from '../../api/ApiCommunicator.js';
 import Page from './Page.js';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
+    margin: 40,
     marginHorizontal: 16,
   },
   tinyLogo: {
@@ -76,7 +77,7 @@ export default class TestPage extends Page {
 
   loadedPageView(data) {
     return(
-      <View style = {styles.container}>
+      <ScrollView contentContainerStyle = {styles.container}>
         <Text>{data.newData1.ShownName}</Text>
         <Image
           style = {styles.logo}
@@ -96,7 +97,7 @@ export default class TestPage extends Page {
           // Navigue à p.1
           onPress={() => this.props.navigation.navigate("Page 1")}
         />
-      </View>
+      </ScrollView>
     )
   }
 };
