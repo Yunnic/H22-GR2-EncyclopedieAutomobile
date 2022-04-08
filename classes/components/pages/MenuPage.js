@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, Image, SafeAreaView} from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, Image, ImageBackground, SafeAreaView} from 'react-native';
 import ApiCommunicator from '../../api/ApiCommunicator.js';
 import Page from './Page.js';
 
@@ -29,8 +29,7 @@ export default class TestPage extends Page {
             flexGrow : 1,
             alignItems : 'center',
             justifyContent : 'center',
-            paddingVertical: 25,
-            paddingHorizontal : 25,
+
             backgroundColor : "#4d4d4d",
         },
         horizontal : {
@@ -117,12 +116,6 @@ export default class TestPage extends Page {
         backgroundColor: "purple",
     },
 
-    animatedBackground : {
-      width : 1920,
-      height : 1080,
-    },
-
-
     tinyLogo: {
         width: 50,
         height: 50,
@@ -148,11 +141,9 @@ export default class TestPage extends Page {
 
   loadedPageView(data) {
     return(
-      <View style = {this.baseStyle.container}>
-        <Image
-        style = {this.baseStyle.animatedBackground}
-        source = {{uri : 'https://c.tenor.com/-O0Xii3GomgAAAAM/pug-dance.gif'}}
-        />
+      <View>
+        <ImageBackground source = {{uri : 'https://c.tenor.com/-O0Xii3GomgAAAAM/pug-dance.gif'}} resizeMode = "contain"
+        style = {[{width : 1920, height : 1080}, this.baseStyle.container]}>
         <Text style = {this.baseStyle.title}> Encyclopedie Automobile </Text>
         <View style = {this.baseStyle.horizontal}>
 
@@ -194,8 +185,7 @@ export default class TestPage extends Page {
 
         </View>
 
-
-
+        </ImageBackground>
       </View>
     )
   }
