@@ -58,6 +58,7 @@ export default class TestPage extends Page {
             color : "white",
           },
         button : {
+            margin : 50,
             marginTop: 10,
             marginBottom: 10,
             alignItems : 'center',
@@ -130,6 +131,15 @@ export default class TestPage extends Page {
             />
             <Text style = {this.baseStyle.text}>Favoris</Text>
         </Pressable>
+
+        <Pressable style = {this.baseStyle.button} onPress = {() => this.props.navigation.navigate("Page 1")}>
+        <Image
+            style = {this.baseStyle.tinyLogo}
+            source = {{uri : 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png'}}
+            />
+            <Text style = {this.baseStyle.text}>Favoris</Text>
+        </Pressable>
+
 
       </View>
     )
