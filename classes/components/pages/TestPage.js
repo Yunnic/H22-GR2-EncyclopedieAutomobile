@@ -19,7 +19,11 @@ export default class TestPage extends Page {
       flex: 1,
       flexDirection:'column',
       alignItems: 'center'
-    }
+    },
+    image: {
+      width: 128,
+      height: 360,
+    },
 });
   }
 
@@ -35,8 +39,8 @@ export default class TestPage extends Page {
           <View style = {this.styles.horizontalList}>
             <ImageTitre
             imageSource = {{uri: "https://wp.usatodaysports.com/wp-content/uploads/sites/90/2014/04/baseball.gif"}}
-            title = ":)"
-            big/>
+            big
+            title = ":)"/>
             <ImageTitre big/>
             <View style = {this.styles.vertictalList}>
               <ImageTitre/>

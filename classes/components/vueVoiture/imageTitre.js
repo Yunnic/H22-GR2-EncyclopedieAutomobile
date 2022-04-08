@@ -12,19 +12,19 @@ export default class imageTitre extends Component {
     this.baseStyle = StyleSheet.create({
       container: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
       },
       tinyLogo: {
-        width: 75,
-        height: 75,
-        resizeMode: 'contain'
+        width: 50,
+        height: 50,
       },
       logo: {
         width: 150,
         height: 150,
-        resizeMode: 'contain'
       },
       text: {
+        fontSize : 20,
+        fontWeight : 'bold',
       }
     })
   }
@@ -45,7 +45,7 @@ export default class imageTitre extends Component {
     let imageStyle = this.baseStyle.tinyLogo;
 
     if (this.props.imageStyle) {
-      imageStyle = this.props.viewStyle;
+      imageStyle = this.props.imageStyle;
     } else if (this.props.big) {
       imageStyle = this.baseStyle.logo;
     }
