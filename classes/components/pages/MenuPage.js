@@ -141,9 +141,7 @@ export default class TestPage extends Page {
 
   loadedPageView(data) {
     return(
-      <View>
-        <ImageBackground source = {{uri : 'https://c.tenor.com/-O0Xii3GomgAAAAM/pug-dance.gif'}} resizeMode = "contain"
-        style = {[{width : 1920, height : 1080}, this.baseStyle.container]}>
+      <View style = {this.baseStyle.container}>  
         <Text style = {this.baseStyle.title}> Encyclopedie Automobile </Text>
         <View style = {this.baseStyle.horizontal}>
 
@@ -184,8 +182,6 @@ export default class TestPage extends Page {
         </Pressable>
 
         </View>
-
-        </ImageBackground>
       </View>
     )
   }
