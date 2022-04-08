@@ -117,10 +117,16 @@ export default class TestPage extends Page {
         backgroundColor: "purple",
     },
 
-        tinyLogo: {
-            width: 50,
-            height: 50,
-          },
+    animatedBackground : {
+      width : 1920,
+      height : 1080,
+    },
+
+
+    tinyLogo: {
+        width: 50,
+        height: 50,
+    },
     });
   }
 
@@ -143,6 +149,10 @@ export default class TestPage extends Page {
   loadedPageView(data) {
     return(
       <View style = {this.baseStyle.container}>
+        <Image
+        style = {this.baseStyle.animatedBackground}
+        source = {{uri : 'https://c.tenor.com/-O0Xii3GomgAAAAM/pug-dance.gif'}}
+        />
         <Text style = {this.baseStyle.title}> Encyclopedie Automobile </Text>
         <View style = {this.baseStyle.horizontal}>
 
