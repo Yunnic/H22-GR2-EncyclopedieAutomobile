@@ -7,6 +7,7 @@ import TestPage from './classes/components/pages/TestPage.js';
 import TestPage2 from './classes/components/pages/TestPage2.js';
 import ErrorPage from './classes/components/pages/ErrorPage.js';
 import MenuPage from './classes/components/pages/MenuPage.js';
+import AuteursPage from './classes/components/pages/AuteursPage.js';
 
 export default class App extends Component {
   constructor(props) {
@@ -18,11 +19,18 @@ export default class App extends Component {
 
     return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+      screenOptions={
+        {
+          headerShown: false
+        }
+      }
+      >
         <Stack.Screen name="Menu" component={MenuPage}/>
         <Stack.Screen name="Page 1" component={TestPage}/>
         <Stack.Screen name="Page 2" component={TestPage2}/>
         <Stack.Screen name="Error" component={ErrorPage}/>
+        <Stack.Screen name="Auteurs" component={AuteursPage}/>
       </Stack.Navigator>
     </NavigationContainer>
     );

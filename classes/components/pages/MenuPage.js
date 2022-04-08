@@ -170,7 +170,7 @@ export default class TestPage extends Page {
               <Text style = {this.baseStyle.text}>Favoris</Text>
           </Pressable>
 
-          <Pressable style = {this.baseStyle.buttonAuteurs} onPress = {() => this.props.navigation.navigate("Page 1")}>
+          <Pressable style = {this.baseStyle.buttonAuteurs} onPress = {() => this.props.navigation.navigate("Auteurs")}>
         <Image
             style = {this.baseStyle.tinyLogo}
             source = {{uri : 'https://c.tenor.com/-O0Xii3GomgAAAAM/pug-dance.gif'}}
