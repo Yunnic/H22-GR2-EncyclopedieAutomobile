@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, Image, ImageBackground, SafeAreaView} from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, Image, ScrollView, SafeAreaView} from 'react-native';
 import ApiCommunicator from '../../api/ApiCommunicator.js';
 import Page from './Page.js';
 
@@ -29,7 +29,6 @@ export default class TestPage extends Page {
             flexGrow : 1,
             alignItems : 'center',
             justifyContent : 'center',
-
             backgroundColor : "#4d4d4d",
         },
         horizontal : {
@@ -38,27 +37,25 @@ export default class TestPage extends Page {
           backgroundColor : "#4d4d4d",
         },
         title: {
-          //marginTop: 16,
+          marginTop: 16,
           marginBottom: 160,
           textAlign: "center",
           fontSize: 30,
           fontWeight: "bold",
-          lineHeight: 20,
           textAlignVertical: "center",
           color : "white",
         },
         text: {
             marginTop: 16,
             textAlign: "center",
-            fontSize: 30,
+            fontSize: 12,
             fontWeight: "bold",
-            lineHeight: 20,
             textAlignVertical: "center",
             color : "white",
           },
         buttonFavoris : {
-          width: 200,
-            margin : 25,
+          width: 175,
+            margin : 10,
             marginTop: 10,
             marginBottom: 10,
             alignItems : 'center',
@@ -72,8 +69,8 @@ export default class TestPage extends Page {
         },
 
         buttonRecherche : {
-          width: 200,
-            margin : 25,
+          width: 175,
+            margin : 10,
             marginTop: 10,
             marginBottom: 10,
             alignItems : 'center',
@@ -87,8 +84,8 @@ export default class TestPage extends Page {
         },
 
         buttonCatalogue : {
-          width: 200,
-          margin : 25,
+          width: 175,
+          margin : 10,
           marginTop: 10,
           marginBottom: 10,
           alignItems : 'center',
@@ -102,8 +99,8 @@ export default class TestPage extends Page {
       },
 
       buttonAuteurs : {
-        width: 200,
-        margin : 25,
+        width: 175,
+        margin : 10,
         marginTop: 10,
         marginBottom: 10,
         alignItems : 'center',
@@ -141,7 +138,7 @@ export default class TestPage extends Page {
 
   loadedPageView(data) {
     return(
-      <View style = {this.baseStyle.container}>  
+      <ScrollView contentContainerStyle = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Encyclopedie Automobile </Text>
         <View style = {this.baseStyle.horizontal}>
 
@@ -182,7 +179,7 @@ export default class TestPage extends Page {
         </Pressable>
 
         </View>
-      </View>
+      </ScrollView>
     )
   }
 };
