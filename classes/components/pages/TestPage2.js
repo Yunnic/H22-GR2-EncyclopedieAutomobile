@@ -81,21 +81,9 @@ export default class TestPage extends Page {
   loadedPageView(data) {
     return(
       <ScrollView contentContainerStyle = {styles.container}>
-        <Text>{data.newData1.ShownName}</Text>
-        <Image
-          style = {styles.logo}
-          source = {{uri: data.newData1.Logo}}
-        />
+        
         {data.newData5.affichageVoiture()}
-        <Text>{JSON.stringify(data.newData5)}</Text>
-        <Text>Recherche 1 (Brand) : "vo" :</Text>
-        <Text>{JSON.stringify(data.newData2)}</Text>
-
-        <Text>Recherche 2 (Model) : "mw" :</Text>
-        <Text>{JSON.stringify(data.newData3)}</Text>
-
-        <Text>Recherche 3 (BrandModel) : "bmw" avec model de "m2" à "m3" :</Text>
-        <Text>{JSON.stringify(data.newData4)}</Text>
+       
         <Button
           title="Retourner à la page 1!"
 
