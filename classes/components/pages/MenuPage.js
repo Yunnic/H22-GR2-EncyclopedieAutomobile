@@ -38,7 +38,7 @@ export default class TestPage extends Page {
           backgroundColor : "#4d4d4d",
         },
         title: {
-          marginTop: 16,
+          //marginTop: 16,
           marginBottom: 160,
           textAlign: "center",
           fontSize: 30,
