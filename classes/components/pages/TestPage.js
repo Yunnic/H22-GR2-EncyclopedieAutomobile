@@ -9,6 +9,18 @@ export default class TestPage extends Page {
 
   constructor(props) {
     super(props);
+
+    this.styles = StyleSheet.create({
+    horizontalList: {
+      flexDirection:'row',
+      alignItems: 'center'
+    },
+    vertictalList: {
+      flex: 1,
+      flexDirection:'column',
+      alignItems: 'center'
+    }
+});
   }
 
   async load() {
@@ -20,10 +32,19 @@ export default class TestPage extends Page {
     return(
       <View style = {this.baseStyle.container}>
           <Text>{JSON.stringify(data)}</Text>
-          <ImageTitre></ImageTitre>
+          <View style = {this.styles.horizontalList}>
+            <ImageTitre
+            imageSource = {{uri: "https://wp.usatodaysports.com/wp-content/uploads/sites/90/2014/04/baseball.gif"}}
+            title = ":)"
+            big/>
+            <ImageTitre big/>
+            <View style = {this.styles.vertictalList}>
+              <ImageTitre/>
+              <ImageTitre/>
+            </View>
+          </View>
         <Button
           title="Aller page 2!"
-
           // Navigue à p.2
           onPress={() => this.props.navigation.navigate("Page 2")}
         />
