@@ -150,7 +150,7 @@ export default class TestPage extends Page {
               <Text style = {this.baseStyle.text}>Recherche</Text>
           </Pressable>
 
-          <Pressable style = {this.baseStyle.buttonCatalogue} onPress = {() => this.props.navigation.navigate("Page 1")}>
+          <Pressable style = {this.baseStyle.buttonCatalogue} onPress = {() => this.props.navigation.navigate("Catalogue")}>
         <Image
             style = {this.baseStyle.tinyLogo}
             source = {{uri : 'https://c.tenor.com/-O0Xii3GomgAAAAM/pug-dance.gif'}}

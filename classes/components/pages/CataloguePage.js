@@ -1,6 +1,5 @@
-
 import React from 'react';
-import {StyleSheet, Text, ScrollView } from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, Image, ScrollView, SafeAreaView} from 'react-native';
 import Page from './Page.js';
 
 export default class TestPage extends Page {
@@ -14,6 +13,11 @@ export default class TestPage extends Page {
             alignItems : 'center',
             justifyContent : 'center',
             backgroundColor : "#4d4d4d",
+        },
+        horizontal : {
+          flexDirection : 'row',
+          alignItems : 'center',
+          backgroundColor : "#4d4d4d",
         },
         title: {
           marginTop: 16,
@@ -34,26 +38,29 @@ export default class TestPage extends Page {
           color : "white",
         },
         text: {
-            marginTop: 16,
-            textAlign: "center",
-            fontSize: 15,
-            fontWeight: "bold",
-            textAlignVertical: "center",
-            color : "white",
-          },
+          marginTop: 16,
+          textAlign: "center",
+          fontSize: 15,
+          fontWeight: "bold",
+          textAlignVertical: "center",
+          color : "white",
+        },
+
+    tinyLogo: {
+        width: 50,
+        height: 50,
+    },
     });
   }
 
   loadedPageView(data) {
     return(
       <ScrollView contentContainerStyle = {this.baseStyle.container}>
-        <Text style = {this.baseStyle.title}> Projet d'intégration en </Text>
-        <Text style = {this.baseStyle.title}> Sciences Informatiques et Mathématiques </Text>
-        <Text style = {this.baseStyle.subtitle}> Collège de Bois-de-Boulogne (Hiver 2022)</Text>
-        <Text style = {this.baseStyle.subtitle}> Liste d'auteurs </Text>
-        <Text style = {this.baseStyle.text}> Maxime Rainville </Text>
-        <Text style = {this.baseStyle.text}> Severyn Tynkalyuk </Text>
-        <Text style = {this.baseStyle.text}> Yannick Lafontaine </Text>
+        <Text style = {this.baseStyle.title}> Catalogue </Text>
+
+        <View style = {this.baseStyle.horizontal}>
+
+        </View>
 
       </ScrollView>
     )
