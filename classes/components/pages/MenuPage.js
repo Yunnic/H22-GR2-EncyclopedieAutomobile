@@ -57,8 +57,9 @@ export default class TestPage extends Page {
             textAlignVertical: "center",
             color : "white",
           },
-        button : {
-            margin : 50,
+        buttonFavoris : {
+          width: 200,
+            margin : 25,
             marginTop: 10,
             marginBottom: 10,
             alignItems : 'center',
@@ -66,11 +67,56 @@ export default class TestPage extends Page {
             paddingBottom: 20,
             paddingTop : 15,
             paddingHorizontal: 50,
-            backgroundColor : "black",
             borderColor: "transparent",
             borderRadius: 12,
             backgroundColor: "green",
         },
+
+        buttonRecherche : {
+          width: 200,
+            margin : 25,
+            marginTop: 10,
+            marginBottom: 10,
+            alignItems : 'center',
+            textAlignVertical : 'center',
+            paddingBottom: 20,
+            paddingTop : 15,
+            paddingHorizontal: 50,
+            borderColor: "transparent",
+            borderRadius: 12,
+            backgroundColor: "orange",
+        },
+
+        buttonCatalogue : {
+          width: 200,
+          margin : 25,
+          marginTop: 10,
+          marginBottom: 10,
+          alignItems : 'center',
+          textAlignVertical : 'center',
+          paddingBottom: 20,
+          paddingTop : 15,
+          paddingHorizontal: 50,
+          borderColor: "transparent",
+          borderRadius: 12,
+          backgroundColor: "darkred",
+      },
+
+      buttonAuteurs : {
+        width: 200,
+        margin : 25,
+        marginTop: 10,
+        marginBottom: 10,
+        alignItems : 'center',
+        textAlignVertical : 'center',
+        paddingBottom: 20,
+        paddingTop : 15,
+        paddingHorizontal: 50,
+        borderColor: "transparent",
+        borderRadius: 12,
+        backgroundColor: "purple",
+    },
+
         tinyLogo: {
             width: 50,
             height: 50,
@@ -99,46 +145,45 @@ export default class TestPage extends Page {
       <View style = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Encyclopedie Automobile </Text>
         <View style = {this.baseStyle.horizontal}>
-          <Pressable style = {this.baseStyle.button} onPress = {() => this.props.navigation.navigate("Page 1")}>
+
+          <Pressable style = {this.baseStyle.buttonRecherche} onPress = {() => this.props.navigation.navigate("Page 1")}>
             <Image
               style = {this.baseStyle.tinyLogo}
-              source = {{uri : 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png'}}
+              source = {{uri : 'https://c.tenor.com/-O0Xii3GomgAAAAM/pug-dance.gif'}}
               />
-              <Text style = {this.baseStyle.text}>Favoris</Text>
+              <Text style = {this.baseStyle.text}>Recherche</Text>
           </Pressable>
-          
-          <Pressable style = {this.baseStyle.button} onPress = {() => this.props.navigation.navigate("Page 1")}>
-            <Image
-              style = {this.baseStyle.tinyLogo}
-              source = {{uri : 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png'}}
-              />
-              <Text style = {this.baseStyle.text}>Favoris</Text>
-          </Pressable>
+
+          <Pressable style = {this.baseStyle.buttonCatalogue} onPress = {() => this.props.navigation.navigate("Page 1")}>
+        <Image
+            style = {this.baseStyle.tinyLogo}
+            source = {{uri : 'https://c.tenor.com/-O0Xii3GomgAAAAM/pug-dance.gif'}}
+            />
+            <Text style = {this.baseStyle.text}>Catalogue</Text>
+        </Pressable>
+
         </View>
 
-        <Pressable style = {this.baseStyle.button} onPress = {() => this.props.navigation.navigate("Page 1")}>
+        <View style = {this.baseStyle.horizontal}>
+
+          <Pressable style = {this.baseStyle.buttonFavoris} onPress = {() => this.props.navigation.navigate("Page 1")}>
+            <Image
+              style = {this.baseStyle.tinyLogo}
+              source = {{uri : 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png'}}
+              />
+              <Text style = {this.baseStyle.text}>Favoris</Text>
+          </Pressable>
+
+          <Pressable style = {this.baseStyle.buttonAuteurs} onPress = {() => this.props.navigation.navigate("Page 1")}>
         <Image
             style = {this.baseStyle.tinyLogo}
-            source = {{uri : 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png'}}
+            source = {{uri : 'https://c.tenor.com/-O0Xii3GomgAAAAM/pug-dance.gif'}}
             />
-            <Text style = {this.baseStyle.text}>Favoris</Text>
+            <Text style = {this.baseStyle.text}>Auteurs</Text>
         </Pressable>
 
-        <Pressable style = {this.baseStyle.button} onPress = {() => this.props.navigation.navigate("Page 1")}>
-        <Image
-            style = {this.baseStyle.tinyLogo}
-            source = {{uri : 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png'}}
-            />
-            <Text style = {this.baseStyle.text}>Favoris</Text>
-        </Pressable>
+        </View>
 
-        <Pressable style = {this.baseStyle.button} onPress = {() => this.props.navigation.navigate("Page 1")}>
-        <Image
-            style = {this.baseStyle.tinyLogo}
-            source = {{uri : 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png'}}
-            />
-            <Text style = {this.baseStyle.text}>Favoris</Text>
-        </Pressable>
 
 
       </View>
