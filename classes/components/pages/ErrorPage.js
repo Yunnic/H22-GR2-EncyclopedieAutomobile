@@ -31,7 +31,7 @@ export default class TestPage extends Page {
           // Navigue à p.1
           onPress={() => this.props.navigation.reset({
             index: 0,
-            routes: [{ name: 'Page 1'}]
+            routes: [{ name: 'Menu'}]
           })}
         />
       </View>

@@ -8,67 +8,19 @@ export default class imageTitre extends Component {
     super(props);
 
     this.placeHolderText = "Texte"
-    this.placeHolderImage = {uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/638px-Placeholder_view_vector.svg.png"}
+    this.placeHolderImage = {uri : 'https://c.tenor.com/-O0Xii3GomgAAAAM/pug-dance.gif'}
+    let color = props.color ? props.color : "orange";
+
     this.baseStyle = StyleSheet.create({
-        container : {
-            flexGrow : 1,
-            alignItems : 'center',
-            justifyContent : 'center',
-            backgroundColor : "#4d4d4d",
-        },
-        horizontal : {
-          flexDirection : 'row',
-          alignItems : 'center',
-          backgroundColor : "#4d4d4d",
-        },
-        title: {
+        text: {
           marginTop: 16,
-          marginBottom: 160,
           textAlign: "center",
-          fontSize: 30,
+          fontSize: 12,
           fontWeight: "bold",
           textAlignVertical: "center",
           color : "white",
-        },
-        text: {
-            marginTop: 16,
-            textAlign: "center",
-            fontSize: 12,
-            fontWeight: "bold",
-            textAlignVertical: "center",
-            color : "white",
           },
-        buttonFavoris : {
-          width: 175,
-            margin : 10,
-            marginTop: 10,
-            marginBottom: 10,
-            alignItems : 'center',
-            textAlignVertical : 'center',
-            paddingBottom: 20,
-            paddingTop : 15,
-            paddingHorizontal: 50,
-            borderColor: "transparent",
-            borderRadius: 12,
-            backgroundColor: "green",
-        },
-
-        buttonRecherche : {
-          width: 175,
-            margin : 10,
-            marginTop: 10,
-            marginBottom: 10,
-            alignItems : 'center',
-            textAlignVertical : 'center',
-            paddingBottom: 20,
-            paddingTop : 15,
-            paddingHorizontal: 50,
-            borderColor: "transparent",
-            borderRadius: 12,
-            backgroundColor: "orange",
-        },
-
-        buttonCatalogue : {
+        button : {
           width: 175,
           margin : 10,
           marginTop: 10,
@@ -80,58 +32,44 @@ export default class imageTitre extends Component {
           paddingHorizontal: 50,
           borderColor: "transparent",
           borderRadius: 12,
-          backgroundColor: "darkred",
+          backgroundColor : color
+        },
+
+      tinyLogo: {
+          width: 50,
+          height: 50,
       },
-
-      buttonAuteurs : {
-        width: 175,
-        margin : 10,
-        marginTop: 10,
-        marginBottom: 10,
-        alignItems : 'center',
-        textAlignVertical : 'center',
-        paddingBottom: 20,
-        paddingTop : 15,
-        paddingHorizontal: 50,
-        borderColor: "transparent",
-        borderRadius: 12,
-        backgroundColor: "purple",
-    },
-
-    tinyLogo: {
-        width: 50,
-        height: 50,
-    },
     });
   }
   //À noter : à chaque fois que la classe change, cette fonction est appelée
   //Montre la page
+
+  test() {
+    console.log("?")
+  }
+
   render() {
 
-    let viewStyle =
-      (this.props.viewStyle) ? this.props.viewStyle : this.baseStyle.container;
+    let buttonStyle =
+      (this.props.buttonStyle) ? this.props.buttonStyle : this.baseStyle.button;
+    let pageFunction =
+      (this.props.pageFunction) ? this.props.pageFunction : this.test;
     let textStyle =
       (this.props.textStyle) ? this.props.textStyle : this.baseStyle.text;
     let imageSource =
       (this.props.imageSource) ? this.props.imageSource : this.placeHolderImage;
     let title =
       (this.props.title) ? this.props.title : this.placeHolderText;
-
-    let imageStyle = this.baseStyle.tinyLogo;
-
-    if (this.props.imageStyle) {
-      imageStyle = this.props.imageStyle;
-    } else if (this.props.big) {
-      imageStyle = this.baseStyle.logo;
-    }
+    let imageStyle =
+      (this.props.imageStyle) ? this.props.imageStyle : this.baseStyle.tinyLogo;
 
     return (
-      <Pressable style = {this.baseStyle.buttonRecherche} onPress = {() => this.props.navigation.navigate("Page 1")}>
+      <Pressable style = {buttonStyle} onPress = {pageFunction}>
         <Image
-          style = {this.baseStyle.tinyLogo}
-          source = {{uri : 'https://c.tenor.com/-O0Xii3GomgAAAAM/pug-dance.gif'}}
+          style = {imageStyle}
+          source = {imageSource}
           />
-          <Text style = {this.baseStyle.text}>Recherche</Text>
+          <Text style = {textStyle}>{title}</Text>
       </Pressable>
     )
   };
