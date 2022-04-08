@@ -27,8 +27,12 @@ export default class Voiture{
               source={{uri: this.caracteristiques["Photo intérieur"]}}
               />
               <Text>Prix : {this.caracteristiques["Starting Price"]}</Text>
+              <Text>Type de corps : {this.caracteristiques["Body type"]}</Text>
+              <Text>Génération : {this.caracteristiques.Generation}</Text>
+              <Text>Trim : {this.caracteristiques.Trim}</Text>
+              <Text>Nombre de siège : {this.caracteristiques["Number of seats"]}</Text>
               <Text>Type de carburant : {this.caracteristiques.Engine["Energy source"]}</Text>
-              <Text>Engine </Text>
+              <Text>Engine :</Text>
               <View style = {{paddingLeft: 50, alignItems: "flex-start"}}>
                 <Text>Code : {this.caracteristiques.Engine.Code}</Text> 
                 <Text>Displacement : {this.caracteristiques.Engine.Displacement}</Text>
@@ -36,20 +40,25 @@ export default class Voiture{
                 <Text>Aspiration : {this.caracteristiques.Engine.Aspiration}</Text>
                 <Text>Power : {this.caracteristiques.Engine.Power}</Text>
                 <Text>Torque : {this.caracteristiques.Engine.Torque}</Text>
-                
-               
-                
-              </View>
-              <Text>Body type : {this.caracteristiques["Body type"]}</Text>
-              <Text>Top speed : {this.caracteristiques["Top speed"]}</Text>
+             </View>
+              
               <Text>Weight : {this.caracteristiques["Weight"]}</Text>
-              <Text>Dimensions </Text>
+              <Text>Dimensions :</Text>
               <View style = {{paddingLeft: 50, alignItems: "flex-start"}}>
-                <Text>Wheelbase lenght : {this.caracteristiques.Dimensions["Wheelbase lenght"]}</Text>
+                <Text>Wheelbase length : {this.caracteristiques.Dimensions["Wheelbase length"]}</Text>
                 <Text>Height : {this.caracteristiques.Dimensions.Height}</Text>
-                <Text>Lenght : {this.caracteristiques.Dimensions.Lenght}</Text>
+                <Text>Length : {this.caracteristiques.Dimensions.Length}</Text>
                 <Text>Width : {this.caracteristiques.Dimensions.Width}</Text>
               </View>
+              <Text>Top speed : {this.caracteristiques["Top speed"]}</Text>
+              <Text>Temps d'acceleration : </Text>
+              <View style = {{paddingLeft: 50, alignItems: "flex-start"}}>
+                <Text>0-100 km/h : {this.caracteristiques["Acceleration times"]["0-100 km/h"]}</Text>
+                <Text>100-200 km/h : {this.caracteristiques["Acceleration times"]["100-200 km/h"]}</Text>
+                <Text>1/4 mile : {this.caracteristiques["Acceleration times"]["1/4 mile"]}</Text>
+                <Text>1/2 mile : {this.caracteristiques["Acceleration times"]["1/2 mile"]}</Text>
+              </View>
+
             </View>
             
             
