@@ -26,12 +26,17 @@ export default class TestPage extends Page {
 */
     this.baseStyle = StyleSheet.create({
         container : {
-            flex: 1,
+            flexGrow : 1,
             alignItems : 'center',
             justifyContent : 'center',
             paddingVertical: 25,
             paddingHorizontal : 25,
             backgroundColor : "#4d4d4d",
+        },
+        horizontal : {
+          flexDirection : 'row',
+          alignItems : 'center',
+          backgroundColor : "#4d4d4d",
         },
         title: {
           marginTop: 16,
@@ -60,7 +65,6 @@ export default class TestPage extends Page {
             paddingBottom: 20,
             paddingTop : 15,
             paddingHorizontal: 50,
-            justifyContent : 'center',
             backgroundColor : "black",
             borderColor: "transparent",
             borderRadius: 12,
@@ -93,13 +97,23 @@ export default class TestPage extends Page {
     return(
       <View style = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Encyclopedie Automobile </Text>
-        <Pressable style = {this.baseStyle.button} onPress = {() => this.props.navigation.navigate("Page 1")}>
-        <Image
-            style = {this.baseStyle.tinyLogo}
-            source = {{uri : 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png'}}
-            />
-            <Text style = {this.baseStyle.text}>Favoris</Text>
-        </Pressable>
+        <View style = {this.baseStyle.horizontal}>
+          <Pressable style = {this.baseStyle.button} onPress = {() => this.props.navigation.navigate("Page 1")}>
+            <Image
+              style = {this.baseStyle.tinyLogo}
+              source = {{uri : 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png'}}
+              />
+              <Text style = {this.baseStyle.text}>Favoris</Text>
+          </Pressable>
+          
+          <Pressable style = {this.baseStyle.button} onPress = {() => this.props.navigation.navigate("Page 1")}>
+            <Image
+              style = {this.baseStyle.tinyLogo}
+              source = {{uri : 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png'}}
+              />
+              <Text style = {this.baseStyle.text}>Favoris</Text>
+          </Pressable>
+        </View>
 
         <Pressable style = {this.baseStyle.button} onPress = {() => this.props.navigation.navigate("Page 1")}>
         <Image
