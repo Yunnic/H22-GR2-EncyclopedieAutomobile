@@ -66,7 +66,7 @@ export default class TestPage extends Page {
 
     return(
       <ScrollView contentContainerStyle = {this.baseStyle.container}>
-        <Text style = {this.baseStyle.title}> Recherche </Text>
+        <Text style = {this.baseStyle.title}> Catalogue </Text>
         {this.searchComponents}
       </ScrollView>
     )
