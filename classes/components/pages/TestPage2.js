@@ -65,8 +65,7 @@ export default class TestPage extends Page {
     const newData5 = await ApiCommunicator.getCar("chevrolet","camaro zl1");
     const newData2 = await ApiCommunicator.searchBrands(prjExpr1, filtExpr1,
       exprAttNames1, exprAttVal1, null);
-    const newData3 = await ApiCommunicator.searchModels(prjExpr2, filtExpr2,
-      exprAttNames2, exprAttVal2, null);
+    const newData3 = await ApiCommunicator.searchModels(prjExpr2);
     const newData4 = await ApiCommunicator.searchBrandModels(prjExpr3,
       keyCondiExpr3, null, exprAttNames3, exprAttVal3, null);
     const newData = {
@@ -74,16 +73,16 @@ export default class TestPage extends Page {
       "newData3": newData3, "newData4": newData4,
       "newData5": newData5
     };
-  
+
     this.loadPage(newData);
   }
 
   loadedPageView(data) {
     return(
       <ScrollView contentContainerStyle = {styles.container}>
-        
+        <Text> {JSON.stringify(data.newData3)} </Text>
         {data.newData5.affichageVoiture()}
-       
+
         <Button
           title="Retourner à la page 1!"
 

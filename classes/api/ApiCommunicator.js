@@ -62,13 +62,13 @@ const ApiCommunicator = {
       const optional = {
         "exclStartKey": exclStartKey,
         "keyCondiExpr": keyCondiExpr,
-        "filtExpr": filtExpr
+        "filtExpr": filtExpr,
+        "exprAttNames": exprAttNames,
+        "exprAttVal": exprAttVal
       };
 
       const body = {
         "prjExpr": prjExpr,
-        "exprAttNames": exprAttNames,
-        "exprAttVal": exprAttVal
       }
 
       for (const optionalIndice in optional) {
@@ -77,6 +77,8 @@ const ApiCommunicator = {
           body[optionalIndice] = optionalValue;
         }
       }
+
+      console.log(body);
 
       const json = await ApiCommunicator.getInfoFromApi('POST', urlPath, JSON.stringify(body));
       return json;

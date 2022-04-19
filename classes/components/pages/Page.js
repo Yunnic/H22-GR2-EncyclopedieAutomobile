@@ -19,9 +19,8 @@ export default class Page extends Component {
     this.baseStyle = StyleSheet.create({
       container: {
         flexGrow: 1,
-        margin: 40,
         justifyContent: 'center',
-        marginHorizontal: 16,
+        backgroundColor : "#4d4d4d",
       }
     });
   }

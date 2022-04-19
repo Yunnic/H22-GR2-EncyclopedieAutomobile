@@ -1,6 +1,8 @@
 import React from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, Image, ScrollView, SafeAreaView} from 'react-native';
+import ApiCommunicator from '../../api/ApiCommunicator.js';
 import Page from './Page.js';
+import ImageTitre from '../vueVoiture/imageTitre.js';
 
 export default class TestPage extends Page {
 
@@ -9,14 +11,10 @@ export default class TestPage extends Page {
 
     this.baseStyle = StyleSheet.create({
         container : {
-            flexGrow : 1,
-            alignItems : 'center',
-            justifyContent : 'center',
-            backgroundColor : "#4d4d4d",
-        },
-        horizontal : {
-          flexDirection : 'row',
+          paddingTop: 30,
+          flexGrow : 1,
           alignItems : 'center',
+          justifyContent : 'center',
           backgroundColor : "#4d4d4d",
         },
         title: {
@@ -28,40 +26,48 @@ export default class TestPage extends Page {
           textAlignVertical: "center",
           color : "white",
         },
-        subtitle: {
-          marginTop: 40,
-          marginBottom: 16,
-          textAlign: "center",
-          fontSize: 25,
-          fontWeight: "bold",
-          textAlignVertical: "center",
-          color : "white",
-        },
-        text: {
-          marginTop: 16,
-          textAlign: "center",
-          fontSize: 15,
-          fontWeight: "bold",
-          textAlignVertical: "center",
-          color : "white",
-        },
-
-    tinyLogo: {
-        width: 50,
-        height: 50,
-    },
     });
+
+    this.searchComponents = [];
+    this.lastResult = null;
+  }
+
+  async load() {
+
+    const prjExpr2 = "ShownName, #pe, Brand, Model"
+    const exprAttNames2 = {
+      "#pe": "Photo extérieur"
+    }
+
+    const searchData = await ApiCommunicator.searchModels(prjExpr2, null, exprAttNames2);
+    const newData = {
+      "searchData": searchData
+    };
+
+    this.loadPage(newData);
   }
 
   loadedPageView(data) {
+
+    let count = this.searchComponents.length;
+    let newItems = data.searchData.Items;
+
+    for (const newItem of newItems) {
+      this.searchComponents.push(
+        <View key={count++}>
+          <ImageTitre
+          title = {newItem.ShownName}
+          imageSource = {{uri : newItem["Photo extérieur"]}}
+          big
+          />
+        </View>
+      )
+    }
+
     return(
       <ScrollView contentContainerStyle = {this.baseStyle.container}>
-        <Text style = {this.baseStyle.title}> Catalogue </Text>
-
-        <View style = {this.baseStyle.horizontal}>
-
-        </View>
-
+        <Text style = {this.baseStyle.title}> Recherche </Text>
+        {this.searchComponents}
       </ScrollView>
     )
   }

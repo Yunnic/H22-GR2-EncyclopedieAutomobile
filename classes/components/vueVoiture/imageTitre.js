@@ -11,20 +11,23 @@ export default class imageTitre extends Component {
     this.placeHolderImage = {uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/638px-Placeholder_view_vector.svg.png"}
     this.baseStyle = StyleSheet.create({
       container: {
-        flex: 1,
         alignItems: 'center',
+        padding: 20
       },
       tinyLogo: {
-        width: 50,
+        width: 150,
         height: 50,
+        borderRadius: 2.5,
       },
       logo: {
-        width: 100,
+        width: 300,
         height: 100,
+        borderRadius: 5,
       },
       text: {
         fontSize : 20,
         fontWeight : 'bold',
+        color: 'white'
       }
     })
   }
