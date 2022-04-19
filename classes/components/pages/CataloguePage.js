@@ -51,6 +51,8 @@ export default class TestPage extends Page {
 
     let count = this.searchComponents.length;
     let newItems = data.searchData.Items;
+    this.lastResult = data.searchData.LastEvaluatedKey;
+    console.log(this.lastResult);
 
     for (const newItem of newItems) {
       this.searchComponents.push(
