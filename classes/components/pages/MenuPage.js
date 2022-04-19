@@ -70,7 +70,10 @@ export default class TestPage extends Page {
       <ScrollView contentContainerStyle = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Encyclopedie Automobile </Text>
         <View style = {this.baseStyle.horizontal}>
-          <BoutonImageTitre/>
+          <BoutonImageTitre
+          pageFunction = {() => this.props.navigation.navigate("Recherche")}
+          title = "Recherche"
+          />
 
           <BoutonImageTitre
           pageFunction = {() => this.props.navigation.navigate("Catalogue")}
@@ -83,7 +86,7 @@ export default class TestPage extends Page {
         <View style = {this.baseStyle.horizontal}>
 
             <BoutonImageTitre
-            pageFunction = {() => this.props.navigation.navigate("Page 1")}
+            pageFunction = {() => this.props.navigation.navigate("Favoris")}
             color = "green"
             title = "Favoris"
             imageSource = {{uri : 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png'}}
