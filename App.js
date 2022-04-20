@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as ScreenOrientation from 'expo-screen-orientation';
@@ -21,30 +21,39 @@ export default class App extends Component {
 
     //S'assure que l'ecran est en mode portrait.
     ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+
+    this.styles = StyleSheet.create({
+      container: {
+        flex : 1,
+        backgroundColor : "#4d4d4d",
+      }
+    })
   }
 
   render() {
     const Stack = createNativeStackNavigator();
 
     return (
-    <NavigationContainer>
-      <Stack.Navigator
-      screenOptions={
-        {
-          headerShown: false
-        }
-      }
-      >
-        <Stack.Screen name="Menu" component={MenuPage}/>
-        <Stack.Screen name="Page 1" component={TestPage}/>
-        <Stack.Screen name="Page 2" component={TestPage2}/>
-        <Stack.Screen name="Error" component={ErrorPage}/>
-        <Stack.Screen name="Auteurs" component={AuteursPage}/>
-        <Stack.Screen name="Catalogue" component={CataloguePage}/>
-        <Stack.Screen name="Recherche" component={RecherchePage}/>
-        <Stack.Screen name="Favoris" component={FavorisPage}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+      <SafeAreaView style = {this.styles.container}>
+        <NavigationContainer>
+          <Stack.Navigator
+          screenOptions={
+            {
+              headerShown: false
+            }
+          }
+          >
+            <Stack.Screen name="Menu" component={MenuPage}/>
+            <Stack.Screen name="Page 1" component={TestPage}/>
+            <Stack.Screen name="Page 2" component={TestPage2}/>
+            <Stack.Screen name="Error" component={ErrorPage}/>
+            <Stack.Screen name="Auteurs" component={AuteursPage}/>
+            <Stack.Screen name="Catalogue" component={CataloguePage}/>
+            <Stack.Screen name="Recherche" component={RecherchePage}/>
+            <Stack.Screen name="Favoris" component={FavorisPage}/>
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaView>
     );
   }
 };
