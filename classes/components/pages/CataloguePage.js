@@ -4,14 +4,14 @@ import ApiCommunicator from '../../api/ApiCommunicator.js';
 import Page from './Page.js';
 import ImageTitre from '../vueVoiture/imageTitre.js';
 
-export default class TestPage extends Page {
+export default class CataloguePage extends Page {
 
   constructor(props) {
     super(props);
 
     this.baseStyle = StyleSheet.create({
         container : {
-          paddingTop: 30,
+          padding : 20,
           flexGrow : 1,
           alignItems : 'center',
           justifyContent : 'center',
@@ -30,16 +30,24 @@ export default class TestPage extends Page {
 
     this.searchComponents = [];
     this.lastResult = null;
+    this.hasLoadedOnce = false;
+
+    this.renderItem = ({item}) => (
+      <ImageTitre
+      big
+      title = {item.ShownName}
+      imageSource = {{uri:item["Photo extérieur"]}}
+      />
+    )
   }
 
   async load() {
-
     const prjExpr2 = "ShownName, #pe, Brand, Model"
     const exprAttNames2 = {
       "#pe": "Photo extérieur"
     }
 
-    const searchData = await ApiCommunicator.searchModels(prjExpr2, null, exprAttNames2);
+    const searchData = await ApiCommunicator.searchModels(prjExpr2, null, exprAttNames2, null, this.lastResult);
     const newData = {
       "searchData": searchData
     };
@@ -47,30 +55,52 @@ export default class TestPage extends Page {
     this.loadPage(newData);
   }
 
+  loadingIcon() {
+    return (this.loading = <ActivityIndicator size="large" color="white"/>);
+  }
+
+  handleScroll(event, page) {
+    const scrollHeight = event.nativeEvent.contentOffset.y;
+    const screenHeight = event.nativeEvent.contentSize.height;
+    const screenCurrentHeight = event.nativeEvent.layoutMeasurement.height;
+    if (page.lastResult && !page.state.isLoading && scrollHeight + screenCurrentHeight + 20 > screenHeight) {
+      page.reloadWithoutLoading();
+    }
+  }
+
   loadedPageView(data) {
-
     let count = this.searchComponents.length;
-    let newItems = data.searchData.Items;
-    this.lastResult = data.searchData.LastEvaluatedKey;
-    console.log(this.lastResult);
+    let searchData = data.searchData
+    let newItems = (searchData) ? data.searchData.Items : null;
 
-    for (const newItem of newItems) {
-      this.searchComponents.push(
-        <View key={count++}>
-          <ImageTitre
-          title = {newItem.ShownName}
-          imageSource = {{uri : newItem["Photo extérieur"]}}
-          big
-          />
-        </View>
-      )
+    if (newItems){
+      this.lastResult = data.searchData.LastEvaluatedKey;
+
+      if (!this.hasLoadedOnce) {
+        this.hasLoadedOnce = true;
+      }
+
+      for (const newItem of newItems) {
+
+        this.searchComponents.push(newItem)
+      }
     }
 
+    this.state.data = [];
+
+    console.log(this.searchComponents);
+
     return(
-      <ScrollView contentContainerStyle = {this.baseStyle.container}>
+      <View style = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Catalogue </Text>
-        {this.searchComponents}
-      </ScrollView>
+        <FlatList
+          contentContainerStyle = {this.baseStyle.container}
+          onScroll = {(event) => this.handleScroll(event, this)}
+          data = {this.searchComponents}
+          renderItem = {this.renderItem}
+          keyExtractor = {item => item.Model}
+        />
+      </View>
     )
   }
 };

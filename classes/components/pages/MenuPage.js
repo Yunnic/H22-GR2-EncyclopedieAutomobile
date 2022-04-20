@@ -10,21 +10,6 @@ export default class TestPage extends Page {
   constructor(props) {
     super(props);
 
-  /*  const DATA = [
-        {
-          title: 'First Item',
-          source: 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png',
-        },
-        {
-          title: 'Second Item',
-          source: 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png',
-        },
-        {
-          title: 'Third Item',
-          source: 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png',
-        },
-      ];
-*/
     this.baseStyle = StyleSheet.create({
       container : {
         flexGrow : 1,
@@ -49,22 +34,6 @@ export default class TestPage extends Page {
     });
   }
 
-
-  /*async load() {
-    const newData = await ApiCommunicator.getCar("bmw", "m240i g42");
-    this.loadPage(newData);
-
-    <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-      />
-
-      const renderItem = ({ item }) => (
-    <Item title={item.title} />
-  );
-  }*/
-
   loadedPageView(data) {
     return(
       <ScrollView contentContainerStyle = {this.baseStyle.container}>
@@ -73,12 +42,14 @@ export default class TestPage extends Page {
           <BoutonImageTitre
           pageFunction = {() => this.props.navigation.navigate("Recherche")}
           title = "Recherche"
+          imageSource = {{uri : 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/500px-Search_Icon.svg.png'}}
           />
 
           <BoutonImageTitre
           pageFunction = {() => this.props.navigation.navigate("Catalogue")}
           color = "darkred"
           title = "Catalogue"
+          imageSource = {{uri : 'https://static.thenounproject.com/png/29432-200.png'}}
           />
 
         </View>
@@ -89,13 +60,14 @@ export default class TestPage extends Page {
             pageFunction = {() => this.props.navigation.navigate("Page 1")}
             color = "green"
             title = "Favoris"
-            imageSource = {{uri : 'https://www.freeiconspng.com/uploads/favorites-star-icon-png-0.png'}}
+            imageSource = {{uri : 'https://cdn.pixabay.com/photo/2016/12/18/11/01/star-1915448_1280.png'}}
             />
 
             <BoutonImageTitre
             pageFunction = {() => this.props.navigation.navigate("Auteurs")}
             color = "purple"
             title = "Auteurs"
+            imageSource = {{uri : 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Noun_Project_author_icon_1642368_cc.svg/875px-Noun_Project_author_icon_1642368_cc.svg.png'}}
             />
 
         </View>

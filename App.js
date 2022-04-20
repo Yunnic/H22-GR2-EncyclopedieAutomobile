@@ -3,6 +3,9 @@ import React, {Component} from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import * as ScreenOrientation from 'expo-screen-orientation';
+
+//pages
 import TestPage from './classes/components/pages/TestPage.js';
 import TestPage2 from './classes/components/pages/TestPage2.js';
 import ErrorPage from './classes/components/pages/ErrorPage.js';
@@ -15,6 +18,9 @@ import FavorisPage from './classes/components/pages/FavorisPage.js';
 export default class App extends Component {
   constructor(props) {
     super(props);
+
+    //S'assure que l'ecran est en mode portrait.
+    ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
   }
 
   render() {

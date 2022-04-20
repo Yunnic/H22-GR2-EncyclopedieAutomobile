@@ -11,7 +11,8 @@ export default class Page extends Component {
     //data : info reçu de la base de données
     this.state = {
       data: [],
-      isLoading: true
+      isLoading: true,
+      canUseLoadLogo: true
     };
 
     this.goToError = true;
@@ -43,6 +44,14 @@ export default class Page extends Component {
     this.loadPage(null);
   }
 
+  //Recharge la page sans mettre le logo de chargement.
+  async reloadWithoutLoading() {
+    this.setState({
+      canUseLoadLogo : false
+    })
+    this.componentDidMount();
+  }
+
   //S'occupe des erreurs.
   errorHandler(catchedError) {
     if (this.goToError) {
@@ -65,6 +74,12 @@ export default class Page extends Component {
   //Cette fonction est appelée après que la classe est inséré dans la vue.
   componentDidMount() {
     try {
+
+      this.setState({
+        data: [],
+        isLoading: true
+      });
+
       this.load();
     } catch (e) {
       this.errorHandler(e)
@@ -84,7 +99,7 @@ export default class Page extends Component {
   loadingPageView() {
     return (
       <View style = {this.baseStyle.container}>
-        <ActivityIndicator size="large" color="#0000ff"/>
+        <ActivityIndicator size="large" color="white"/>
       </View>
     )
   };
@@ -92,8 +107,12 @@ export default class Page extends Component {
   //À noter : à chaque fois que la classe change, cette fonction est appelée
   //Montre la page
   render() {
-    const { data, isLoading } = this.state;
+    const { data, isLoading, canUseLoadLogo} = this.state;
     //le truc après ? est si ça n'a pas chargé, truc après : est si c'est chargé
-    return isLoading ? this.loadingPageView() : this.loadedPageView(data);
+    if (!isLoading || !canUseLoadLogo) {
+      return this.loadedPageView(data);
+    } else {
+      return this.loadingPageView();
+    }
   }
 };
