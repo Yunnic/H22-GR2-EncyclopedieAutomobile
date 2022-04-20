@@ -17,6 +17,14 @@ export default class CataloguePage extends Page {
           justifyContent : 'center',
           backgroundColor : "#4d4d4d",
         },
+        list : {
+          padding : 20,
+          paddingBottom: 75,
+          flexGrow : 1,
+          alignItems : 'center',
+          justifyContent : 'center',
+          backgroundColor : "#4d4d4d",
+        },
         title: {
           marginTop: 16,
           marginBottom: 16,
@@ -31,14 +39,6 @@ export default class CataloguePage extends Page {
     this.searchComponents = [];
     this.lastResult = null;
     this.hasLoadedOnce = false;
-
-    this.renderItem = ({item}) => (
-      <ImageTitre
-      big
-      title = {item.ShownName}
-      imageSource = {{uri:item["Photo extérieur"]}}
-      />
-    )
   }
 
   async load() {
@@ -56,7 +56,8 @@ export default class CataloguePage extends Page {
   }
 
   loadingIcon() {
-    return (this.loading = <ActivityIndicator size="large" color="white"/>);
+    console.log("yesss!!!!!!!!");
+    return (<ActivityIndicator size="large" color="white"/>);
   }
 
   handleScroll(event, page) {
@@ -72,8 +73,15 @@ export default class CataloguePage extends Page {
     let count = this.searchComponents.length;
     let searchData = data.searchData
     let newItems = (searchData) ? data.searchData.Items : null;
+    const lastModelIsLoad = count > 0 && this.searchComponents[count-1].Model == "load";
 
     if (newItems){
+
+
+      if (lastModelIsLoad) {
+        this.searchComponents.pop();
+      }
+
       this.lastResult = data.searchData.LastEvaluatedKey;
 
       if (!this.hasLoadedOnce) {
@@ -84,22 +92,34 @@ export default class CataloguePage extends Page {
 
         this.searchComponents.push(newItem)
       }
+    } else if (this.state.isLoading && !lastModelIsLoad) {
+      this.searchComponents.push({
+        "Model": "load"
+      })
     }
 
     this.state.data = [];
-
-    console.log(this.searchComponents);
 
     return(
       <View style = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Catalogue </Text>
         <FlatList
-          contentContainerStyle = {this.baseStyle.container}
+          contentContainerStyle = {this.baseStyle.list}
           onScroll = {(event) => this.handleScroll(event, this)}
           data = {this.searchComponents}
-          renderItem = {this.renderItem}
+
+          renderItem = {({item}) => {
+            return (item.Model == "load") ? this.loadingIcon() :
+            <ImageTitre
+            big
+            title = {item.ShownName}
+            imageSource = {{uri:item["Photo extérieur"]}}
+            />
+          }}
+
           keyExtractor = {item => item.Model}
         />
+
       </View>
     )
   }
