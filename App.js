@@ -39,7 +39,12 @@ export default class App extends Component {
           <Stack.Navigator
           screenOptions={
             {
-              headerShown: false
+              headerTitle: "",
+              headerTransparent: true,
+              elevation: 0,
+              shadowOpacity: 0,
+              borderWidth: 0,
+              shadowColor: 'transparent'
             }
           }
           >
