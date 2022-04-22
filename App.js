@@ -14,6 +14,7 @@ import AuteursPage from './classes/components/pages/AuteursPage.js';
 import CataloguePage from './classes/components/pages/CataloguePage.js';
 import RecherchePage from './classes/components/pages/RecherchePage.js';
 import FavorisPage from './classes/components/pages/FavorisPage.js';
+import VoiturePage from './classes/components/pages/VoiturePage.js';
 
 export default class App extends Component {
   constructor(props) {
@@ -56,6 +57,7 @@ export default class App extends Component {
             <Stack.Screen name="Catalogue" component={CataloguePage}/>
             <Stack.Screen name="Recherche" component={RecherchePage}/>
             <Stack.Screen name="Favoris" component={FavorisPage}/>
+            <Stack.Screen name="Voiture" component={VoiturePage}/>
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaView>

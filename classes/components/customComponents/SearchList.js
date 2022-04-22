@@ -1,5 +1,6 @@
 import React from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, Image, ScrollView, SafeAreaView} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import ApiCommunicator from '../../api/ApiCommunicator.js';
 import LoadableComponent from './LoadableComponent.js';
 import ImageTitre from './ImageTitre.js';
@@ -24,6 +25,8 @@ export default class SearchList extends LoadableComponent {
     this.searchComponents = [];
     this.lastResult = null;
     this.hasLoadedOnce = false;
+
+    this.buttonFunction = null;
   }
 
   async load() {
@@ -54,6 +57,7 @@ export default class SearchList extends LoadableComponent {
     let searchData = data.searchData
     let newItems = (searchData) ? data.searchData.Items : null;
     const lastModelIsLoad = count > 0 && this.searchComponents[count-1].Model == "load";
+    const buttonFunction = this.props.buttonFunction;
 
     if (newItems){
       if (lastModelIsLoad) {
@@ -90,6 +94,7 @@ export default class SearchList extends LoadableComponent {
           big
           title = {item.ShownName}
           imageSource = {{uri:item["Photo extérieur"]}}
+          pageFunction = {() => buttonFunction(item)}
           />
         }}
 

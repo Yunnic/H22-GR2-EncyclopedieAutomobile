@@ -30,12 +30,21 @@ export default class CataloguePage extends LoadableComponent {
     });
   }
 
+  goToOtherPage(page, info) {
+    page.props.navigation.navigate('Voiture', {
+        "brand": info.Brand,
+        "model": info.Model
+    });
+  }
+
   loadedView(data) {
 
     return(
       <View style = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Catalogue </Text>
-        <SearchList/>
+        <SearchList
+          buttonFunction = {(info) => this.goToOtherPage(this, info)}
+        />
       </View>
     )
   }

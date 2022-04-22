@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { ActivityIndicator, StyleSheet, Text, View, Image } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View, Image, Pressable } from 'react-native';
 
 export default class ImageTitre extends Component {
 
@@ -32,6 +32,10 @@ export default class ImageTitre extends Component {
     })
   }
 
+  test() {
+    console.log("?")
+  }
+
   //À noter : à chaque fois que la classe change, cette fonction est appelée
   //Montre la page
   render() {
@@ -44,6 +48,8 @@ export default class ImageTitre extends Component {
       (this.props.imageSource) ? this.props.imageSource : this.placeHolderImage;
     let title =
       (this.props.title) ? this.props.title : this.placeHolderText;
+    let pageFunction =
+      (this.props.pageFunction) ? this.props.pageFunction : this.test;
 
     let imageStyle = this.baseStyle.tinyLogo;
 
@@ -54,13 +60,15 @@ export default class ImageTitre extends Component {
     }
 
     return (
-      <View style = {viewStyle}>
+      <Pressable
+      style = {viewStyle}
+      onPress = {pageFunction}>
         <Image
           style = {imageStyle}
           source = {imageSource}
         />
         <Text style = {textStyle}> {title} </Text>
-      </View>
+      </Pressable>
     )
   }
 };
