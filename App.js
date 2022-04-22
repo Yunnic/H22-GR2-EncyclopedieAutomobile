@@ -21,7 +21,7 @@ export default class App extends Component {
     super(props);
 
     //S'assure que l'ecran est en mode portrait.
-    ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+    //ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
 
     this.styles = StyleSheet.create({
       container: {
