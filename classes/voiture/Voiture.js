@@ -4,12 +4,17 @@ import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Image, Scr
 export default class Voiture{
     constructor(json) {
         this.caracteristiques = json;
+        this.titreVoiture = StyleSheet.create({
+          fontSize : 150
+        });
     }
+
+    
 
     affichageVoiture(){
         return(
             <View>
-              <Text>{this.caracteristiques["ShownName"]}</Text>
+              
               <Image
               style = {{
                   width: 400,
@@ -24,6 +29,7 @@ export default class Voiture{
                 }}
               source={{uri: this.caracteristiques["Photo intérieur"]}}
               />
+              <Text style = {this.titreVoiture}>{this.caracteristiques["ShownName"]}</Text>
               <Text>Prix : {this.caracteristiques["Starting Price"]}</Text>
               <Text>Type de corps : {this.caracteristiques["Body type"]}</Text>
               <Text>Génération : {this.caracteristiques.Generation}</Text>
