@@ -1,9 +1,19 @@
 import React from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Image, ScrollView } from 'react-native';
+import { getCurrentTimestamp } from 'react-native/Libraries/Utilities/createPerformanceLogger';
+import BoutonImageTitre from '../components/customComponents/BoutonImageTitre';
 
 export default class Voiture{
     constructor(json) {
         this.caracteristiques = json;
+
+        this.baseStyle = StyleSheet.create({
+          horizontal : {
+            flexDirection : 'row',
+            alignItems : 'center',
+            backgroundColor : "#4d4d4d",
+          },
+        });
     }
 
     affichageVoiture(){
@@ -17,13 +27,23 @@ export default class Voiture{
                 }}
               source={{uri: this.caracteristiques["Photo extérieur"]}}
               />
-              <Image
-              style = {{
+
+      <View style = {this.baseStyle.horizontal}>
+
+      <Image style = {{
                   width: 200,
                   height: 125
                 }}
               source={{uri: this.caracteristiques["Photo intérieur"]}}
               />
+
+          <BoutonImageTitre
+          title = "Favorite"
+          color = "green"
+          imageSource = {{uri : 'https://cdn.pixabay.com/photo/2016/12/18/11/01/star-1915448_1280.png'}}
+          />
+            </View>
+
               <Text>Prix : {this.caracteristiques["Starting Price"]}</Text>
               <Text>Type de corps : {this.caracteristiques["Body type"]}</Text>
               <Text>Génération : {this.caracteristiques.Generation}</Text>
