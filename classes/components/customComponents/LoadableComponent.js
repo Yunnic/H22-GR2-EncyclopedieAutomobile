@@ -1,13 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import LoadingIcon from './LoadingIcon.js';
 
-export default class Page extends Component {
+export default class LoadableComponent extends Component {
 
   constructor(props) {
     super(props);
 
-    //isLoading : indique si la page est chargé
+    //isLoading : indique si le component est chargé
     //data : info reçu de la base de données
     this.state = {
       data: [],
@@ -26,8 +27,9 @@ export default class Page extends Component {
     });
   }
 
-  //Charge la page après que tous les données sont obtenues
-  loadPage(newData) {
+  //Charge le component après que tous les données sont obtenues
+  async loadComponent() {
+    const newData = await this.load()
     const catchedError = this.errorCatcher(newData);
     if (catchedError != null) {
       this.errorHandler(catchedError);
@@ -39,12 +41,12 @@ export default class Page extends Component {
     }
   }
 
-  //Charge la page. Normalement, cette fonction est remplacé par une autre.
+  //Charge le component. Normalement, cette fonction est remplacé par une autre.
   async load() {
-    this.loadPage(null);
+    return null;
   }
 
-  //Recharge la page sans mettre le logo de chargement.
+  //Recharge le component sans mettre le logo de chargement.
   async reloadWithoutLoading() {
     this.setState({
       canUseLoadLogo : false
@@ -80,14 +82,14 @@ export default class Page extends Component {
         isLoading: true
       });
 
-      this.load();
+      this.loadComponent();
     } catch (e) {
       this.errorHandler(e)
     }
   }
 
-  //La vue de la page lorsqu'elle est chargé.
-  loadedPageView(data) {
+  //La vue du component lorsqu'elle est chargé.
+  loadedView(data) {
     return (
       <View>
         <Text>Page vide</Text>
@@ -95,24 +97,25 @@ export default class Page extends Component {
     )
   };
 
-  //La vue de la page lorsqu'elle charge
-  loadingPageView() {
+  //La vue du component lorsqu'elle charge
+  loadingView() {
     return (
       <View style = {this.baseStyle.container}>
-        <ActivityIndicator size="large" color="white"/>
+        <LoadingIcon/>
       </View>
     )
   };
 
   //À noter : à chaque fois que la classe change, cette fonction est appelée
-  //Montre la page
+  //Montre le component
   render() {
     const { data, isLoading, canUseLoadLogo} = this.state;
+    console.log(data);
     //le truc après ? est si ça n'a pas chargé, truc après : est si c'est chargé
     if (!isLoading || !canUseLoadLogo) {
-      return this.loadedPageView(data);
+      return this.loadedView(data);
     } else {
-      return this.loadingPageView();
+      return this.loadingView();
     }
   }
 };

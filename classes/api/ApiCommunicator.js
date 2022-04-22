@@ -1,4 +1,4 @@
-import Voiture from '../Voiture/Voiture.js';
+import Voiture from '../voiture/Voiture.js';
 const config = require('../../config.json');
 
 //Ce n'est techniquement pas une classe mais c'est proche (singleton)

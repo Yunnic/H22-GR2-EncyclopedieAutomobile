@@ -1,9 +1,9 @@
 
 import React from 'react';
 import {StyleSheet, Text, ScrollView } from 'react-native';
-import Page from './Page.js';
+import LoadableComponent from '../customComponents/LoadableComponent.js';
 
-export default class TestPage extends Page {
+export default class TestPage extends LoadableComponent {
 
   constructor(props) {
     super(props);
@@ -44,7 +44,7 @@ export default class TestPage extends Page {
     });
   }
 
-  loadedPageView(data) {
+  loadedView(data) {
     return(
       <ScrollView contentContainerStyle = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Projet d'intégration en </Text>

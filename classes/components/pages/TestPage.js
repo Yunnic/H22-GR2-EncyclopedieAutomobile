@@ -2,11 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, ScrollView } from 'react-native';
 import ApiCommunicator from '../../api/ApiCommunicator.js';
-import ImageTitre from '../vueVoiture/imageTitre.js';
-import Page from './Page.js';
-import Page2 from './TestPage2.js';
+import ImageTitre from '../customComponents/ImageTitre.js';
+import LoadableComponent from '../customComponents/LoadableComponent.js';
 
-export default class TestPage extends Page {
+export default class TestPage extends LoadableComponent {
 
   constructor(props) {
     super(props);
@@ -30,10 +29,11 @@ export default class TestPage extends Page {
 
   async load() {
     const newData = await ApiCommunicator.getCar("bmw", "m240i g42");
-    this.loadPage(newData);
+    return newData;
   }
 
-  loadedPageView(data) {
+  loadedView(data) {
+    console.log(data);
     return(
       <ScrollView contentContainerStyle = {this.baseStyle.container}>
         <Text style = {this.styles.text}>Nom : {data.caracteristiques["ShownName"]}</Text>

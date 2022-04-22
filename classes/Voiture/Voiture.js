@@ -1,14 +1,10 @@
 import React from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Image, ScrollView } from 'react-native';
 
-import ImageTitre from '../components/vueVoiture/imageTitre.js';
-
 export default class Voiture{
     constructor(json) {
         this.caracteristiques = json;
     }
-
-
 
     affichageVoiture(){
         return(

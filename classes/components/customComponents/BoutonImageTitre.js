@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import { ActivityIndicator, StyleSheet, Text, View, Image, Pressable } from 'react-native';
 
-export default class imageTitre extends Component {
+export default class BoutonImageTitre extends Component {
 
   constructor(props) {
     super(props);

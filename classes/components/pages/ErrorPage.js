@@ -2,9 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View } from 'react-native';
 import ApiCommunicator from '../../api/ApiCommunicator.js';
-import Page from './Page.js';
+import LoadableComponent from '../customComponents/LoadableComponent.js';
 
-export default class TestPage extends Page {
+export default class TestPage extends LoadableComponent {
 
   constructor(props) {
     super(props);
@@ -18,7 +18,7 @@ export default class TestPage extends Page {
     });
   }
 
-  loadedPageView(data) {
+  loadedView(data) {
     const route = this.props.route;
     const {catchedError} = route.params;
     return(

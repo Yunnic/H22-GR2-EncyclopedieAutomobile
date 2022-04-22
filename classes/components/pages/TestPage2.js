@@ -4,7 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Image, ScrollView } from 'react-native';
 import ApiCommunicator from '../../api/ApiCommunicator.js';
-import Page from './Page.js';
+import LoadableComponent from '../customComponents/LoadableComponent.js';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class TestPage extends Page {
+export default class TestPage extends LoadableComponent {
 
   constructor(props) {
     super(props);
@@ -74,10 +74,10 @@ export default class TestPage extends Page {
       "newData5": newData5
     };
 
-    this.loadPage(newData);
+    return newData;
   }
 
-  loadedPageView(data) {
+  loadedView(data) {
     return(
       <ScrollView contentContainerStyle = {styles.container}>
         <Text> {JSON.stringify(data.newData3)} </Text>
