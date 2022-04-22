@@ -27,6 +27,8 @@ export default class SearchList extends LoadableComponent {
         backgroundColor : "#5f5f5f",
         color : "white",
         borderRadius : 15,
+        outlineColor : "white",
+        outlineRadius : 5
       },
     });
 
@@ -40,17 +42,22 @@ export default class SearchList extends LoadableComponent {
   }
 
   async load() {
-    const prjExpr2 = "ShownName, #pe, Brand, Model"
-    const exprAttNames2 = {
-      "#pe": "Photo extérieur"
+
+    if (!this.canSearch || this.searchText != null){
+      const prjExpr2 = "ShownName, #pe, Brand, Model"
+      const exprAttNames2 = {
+        "#pe": "Photo extérieur"
+      }
+
+      const searchData = await ApiCommunicator.searchModels(prjExpr2, null, exprAttNames2, null, this.lastResult);
+      const newData = {
+        "searchData": searchData
+      };
+
+      return newData;
+    } else {
+      return [];
     }
-
-    const searchData = await ApiCommunicator.searchModels(prjExpr2, null, exprAttNames2, null, this.lastResult);
-    const newData = {
-      "searchData": searchData
-    };
-
-    return newData;
   }
 
   handleScroll(event, component) {
