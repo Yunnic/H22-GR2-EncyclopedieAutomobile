@@ -56,7 +56,7 @@ Si la commande avec expo ne fonctionne pas, réessayez la commande `npm install 
 Pour faire cela, vous devez installer l'application Expo Go sur votre téléphone.
 Sur Android, vous devez scanner le QR code avec l'application.
 Sur IOS, vous devez scanner le QR code avec l'application qui prend des photos.
-####NOTE: Votre téléphone doit être connecté au même réseau internet que l'ordinateur.
+#### NOTE: Votre téléphone doit être connecté au même réseau internet que l'ordinateur.
 #### 2. Tester avec un émulateur
 Nous n'avions pas utilisé cette option pour le moment, mais nous pensons que c'est une très bonne option en cas qu'il n'y a pas d'internet.
 #### 3. Tester avec un navigateur Internet.
