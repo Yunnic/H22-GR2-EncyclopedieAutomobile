@@ -1,21 +1,21 @@
 import React from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, Image, ScrollView, SafeAreaView} from 'react-native';
+import ApiCommunicator from '../../api/ApiCommunicator.js';
 import LoadableComponent from '../customComponents/LoadableComponent.js';
+import ImageTitre from '../customComponents/ImageTitre.js';
+import LoadingIcon from '../customComponents/LoadingIcon.js';
+import SearchList from '../customComponents/SearchList.js';
 
-export default class TestPage extends LoadableComponent {
+export default class CataloguePage extends LoadableComponent {
 
   constructor(props) {
     super(props);
 
     this.baseStyle = StyleSheet.create({
         container : {
-            flexGrow : 1,
-            alignItems : 'center',
-            justifyContent : 'center',
-            backgroundColor : "#4d4d4d",
-        },
-        horizontal : {
-          flexDirection : 'row',
+          paddingTop : 20,
+          paddingBottom : 20,
+          flexGrow : 1,
           alignItems : 'center',
           backgroundColor : "#4d4d4d",
         },
@@ -28,41 +28,26 @@ export default class TestPage extends LoadableComponent {
           textAlignVertical: "center",
           color : "white",
         },
-        subtitle: {
-          marginTop: 40,
-          marginBottom: 16,
-          textAlign: "center",
-          fontSize: 25,
-          fontWeight: "bold",
-          textAlignVertical: "center",
-          color : "white",
-        },
-        text: {
-          marginTop: 16,
-          textAlign: "center",
-          fontSize: 15,
-          fontWeight: "bold",
-          textAlignVertical: "center",
-          color : "white",
-        },
+    });
+  }
 
-    tinyLogo: {
-        width: 50,
-        height: 50,
-    },
+  goToOtherPage(page, info) {
+    page.props.navigation.navigate('Voiture', {
+        "brand": info.Brand,
+        "model": info.Model
     });
   }
 
   loadedView(data) {
+
     return(
-      <ScrollView contentContainerStyle = {this.baseStyle.container}>
+      <View style = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Recherche </Text>
-
-        <View style = {this.baseStyle.horizontal}>
-
-        </View>
-
-      </ScrollView>
+        <SearchList
+          buttonFunction = {(info) => this.goToOtherPage(this, info)}
+          canSearch = {true}
+        />
+      </View>
     )
   }
 };

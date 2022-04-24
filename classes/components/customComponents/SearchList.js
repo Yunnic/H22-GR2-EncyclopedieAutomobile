@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, Image, ScrollView, SafeAreaView} from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, TextInput, ScrollView, SafeAreaView} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import ApiCommunicator from '../../api/ApiCommunicator.js';
 import LoadableComponent from './LoadableComponent.js';
@@ -12,14 +12,24 @@ export default class SearchList extends LoadableComponent {
     super(props);
 
     this.baseStyle = StyleSheet.create({
-        list : {
-          padding : 20,
-          paddingBottom: 105,
-          flexGrow : 1,
-          alignItems : 'center',
-          justifyContent : 'center',
-          backgroundColor : "#4d4d4d",
-        },
+      list : {
+        paddingBottom: 105,
+        flexGrow : 1,
+        alignItems : 'center',
+        justifyContent : 'center',
+        backgroundColor : "#4d4d4d",
+      },
+      input: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
+        backgroundColor : "#5f5f5f",
+        color : "white",
+        borderRadius : 15,
+        outlineColor : "white",
+        outlineRadius : 5
+      },
     });
 
     this.searchComponents = [];
@@ -27,20 +37,27 @@ export default class SearchList extends LoadableComponent {
     this.hasLoadedOnce = false;
 
     this.buttonFunction = null;
+    this.canSearch = props.canSearch;
+    this.searchText = null;
   }
 
   async load() {
-    const prjExpr2 = "ShownName, #pe, Brand, Model"
-    const exprAttNames2 = {
-      "#pe": "Photo extérieur"
+
+    if (!this.canSearch || this.searchText != null){
+      const prjExpr2 = "ShownName, #pe, Brand, Model"
+      const exprAttNames2 = {
+        "#pe": "Photo extérieur"
+      }
+
+      const searchData = await ApiCommunicator.searchModels(prjExpr2, null, exprAttNames2, null, this.lastResult);
+      const newData = {
+        "searchData": searchData
+      };
+
+      return newData;
+    } else {
+      return [];
     }
-
-    const searchData = await ApiCommunicator.searchModels(prjExpr2, null, exprAttNames2, null, this.lastResult);
-    const newData = {
-      "searchData": searchData
-    };
-
-    return newData;
   }
 
   handleScroll(event, component) {
@@ -50,6 +67,10 @@ export default class SearchList extends LoadableComponent {
     if (component.lastResult && !component.state.isLoading && scrollHeight + screenCurrentHeight + 20 > screenHeight) {
       component.reloadWithoutLoading();
     }
+  }
+
+  onChangeText(text, list) {
+    list.searchText = text;
   }
 
   loadedView(data) {
@@ -83,23 +104,28 @@ export default class SearchList extends LoadableComponent {
     this.state.data = [];
 
     return(
-      <FlatList
-        contentContainerStyle = {this.baseStyle.list}
-        onScroll = {(event) => this.handleScroll(event, this)}
-        data = {this.searchComponents}
+      <View style = {this.baseStyle.list}>
+        {(this.canSearch)
+          ? <TextInput style = {this.baseStyle.input} onChangeText={(text) => this.onChangeText(text, this)}/>
+          : null}
+        <FlatList
+          contentContainerStyle = {this.baseStyle.list}
+          onScroll = {(event) => this.handleScroll(event, this)}
+          data = {this.searchComponents}
 
-        renderItem = {({item}) => {
-          return (item.Model == "load") ? <LoadingIcon/> :
-          <ImageTitre
-          big
-          title = {item.ShownName}
-          imageSource = {{uri:item["Photo extérieur"]}}
-          pageFunction = {() => buttonFunction(item)}
-          />
-        }}
+          renderItem = {({item}) => {
+            return (item.Model == "load") ? <LoadingIcon/> :
+            <ImageTitre
+            big
+            title = {item.ShownName}
+            imageSource = {{uri:item["Photo extérieur"]}}
+            pageFunction = {() => buttonFunction(item)}
+            />
+          }}
 
-        keyExtractor = {item => item.Model}
-      />
+          keyExtractor = {item => item.Model}
+        />
+      </View>
     )
   }
 };
