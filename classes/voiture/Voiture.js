@@ -15,9 +15,10 @@ export default class Voiture{
           },
 
           title : {
-            fontSize : 150
+            fontSize : 30,
+            fontWeight: 'bold'
           }
-        })
+        });
     }
 
 
@@ -50,7 +51,7 @@ export default class Voiture{
           />
             </View>
 
-              <Text style = {this.baseStyle.titre}>{this.caracteristiques["ShownName"]}</Text>
+              <Text style = {this.baseStyle.title}> {this.caracteristiques["ShownName"]} </Text>
               <Text>Prix : {this.caracteristiques["Starting Price"]}</Text>
               <Text>Type de corps : {this.caracteristiques["Body type"]}</Text>
               <Text>Génération : {this.caracteristiques.Generation}</Text>
