@@ -33,7 +33,7 @@ Si vous devez changez de disque, écrivez simplement sa lettre suivi de ":".
 Par exemple : `E:`
 #### 5. Installer les dépendances.
 Voici ceux que nous avons utilisé pour l'instant :
-
+#### NOTE: Si la commande avec expo ne fonctionne pas, réessayez la commande `npm install expo-cli` avec le chemin contenant les fichiers GitHubs.
 `expo install expo-screen-orientation`
 
 `npm install @react-navigation/native`
@@ -44,7 +44,6 @@ Voici ceux que nous avons utilisé pour l'instant :
 
 `npm install @react-navigation/bottom-tabs`
 
-Si la commande avec expo ne fonctionne pas, réessayez la commande `npm install expo-cli` avec ce chemin.
 #### 6. Écrire `expo start`. Ceci va commencer un serveur LAN. Si l'écran affiche plusieurs options pour continuer, l'installation du projet fonctionne.
 
 ## Tester l'application avec Expo.
