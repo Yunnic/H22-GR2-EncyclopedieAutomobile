@@ -21,14 +21,13 @@ export default class SearchList extends LoadableComponent {
       },
       input: {
         height: 40,
+        width: 300,
         margin: 12,
         borderWidth: 1,
         padding: 10,
         backgroundColor : "#5f5f5f",
         color : "white",
         borderRadius : 15,
-        outlineColor : "white",
-        outlineRadius : 5
       },
     });
 
