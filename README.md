@@ -25,14 +25,13 @@ Ceci est la façon que vous devrez utilisez si vous pensez modifier l'applicatio
 Voici les étapes :
 #### 1. Installer [Node.js](https://nodejs.org/en/download/).
 #### 2. Ouvrir cmd.exe sur votre ordinateur Windows (ou l'équivalent sur l'OS utilisé)
-#### 3. Écrire le chemin de l'endroit que vous voulez installer avec la commande "cd".
+#### 3. Écrire `npm install -g expo-cli` pour installer Expo CLI.
+#### 4. Installer les fichiers qui sont sur GitHub et indiquer le chemin des fichiers avec la commande "cd".
 Par exemple : `cd C:\Program Files\Test\JePensesQueVousComprenezMaintenant`
 	
 Si vous devez changez de disque, écrivez simplement sa lettre suivi de ":".
 Par exemple : `E:`
-#### 4. Écrire `npm install -g expo-cli` pour installer Expo CLI.
-#### 5. Installer les fichiers qui sont sur GitHub et indiquer le chemin des fichiers avec la commande cd.
-#### 6. Installer les dépendances.
+#### 5. Installer les dépendances.
 Voici ceux que nous avons utilisé pour l'instant :
 
 `expo install expo-screen-orientation`
@@ -46,7 +45,7 @@ Voici ceux que nous avons utilisé pour l'instant :
 `npm install @react-navigation/bottom-tabs`
 
 Si la commande avec expo ne fonctionne pas, réessayez la commande `npm install expo-cli` avec ce chemin.
-#### 7. Écrire `expo start`. Ceci va commencer un serveur LAN. Si l'écran affiche plusieurs options pour continuer, l'installation du projet fonctionne.
+#### 6. Écrire `expo start`. Ceci va commencer un serveur LAN. Si l'écran affiche plusieurs options pour continuer, l'installation du projet fonctionne.
 
 ## Tester l'application avec Expo.
 
