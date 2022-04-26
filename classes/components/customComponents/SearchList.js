@@ -16,7 +16,7 @@ export default class SearchList extends LoadableComponent {
         paddingBottom: 105,
         flexGrow : 1,
         alignItems : 'center',
-        justifyContent : 'center',
+        justifyContent : 'flex-start',
         backgroundColor : "#4d4d4d",
       },
       input: {
@@ -33,7 +33,6 @@ export default class SearchList extends LoadableComponent {
 
     this.searchComponents = [];
     this.lastResult = null;
-    this.hasLoadedOnce = false;
 
     this.buttonFunction = null;
     this.canSearch = props.canSearch;
@@ -43,12 +42,24 @@ export default class SearchList extends LoadableComponent {
   async load() {
 
     if (!this.canSearch || this.searchText != null){
-      const prjExpr2 = "ShownName, #pe, Brand, Model"
-      const exprAttNames2 = {
-        "#pe": "Photo extérieur"
+      const prjExpr = "ShownName, #pe, Brand, Model, #sn";
+      const exprAttNames = {
+        "#pe": "Photo extérieur",
+        "#sn": "SearchName",
       }
 
-      const searchData = await ApiCommunicator.searchModels(prjExpr2, null, exprAttNames2, null, this.lastResult);
+      let filtExpr;
+      let exprAttVal;
+
+      if (this.canSearch) {
+        exprAttVal = { ":snText": this.searchText };
+        filtExpr = "contains(#sn, :snText)";
+      } else {
+        filtExpr = null;
+        exprAttVal = null;
+      }
+
+      const searchData = await ApiCommunicator.searchModels(prjExpr, filtExpr, exprAttNames, exprAttVal, this.lastResult);
       const newData = {
         "searchData": searchData
       };
@@ -68,8 +79,16 @@ export default class SearchList extends LoadableComponent {
     }
   }
 
-  onChangeText(text, list) {
+  onSubmit(text, list) {
     list.searchText = text;
+    this.searchComponents = [];
+    list.reloadWithLoading();
+  }
+
+  componentDidUpdate() {
+    if (this.lastResult != null && !this.state.isLoading && this.searchComponents.length < 8) {
+      this.reloadWithoutLoading();
+    }
   }
 
   loadedView(data) {
@@ -86,10 +105,6 @@ export default class SearchList extends LoadableComponent {
 
       this.lastResult = data.searchData.LastEvaluatedKey;
 
-      if (!this.hasLoadedOnce) {
-        this.hasLoadedOnce = true;
-      }
-
       for (const newItem of newItems) {
 
         this.searchComponents.push(newItem)
@@ -105,7 +120,7 @@ export default class SearchList extends LoadableComponent {
     return(
       <View style = {this.baseStyle.list}>
         {(this.canSearch)
-          ? <TextInput style = {this.baseStyle.input} onChangeText={(text) => this.onChangeText(text, this)}/>
+          ? <TextInput style = {this.baseStyle.input} onSubmitEditing={(event) => this.onSubmit(event.nativeEvent.text.toLowerCase(), this)}/>
           : null}
         <FlatList
           contentContainerStyle = {this.baseStyle.list}

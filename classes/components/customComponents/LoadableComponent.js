@@ -54,6 +54,14 @@ export default class LoadableComponent extends Component {
     this.componentDidMount();
   }
 
+  //Recharge le component et met le logo de chargement.
+  async reloadWithLoading() {
+    this.setState({
+      canUseLoadLogo : true
+    })
+    this.componentDidMount();
+  }
+
   //S'occupe des erreurs.
   errorHandler(catchedError) {
     if (this.goToError) {
