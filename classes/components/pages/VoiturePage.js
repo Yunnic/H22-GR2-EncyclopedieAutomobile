@@ -13,7 +13,6 @@ export default class VoiturePage extends LoadableComponent {
             flexGrow : 1,
             alignItems : 'center',
             justifyContent : 'center',
-            backgroundColor : "#4d4d4d",
         },
     });
 

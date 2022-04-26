@@ -10,10 +10,9 @@ export default class TestPage extends LoadableComponent {
 
     this.baseStyle = StyleSheet.create({
         container : {
-            flexGrow : 1,
             alignItems : 'center',
             justifyContent : 'center',
-            backgroundColor : "#4d4d4d",
+            flexGrow : 1,
         },
         title: {
           marginTop: 16,
@@ -22,7 +21,7 @@ export default class TestPage extends LoadableComponent {
           fontSize: 30,
           fontWeight: "bold",
           textAlignVertical: "center",
-          color : "white",
+          color : "#222f3e",
         },
         subtitle: {
           marginTop: 40,
@@ -31,7 +30,7 @@ export default class TestPage extends LoadableComponent {
           fontSize: 25,
           fontWeight: "bold",
           textAlignVertical: "center",
-          color : "white",
+          color : "#222f3e",
         },
         text: {
             marginTop: 16,
@@ -39,12 +38,14 @@ export default class TestPage extends LoadableComponent {
             fontSize: 15,
             fontWeight: "bold",
             textAlignVertical: "center",
-            color : "white",
+            color : "#222f3e",
           },
     });
   }
 
   loadedView(data) {
+    const firstStyle = this.baseStyle.container;
+
     return(
       <ScrollView contentContainerStyle = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Projet d'intégration en </Text>

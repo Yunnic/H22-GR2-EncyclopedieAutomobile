@@ -14,10 +14,9 @@ export default class SearchList extends LoadableComponent {
     this.baseStyle = StyleSheet.create({
       list : {
         paddingBottom: 105,
-        flexGrow : 1,
         alignItems : 'center',
         justifyContent : 'center',
-        backgroundColor : "#4d4d4d",
+        flexGrow : 1,
       },
       input: {
         height: 40,
@@ -25,7 +24,6 @@ export default class SearchList extends LoadableComponent {
         margin: 12,
         borderWidth: 1,
         padding: 10,
-        backgroundColor : "#5f5f5f",
         color : "white",
         borderRadius : 15,
       },

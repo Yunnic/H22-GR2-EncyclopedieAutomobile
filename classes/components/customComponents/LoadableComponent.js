@@ -20,9 +20,8 @@ export default class LoadableComponent extends Component {
 
     this.baseStyle = StyleSheet.create({
       container: {
-        flexGrow: 1,
         justifyContent: 'center',
-        backgroundColor : "#4d4d4d",
+        flexGrow : 1,
       }
     });
   }
@@ -99,6 +98,7 @@ export default class LoadableComponent extends Component {
 
   //La vue du component lorsqu'elle charge
   loadingView() {
+
     return (
       <View style = {this.baseStyle.container}>
         <LoadingIcon/>

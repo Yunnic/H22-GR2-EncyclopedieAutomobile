@@ -23,25 +23,38 @@ export default class App extends Component {
     //S'assure que l'ecran est en mode portrait.
     //ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
 
-    this.styles = StyleSheet.create({
-      container: {
-        flex : 1,
-        backgroundColor : "#4d4d4d",
+    //https://flatuicolors.com/palette/au
+    this.theme = {
+      dark: true,
+      colors: {
+        primary: 'rgb(2,0,0)', //?
+        background: '#c8d6e5', //page
+        card: '#54a0ff', //header
+        text: '#222f3e', //header text
+        border: '#54a0ff', //header outline
+        notification: 'rgb(255, 0, 255)', //?
+      },
+    };
+
+    this.defaultStyle = {
+      container : {
+        flexGrow: 1,
+        backgroundColor: this.theme.colors.background,
       }
-    })
+    }
   }
 
   render() {
     const Stack = createNativeStackNavigator();
 
     return (
-      <SafeAreaView style = {this.styles.container}>
-        <NavigationContainer>
+      <SafeAreaView style = {this.defaultStyle.container}>
+        <NavigationContainer theme = {this.theme}>
           <Stack.Navigator
           screenOptions={
             {
-              headerTitle: "",
               headerTransparent: true,
+              headerTitle: "",
               elevation: 0,
               shadowOpacity: 0,
               borderWidth: 0,
