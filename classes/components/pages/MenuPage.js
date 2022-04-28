@@ -57,7 +57,7 @@ export default class TestPage extends LoadableComponent {
         <View style = {this.baseStyle.horizontal}>
 
             <BoutonImageTitre
-            pageFunction = {() => this.props.navigation.navigate("Page 1")}
+            pageFunction = {() => this.props.navigation.navigate("Favoris")}
             color = "green"
             title = "Favoris"
             imageSource = {{uri : 'https://cdn.pixabay.com/photo/2016/12/18/11/01/star-1915448_1280.png'}}

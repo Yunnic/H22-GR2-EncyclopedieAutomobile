@@ -1,7 +1,7 @@
 import React from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Image, ScrollView } from 'react-native';
 import { getCurrentTimestamp } from 'react-native/Libraries/Utilities/createPerformanceLogger';
-import BoutonImageTitre from '../components/customComponents/BoutonImageTitre';
+import FavoriteButton from '../components/customComponents/FavoriteButton';
 
 export default class Voiture{
     constructor(json) {
@@ -44,10 +44,9 @@ export default class Voiture{
               source={{uri: this.caracteristiques["Photo intérieur"]}}
               />
 
-          <BoutonImageTitre
-          title = "Favorite"
-          color = "green"
-          imageSource = {{uri : 'https://cdn.pixabay.com/photo/2016/12/18/11/01/star-1915448_1280.png'}}
+          <FavoriteButton
+            brand = {this.caracteristiques.Brand}
+            model = {this.caracteristiques.Model}
           />
             </View>
 
