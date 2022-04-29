@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import LoadingIcon from './LoadingIcon.js';

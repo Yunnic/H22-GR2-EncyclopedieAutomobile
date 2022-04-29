@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {StyleSheet, Text, ScrollView } from 'react-native';
 import LoadableComponent from '../customComponents/LoadableComponent.js';

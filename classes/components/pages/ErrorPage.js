@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View } from 'react-native';
 import ApiCommunicator from '../../api/ApiCommunicator.js';

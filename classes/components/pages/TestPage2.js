@@ -1,6 +1,5 @@
 //Il se peut que le code ne soit pas très lisible, c'est un test.
 
-import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Image, ScrollView } from 'react-native';
 import ApiCommunicator from '../../api/ApiCommunicator.js';
