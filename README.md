@@ -33,7 +33,7 @@ Si vous devez changez de disque, écrivez simplement sa lettre suivi de ":".
 Par exemple : `E:`
 #### 5. Installer les dépendances.
 Voici ceux que nous avons utilisé pour l'instant :
-#### NOTE: Si les commandes avec expo ne fonctionne pas, réessayez la commande `npm install expo-cli` avec le chemin contenant les fichiers venant de GitHub.
+#### NOTE: Si les commandes avec expo ne fonctionnent pas, réessayez la commande `npm install expo-cli` avec le chemin contenant les fichiers venant de GitHub.
 `expo install @react-native-async-storage/async-storage`
 
 `expo install expo-screen-orientation`
