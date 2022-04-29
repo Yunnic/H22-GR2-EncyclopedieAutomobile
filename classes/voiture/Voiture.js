@@ -21,8 +21,6 @@ export default class Voiture{
         });
     }
 
-
-
     affichageVoiture(){
         return(
             <View>

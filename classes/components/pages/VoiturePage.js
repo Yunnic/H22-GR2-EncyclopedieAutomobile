@@ -23,6 +23,14 @@ export default class VoiturePage extends LoadableComponent {
   async load() {
     const {brand, model} = this.props.route.params;
     this.voiture = await ApiCommunicator.getCar(brand, model);
+    console.log(brand)
+    console.log(model)
+    console.log(this.voiture);
+
+    if (this.voiture == null) {
+      this.errorHandler("Voiture n'a pas été trouvé !")
+    }
+
     return null;
   }
 

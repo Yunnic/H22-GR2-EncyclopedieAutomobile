@@ -59,8 +59,12 @@ export default class FavoriteButton extends LoadableComponent {
         fav = JSON.parse(fav);
         if (fav[this.brand] != null && fav[this.brand][this.model] != null) {
           delete fav[this.brand][this.model];
+
+          if (fav[this.brand].length == 0) {
+            delete fav[this.brand];
+          }
+
           await AsyncStorage.setItem('favorite', JSON.stringify(fav));
-          console.log("delete");
         }
       }
 

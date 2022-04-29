@@ -37,11 +37,13 @@ const ApiCommunicator = {
     const urlPath = `${brand}/${model}`;
 
     const json = await ApiCommunicator.getInfoFromApi('GET', urlPath, null);
+    console.log(urlPath);
 
     if (json != null && "Item" in json) {
       const voiture = new Voiture(json.Item)
       return voiture;
     }
+
 
     return null;
   },
