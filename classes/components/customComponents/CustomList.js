@@ -88,6 +88,8 @@ export default class CustomList extends LoadableComponent {
           ? <TextInput style = {this.baseStyle.input} onSubmitEditing={(event) => this.onSubmit(event.nativeEvent.text.toLowerCase(), this)}/>
           : null}
         <FlatList
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
           contentContainerStyle = {this.baseStyle.list}
           onScroll = {(event) => this.handleScroll(event, this)}
           data = {this.listComponents}

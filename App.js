@@ -23,6 +23,13 @@ export default class App extends Component {
     //S'assure que l'ecran est en mode portrait.
     //ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
 
+    this.theme = {
+      dark: true,
+      colors: {
+        background: '#4d4d4d', //page
+      },
+    };
+
     this.styles = StyleSheet.create({
       container: {
         flex : 1,
@@ -36,7 +43,7 @@ export default class App extends Component {
 
     return (
       <SafeAreaView style = {this.styles.container}>
-        <NavigationContainer>
+        <NavigationContainer theme = {this.theme}>
           <Stack.Navigator
           screenOptions={
             {
