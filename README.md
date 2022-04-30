@@ -36,6 +36,8 @@ Voici ceux que nous avons utilisé pour l'instant :
 #### NOTE: Si les commandes avec expo ne fonctionnent pas, réessayez la commande `npm install expo-cli` avec le chemin contenant les fichiers venant de GitHub.
 `expo install @react-native-async-storage/async-storage`
 
+`expo install expo-linear-gradient`
+
 `expo install expo-screen-orientation`
 
 `npm install @react-navigation/native`
