@@ -11,7 +11,6 @@ export default class Voiture{
           horizontal : {
             flexDirection : 'row',
             alignItems : 'center',
-            backgroundColor : "#4d4d4d",
           },
 
           title : {

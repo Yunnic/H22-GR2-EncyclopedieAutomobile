@@ -4,6 +4,7 @@ import { ActivityIndicator, FlatList, StyleSheet, Text, View, SafeAreaView } fro
 import { NavigationContainer } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as ScreenOrientation from 'expo-screen-orientation';
+import { LinearGradient } from 'expo-linear-gradient';
 
 //pages
 import TestPage from './classes/components/pages/TestPage.js';
@@ -26,14 +27,14 @@ export default class App extends Component {
     this.theme = {
       dark: true,
       colors: {
-        background: '#4d4d4d', //page
+        background: "transparent", //page
       },
     };
 
     this.styles = StyleSheet.create({
       container: {
         flex : 1,
-        backgroundColor : "#4d4d4d",
+        backgroundColor : "transparent",
       }
     })
   }
@@ -43,30 +44,39 @@ export default class App extends Component {
 
     return (
       <SafeAreaView style = {this.styles.container}>
-        <NavigationContainer theme = {this.theme}>
-          <Stack.Navigator
-          screenOptions={
-            {
-              headerTitle: "",
-              headerTransparent: true,
-              elevation: 0,
-              shadowOpacity: 0,
-              borderWidth: 0,
-              shadowColor: 'transparent'
+        <LinearGradient
+          // Background Linear Gradient
+          colors={['rgba(150,0,225,1)', 'rgba(5,5,140,1)', 'rgba(90,0,150,1)']}
+          locations={[0, 0.6, 1]}
+          start={{x: 0, y: .05}}
+          end={{x: 1, y: .95}}
+          style={this.styles.container}
+        >
+          <NavigationContainer theme = {this.theme}>
+            <Stack.Navigator
+            screenOptions={
+              {
+                headerTitle: "",
+                headerTransparent: true,
+                elevation: 0,
+                shadowOpacity: 0,
+                borderWidth: 0,
+                shadowColor: 'transparent'
+              }
             }
-          }
-          >
-            <Stack.Screen name="Menu" component={MenuPage}/>
-            <Stack.Screen name="Page 1" component={TestPage}/>
-            <Stack.Screen name="Page 2" component={TestPage2}/>
-            <Stack.Screen name="Error" component={ErrorPage}/>
-            <Stack.Screen name="Auteurs" component={AuteursPage}/>
-            <Stack.Screen name="Catalogue" component={CataloguePage}/>
-            <Stack.Screen name="Recherche" component={RecherchePage}/>
-            <Stack.Screen name="Favoris" component={FavorisPage}/>
-            <Stack.Screen name="Voiture" component={VoiturePage}/>
-          </Stack.Navigator>
-        </NavigationContainer>
+            >
+              <Stack.Screen name="Menu" component={MenuPage}/>
+              <Stack.Screen name="Page 1" component={TestPage}/>
+              <Stack.Screen name="Page 2" component={TestPage2}/>
+              <Stack.Screen name="Error" component={ErrorPage}/>
+              <Stack.Screen name="Auteurs" component={AuteursPage}/>
+              <Stack.Screen name="Catalogue" component={CataloguePage}/>
+              <Stack.Screen name="Recherche" component={RecherchePage}/>
+              <Stack.Screen name="Favoris" component={FavorisPage}/>
+              <Stack.Screen name="Voiture" component={VoiturePage}/>
+            </Stack.Navigator>
+          </NavigationContainer>
+        </LinearGradient>
       </SafeAreaView>
     );
   }

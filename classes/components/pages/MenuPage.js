@@ -14,12 +14,10 @@ export default class TestPage extends LoadableComponent {
         flexGrow : 1,
         alignItems : 'center',
         justifyContent : 'center',
-        backgroundColor : "#4d4d4d",
       },
       horizontal : {
         flexDirection : 'row',
         alignItems : 'center',
-        backgroundColor : "#4d4d4d",
       },
       title: {
         marginTop: 16,

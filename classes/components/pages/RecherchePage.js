@@ -17,7 +17,6 @@ export default class CataloguePage extends LoadableComponent {
           paddingBottom : 20,
           flexGrow : 1,
           alignItems : 'center',
-          backgroundColor : "#4d4d4d",
         },
         title: {
           marginTop: 16,

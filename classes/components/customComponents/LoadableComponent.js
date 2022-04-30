@@ -21,7 +21,6 @@ export default class LoadableComponent extends Component {
       container: {
         flexGrow: 1,
         justifyContent: 'center',
-        backgroundColor : "#4d4d4d",
       }
     });
   }

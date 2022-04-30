@@ -15,7 +15,6 @@ export default class CustomList extends LoadableComponent {
         flexGrow : 1,
         alignItems : 'center',
         justifyContent : 'flex-start',
-        backgroundColor : "#4d4d4d",
       },
       input: {
         height: 40,
@@ -23,8 +22,8 @@ export default class CustomList extends LoadableComponent {
         margin: 12,
         borderWidth: 1,
         padding: 10,
-        backgroundColor : "#5f5f5f",
         color : "white",
+        backgroundColor : "rgba(225,225,225,.25)",
         borderRadius : 15,
       },
     });
