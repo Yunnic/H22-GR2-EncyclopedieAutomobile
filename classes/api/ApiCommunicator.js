@@ -1,4 +1,4 @@
-import Voiture from '../voiture/Voiture.js';
+import Vehicle from '../vehicle/Vehicle.js';
 const config = require('../../config.json');
 
 //Ce n'est techniquement pas une classe mais c'est proche (singleton)
@@ -40,8 +40,8 @@ const ApiCommunicator = {
     console.log(urlPath);
 
     if (json != null && "Item" in json) {
-      const voiture = new Voiture(json.Item)
-      return voiture;
+      const vehicle = new Vehicle(json.Item);
+      return vehicle;
     }
 
 

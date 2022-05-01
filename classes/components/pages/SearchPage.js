@@ -2,18 +2,18 @@ import React from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, Image, ScrollView, SafeAreaView} from 'react-native';
 import ApiCommunicator from '../../api/ApiCommunicator.js';
 import LoadableComponent from '../customComponents/LoadableComponent.js';
-import ImageTitre from '../customComponents/ImageTitre.js';
 import LoadingIcon from '../customComponents/LoadingIcon.js';
 import SearchList from '../customComponents/SearchList.js';
 
-export default class CataloguePage extends LoadableComponent {
+export default class SearchPage extends LoadableComponent {
 
   constructor(props) {
     super(props);
 
     this.baseStyle = StyleSheet.create({
         container : {
-          padding : 20,
+          paddingTop : 20,
+          paddingBottom : 20,
           flexGrow : 1,
           alignItems : 'center',
         },
@@ -30,7 +30,7 @@ export default class CataloguePage extends LoadableComponent {
   }
 
   goToOtherPage(page, info) {
-    page.props.navigation.navigate('Voiture', {
+    page.props.navigation.navigate('Vehicle', {
         "brand": info.Brand,
         "model": info.Model
     });
@@ -40,9 +40,10 @@ export default class CataloguePage extends LoadableComponent {
 
     return(
       <View style = {this.baseStyle.container}>
-        <Text style = {this.baseStyle.title}> Catalogue </Text>
+        <Text style = {this.baseStyle.title}> Recherche </Text>
         <SearchList
           buttonFunction = {(info) => this.goToOtherPage(this, info)}
+          canSearch = {true}
         />
       </View>
     )

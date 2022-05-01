@@ -1,7 +1,7 @@
 import React from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, TextInput, ScrollView, SafeAreaView} from 'react-native';
 import LoadableComponent from './LoadableComponent.js';
-import ImageTitre from './ImageTitre.js';
+import ImageTitle from './ImageTitle.js';
 import LoadingIcon from './LoadingIcon.js';
 
 export default class CustomList extends LoadableComponent {
@@ -95,7 +95,7 @@ export default class CustomList extends LoadableComponent {
 
           renderItem = {({item}) => {
             return (item.Model == "load") ? <LoadingIcon/> :
-            <ImageTitre
+            <ImageTitle
             big
             title = {item.ShownName}
             imageSource = {{uri:item["Photo extérieur"]}}

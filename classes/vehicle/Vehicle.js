@@ -3,7 +3,7 @@ import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Image, Scr
 import { getCurrentTimestamp } from 'react-native/Libraries/Utilities/createPerformanceLogger';
 import FavoriteButton from '../components/customComponents/FavoriteButton';
 
-export default class Voiture{
+export default class Automobile{
     constructor(json) {
         this.caracteristiques = json;
 
@@ -20,7 +20,7 @@ export default class Voiture{
         });
     }
 
-    affichageVoiture(){
+    render(){
         return(
             <View>
 

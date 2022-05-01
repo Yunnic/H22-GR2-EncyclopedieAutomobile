@@ -4,7 +4,7 @@ import ApiCommunicator from '../../api/ApiCommunicator.js';
 import CustomList from './CustomList.js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default class SearchList extends CustomList {
+export default class FavoriteList extends CustomList {
 
   constructor(props) {
     super(props);
@@ -45,7 +45,7 @@ export default class SearchList extends CustomList {
         let carInfo = this.allFavs.pop()
         console.log(carInfo);
         let carFound = await ApiCommunicator.getCar(carInfo.brand, carInfo.model);
-        
+
         if (carFound) {
           let carData = carFound.caracteristiques;
 

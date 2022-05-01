@@ -3,7 +3,7 @@ import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View } from 'rea
 import ApiCommunicator from '../../api/ApiCommunicator.js';
 import LoadableComponent from '../customComponents/LoadableComponent.js';
 
-export default class TestPage extends LoadableComponent {
+export default class ErrorPage extends LoadableComponent {
 
   constructor(props) {
     super(props);

@@ -3,7 +3,7 @@ import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable,
 import LoadableComponent from '../customComponents/LoadableComponent.js';
 import ApiCommunicator from '../../api/ApiCommunicator.js';
 
-export default class VoiturePage extends LoadableComponent {
+export default class VehiclePage extends LoadableComponent {
 
   constructor(props) {
     super(props);
@@ -16,18 +16,15 @@ export default class VoiturePage extends LoadableComponent {
         },
     });
 
-    this.voiture = null;
+    this.automobile = null;
   }
 
   async load() {
     const {brand, model} = this.props.route.params;
-    this.voiture = await ApiCommunicator.getCar(brand, model);
-    console.log(brand)
-    console.log(model)
-    console.log(this.voiture);
+    this.automobile = await ApiCommunicator.getCar(brand, model);
 
-    if (this.voiture == null) {
-      this.errorHandler("Voiture n'a pas été trouvé !")
+    if (this.automobile == null) {
+      this.errorHandler("Automobile n'a pas été trouvé !");
     }
 
     return null;
@@ -36,7 +33,7 @@ export default class VoiturePage extends LoadableComponent {
   loadedView(data) {
     return(
       <ScrollView contentContainerStyle = {this.baseStyle.container}>
-        {this.voiture.affichageVoiture()}
+        {this.automobile.render()}
       </ScrollView>
     )
   }

@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, Image, ScrollView, SafeAreaView} from 'react-native';
 import ApiCommunicator from '../../api/ApiCommunicator.js';
 import LoadableComponent from '../customComponents/LoadableComponent.js';
-import BoutonImageTitre from '../customComponents/BoutonImageTitre.js';
+import ButtonImageTitle from '../customComponents/ButtonImageTitle.js';
 
-export default class TestPage extends LoadableComponent {
+export default class MenuPage extends LoadableComponent {
 
   constructor(props) {
     super(props);
@@ -36,14 +36,14 @@ export default class TestPage extends LoadableComponent {
       <ScrollView contentContainerStyle = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Encyclopedie Automobile </Text>
         <View style = {this.baseStyle.horizontal}>
-          <BoutonImageTitre
-          pageFunction = {() => this.props.navigation.navigate("Recherche")}
+          <ButtonImageTitle
+          pageFunction = {() => this.props.navigation.navigate("Search")}
           title = "Recherche"
           imageSource = {{uri : 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/500px-Search_Icon.svg.png'}}
           />
 
-          <BoutonImageTitre
-          pageFunction = {() => this.props.navigation.navigate("Catalogue")}
+          <ButtonImageTitle
+          pageFunction = {() => this.props.navigation.navigate("Catalog")}
           color = "darkred"
           title = "Catalogue"
           imageSource = {{uri : 'https://static.thenounproject.com/png/29432-200.png'}}
@@ -53,15 +53,15 @@ export default class TestPage extends LoadableComponent {
 
         <View style = {this.baseStyle.horizontal}>
 
-            <BoutonImageTitre
-            pageFunction = {() => this.props.navigation.navigate("Favoris")}
+            <ButtonImageTitle
+            pageFunction = {() => this.props.navigation.navigate("Favorite")}
             color = "green"
             title = "Favoris"
             imageSource = {{uri : 'https://cdn.pixabay.com/photo/2016/12/18/11/01/star-1915448_1280.png'}}
             />
 
-            <BoutonImageTitre
-            pageFunction = {() => this.props.navigation.navigate("Auteurs")}
+            <ButtonImageTitle
+            pageFunction = {() => this.props.navigation.navigate("Authors")}
             color = "purple"
             title = "Auteurs"
             imageSource = {{uri : 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Noun_Project_author_icon_1642368_cc.svg/875px-Noun_Project_author_icon_1642368_cc.svg.png'}}

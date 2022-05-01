@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, ScrollView } from 'react-native';
 import LoadableComponent from '../customComponents/LoadableComponent.js';
 
-export default class TestPage extends LoadableComponent {
+export default class AuthorsPage extends LoadableComponent {
 
   constructor(props) {
     super(props);

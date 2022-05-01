@@ -1,12 +1,9 @@
 import React from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, Image, ScrollView, SafeAreaView} from 'react-native';
-import ApiCommunicator from '../../api/ApiCommunicator.js';
 import LoadableComponent from '../customComponents/LoadableComponent.js';
-import ImageTitre from '../customComponents/ImageTitre.js';
-import LoadingIcon from '../customComponents/LoadingIcon.js';
-import SearchList from '../customComponents/SearchList.js';
+import FavoriteList from '../customComponents/FavoriteList.js';
 
-export default class CataloguePage extends LoadableComponent {
+export default class FavoritePage extends LoadableComponent {
 
   constructor(props) {
     super(props);
@@ -31,7 +28,7 @@ export default class CataloguePage extends LoadableComponent {
   }
 
   goToOtherPage(page, info) {
-    page.props.navigation.navigate('Voiture', {
+    page.props.navigation.navigate('Vehicle', {
         "brand": info.Brand,
         "model": info.Model
     });
@@ -41,10 +38,10 @@ export default class CataloguePage extends LoadableComponent {
 
     return(
       <View style = {this.baseStyle.container}>
-        <Text style = {this.baseStyle.title}> Recherche </Text>
-        <SearchList
+        <Text style = {this.baseStyle.title}> Liste de favoris </Text>
+        <FavoriteList
           buttonFunction = {(info) => this.goToOtherPage(this, info)}
-          canSearch = {true}
+          canSearch = {false}
         />
       </View>
     )
