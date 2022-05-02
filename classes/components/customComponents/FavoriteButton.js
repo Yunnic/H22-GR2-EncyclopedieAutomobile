@@ -110,7 +110,7 @@ export default class FavoriteButton extends LoadableComponent {
   onClick(button) {
     button.change = true;
 
-    button.reloadWithoutLoading()
+    button.reload(false);
   }
 
   //À noter : à chaque fois que la classe change, cette fonction est appelée

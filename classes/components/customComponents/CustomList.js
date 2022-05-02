@@ -1,7 +1,7 @@
 import React from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, TextInput, ScrollView, SafeAreaView} from 'react-native';
 import LoadableComponent from './LoadableComponent.js';
-import ImageTitle from './ImageTitle.js';
+import CustomListButton from './CustomListButton.js';
 import LoadingIcon from './LoadingIcon.js';
 
 export default class CustomList extends LoadableComponent {
@@ -41,19 +41,19 @@ export default class CustomList extends LoadableComponent {
     const screenHeight = event.nativeEvent.contentSize.height;
     const screenCurrentHeight = event.nativeEvent.layoutMeasurement.height;
     if (component.hasMoreResults && !component.state.isLoading && scrollHeight + screenCurrentHeight + 20 > screenHeight) {
-      component.reloadWithoutLoading();
+      component.reload(false);
     }
   }
 
   onSubmit(text, list) {
     list.searchText = text;
     this.listComponents = [];
-    list.reloadWithLoading();
+    list.reload(true);
   }
 
   componentDidUpdate() {
     if (this.hasMoreResults && !this.state.isLoading && this.listComponents.length < 8) {
-      this.reloadWithoutLoading();
+      this.reload(false);
     }
   }
 
@@ -95,7 +95,7 @@ export default class CustomList extends LoadableComponent {
 
           renderItem = {({item}) => {
             return (item.Model == "load") ? <LoadingIcon/> :
-            <ImageTitle
+            <CustomListButton
             big
             title = {item.ShownName}
             imageSource = {{uri:item["Photo extérieur"]}}

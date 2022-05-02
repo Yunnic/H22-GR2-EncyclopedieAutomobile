@@ -16,14 +16,14 @@ export default class VehiclePage extends LoadableComponent {
         },
     });
 
-    this.automobile = null;
+    this.vehicle = null;
   }
 
   async load() {
     const {brand, model} = this.props.route.params;
-    this.automobile = await ApiCommunicator.getCar(brand, model);
+    this.vehicle = await ApiCommunicator.getCar(brand, model);
 
-    if (this.automobile == null) {
+    if (this.vehicle == null) {
       this.errorHandler("Automobile n'a pas été trouvé !");
     }
 
@@ -33,7 +33,7 @@ export default class VehiclePage extends LoadableComponent {
   loadedView(data) {
     return(
       <ScrollView contentContainerStyle = {this.baseStyle.container}>
-        {this.automobile.render()}
+        {this.vehicle.render()}
       </ScrollView>
     )
   }

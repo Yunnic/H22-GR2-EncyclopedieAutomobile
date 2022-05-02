@@ -45,17 +45,9 @@ export default class LoadableComponent extends Component {
   }
 
   //Recharge le component sans mettre le logo de chargement.
-  async reloadWithoutLoading() {
+  async reload(useLoadingIcon) {
     this.setState({
-      canUseLoadLogo : false
-    })
-    this.componentDidMount();
-  }
-
-  //Recharge le component et met le logo de chargement.
-  async reloadWithLoading() {
-    this.setState({
-      canUseLoadLogo : true
+      canUseLoadLogo : useLoadingIcon
     })
     this.componentDidMount();
   }
