@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Pressable, Image, ScrollView, SafeAreaView} from 'react-native';
 import ApiCommunicator from '../../api/ApiCommunicator.js';
 import LoadableComponent from '../customComponents/LoadableComponent.js';
-import MenuButtons from '../customComponents/MenuButtons.js';
+import MenuButton from '../customComponents/MenuButton.js';
 
 export default class MenuPage extends LoadableComponent {
 
@@ -36,13 +36,13 @@ export default class MenuPage extends LoadableComponent {
       <ScrollView contentContainerStyle = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Encyclopedie Automobile </Text>
         <View style = {this.baseStyle.horizontal}>
-          <MenuButtons
+          <MenuButton
           pageFunction = {() => this.props.navigation.navigate("Search")}
           title = "Recherche"
           imageSource = {{uri : 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/500px-Search_Icon.svg.png'}}
           />
 
-          <MenuButtons
+          <MenuButton
           pageFunction = {() => this.props.navigation.navigate("Catalog")}
           color = "darkred"
           title = "Catalogue"
@@ -53,14 +53,14 @@ export default class MenuPage extends LoadableComponent {
 
         <View style = {this.baseStyle.horizontal}>
 
-            <MenuButtons
+            <MenuButton
             pageFunction = {() => this.props.navigation.navigate("Favorite")}
             color = "green"
             title = "Favoris"
             imageSource = {{uri : 'https://cdn.pixabay.com/photo/2016/12/18/11/01/star-1915448_1280.png'}}
             />
 
-            <MenuButtons
+            <MenuButton
             pageFunction = {() => this.props.navigation.navigate("Authors")}
             color = "purple"
             title = "Auteurs"

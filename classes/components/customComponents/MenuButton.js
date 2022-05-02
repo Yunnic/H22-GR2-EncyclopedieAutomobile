@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { ActivityIndicator, StyleSheet, Text, View, Image, Pressable } from 'react-native';
 
-export default class MenuButtons extends Component {
+export default class MenuButton extends Component {
 
   constructor(props) {
     super(props);
