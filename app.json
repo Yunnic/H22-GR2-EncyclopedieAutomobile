@@ -7,7 +7,13 @@
       "**/*"
     ],
     "ios": {
-      "requireFullScreen": true,
+      "bundleIdentifier": "ca.qc.bdeb.sim.encyclopedie",
+      "buildNumber": "1.0.0",
+      "requireFullScreen": true
+    },
+    "android": {
+      "package": "ca.qc.bdeb.sim.encyclopedie",
+      "versionCode": 1
     }
   },
   "name": "encyclopedie"

@@ -12,7 +12,10 @@ export default class VehiclePage extends LoadableComponent {
         container : {
             flexGrow : 1,
             alignItems : 'center',
-            justifyContent : 'center',
+            justifyContent : 'flex-start',
+            paddingTop : 75,
+            paddingBottom : 30,
+            padding : 15
         },
     });
 
