@@ -28,15 +28,15 @@ export default class MenuButton extends Component {
           textAlignVertical : 'center',
           paddingBottom: 20,
           paddingTop : 15,
-          paddingHorizontal: 50,
+          paddingHorizontal: 40,
           borderColor: "transparent",
           borderRadius: 12,
           backgroundColor : color
         },
 
       tinyLogo: {
-          width: 50,
-          height: 50,
+          width: 60,
+          height: 60,
       },
     });
   }

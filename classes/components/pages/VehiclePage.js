@@ -15,7 +15,7 @@ export default class VehiclePage extends LoadableComponent {
             justifyContent : 'flex-start',
             paddingTop : 75,
             paddingBottom : 30,
-            padding : 15
+            padding : 30
         },
     });
 

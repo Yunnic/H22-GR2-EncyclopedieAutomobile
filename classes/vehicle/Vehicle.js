@@ -2,6 +2,7 @@ import React from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, Button, View, Image, ScrollView } from 'react-native';
 import { getCurrentTimestamp } from 'react-native/Libraries/Utilities/createPerformanceLogger';
 import FavoriteButton from '../components/customComponents/FavoriteButton';
+import CompareButton from '../components/customComponents/CompareButton';
 
 export default class Automobile{
     constructor(json) {
@@ -86,7 +87,8 @@ export default class Automobile{
           },
           text : {
             fontSize : 15,
-            color: "white"
+            color: "white",
+            padding : 4
           }
         });
     }
@@ -114,7 +116,7 @@ export default class Automobile{
                 let subStatName = subStatInfo[1];
                 let subStatValue = statValue[subStatName];
                 if (subStatValue) {
-                  subArray.push(<Text style = {this.baseStyle.text} key = {(subCounter++).toString()}>{subStatInfo[0] + ": " + subStatValue}</Text>)
+                  subArray.push(<Text style = {this.baseStyle.text} key = {(subCounter++).toString()}>{subStatInfo[0] + " : " + subStatValue}</Text>)
                 }
               }
 
@@ -147,7 +149,9 @@ export default class Automobile{
             <Image
               style = {{
                 width: 400,
-                height: 250
+                height: 250,
+                borderRadius : 10,
+                padding : 30
               }}
               source={{uri: this.caracteristiques["Photo extérieur"]}}
             />
@@ -157,13 +161,20 @@ export default class Automobile{
               <Image
                 style = {{
                   width: 200,
-                  height: 125
+                  height: 125,
+                  borderRadius : 10,
+                  padding : 30
                 }}
                 source={{uri: this.caracteristiques["Photo intérieur"]}}
               />
             }
 
             <FavoriteButton
+              brand = {this.caracteristiques.Brand}
+              model = {this.caracteristiques.Model}
+            />
+
+            <CompareButton
               brand = {this.caracteristiques.Brand}
               model = {this.caracteristiques.Model}
             />

@@ -1,9 +1,11 @@
+//Factoriser avec classe FavoriteButton
+
 import React, {Component} from 'react';
 import { ActivityIndicator, StyleSheet, Text, View, Image, Pressable } from 'react-native';
 import LoadableComponent from './LoadableComponent.js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default class FavoriteButton extends LoadableComponent {
+export default class CompareButton extends LoadableComponent {
 
   constructor(props) {
     super(props);
@@ -15,6 +17,8 @@ export default class FavoriteButton extends LoadableComponent {
     this.isOn = false;
     this.change = false;
     this.hasLoadedOnce = false;
+
+    this.maximumElements = 5;
 
     this.baseStyle = StyleSheet.create({
       container: {
@@ -31,7 +35,7 @@ export default class FavoriteButton extends LoadableComponent {
 
   async add() {
     try {
-      let fav = await AsyncStorage.getItem('favorite');
+      let fav = await AsyncStorage.getItem('compare');
 
       if (fav == null) {
         fav = {};
@@ -39,13 +43,23 @@ export default class FavoriteButton extends LoadableComponent {
         fav = JSON.parse(fav);
       }
 
-      if (fav[this.brand] == null) {
-        fav[this.brand] = {};
+      if (fav.length == null) {
+        fav.length = 0;
       }
 
-      fav[this.brand][this.model] = true;
+      if (fav.length < this.maximumElements) {
+        if (fav[this.brand] == null) {
+          fav[this.brand] = {};
+        }
 
-      await AsyncStorage.setItem('favorite', JSON.stringify(fav));
+        fav[this.brand][this.model] = true;
+
+        fav.length++;
+
+        await AsyncStorage.setItem('compare', JSON.stringify(fav));
+      } else {
+        this.isOn = false;
+      }
 
     } catch (error) {
       console.log(error);
@@ -54,7 +68,7 @@ export default class FavoriteButton extends LoadableComponent {
 
   async remove() {
     try {
-      let fav = await AsyncStorage.getItem('favorite');
+      let fav = await AsyncStorage.getItem('compare');
 
       if (fav != null) {
         fav = JSON.parse(fav);
@@ -65,7 +79,9 @@ export default class FavoriteButton extends LoadableComponent {
             delete fav[this.brand];
           }
 
-          await AsyncStorage.setItem('favorite', JSON.stringify(fav));
+          fav.length--;
+
+          await AsyncStorage.setItem('compare', JSON.stringify(fav));
         }
       }
 
@@ -77,7 +93,7 @@ export default class FavoriteButton extends LoadableComponent {
 
   async getOnState() {
     try {
-      let fav = await AsyncStorage.getItem('favorite');
+      let fav = await AsyncStorage.getItem('compare');
       console.log(fav);
       if (fav != null) {
         fav = JSON.parse(fav);
