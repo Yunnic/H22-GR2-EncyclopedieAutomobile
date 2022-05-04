@@ -21,14 +21,14 @@ Pour installer l'application, vous avez seulement besoin d'exécuter le fichier 
 
 ## Installer l'application avec les fichiers qui se retrouvent sur la page GitHub.
 Ceci est la façon que vous devrez utilisez si vous pensez modifier l'application.
-	
+
 Voici les étapes :
 #### 1. Installer [Node.js](https://nodejs.org/en/download/).
 #### 2. Ouvrir cmd.exe sur votre ordinateur Windows (ou l'équivalent sur l'OS utilisé)
 #### 3. Écrire `npm install -g expo-cli` pour installer Expo CLI.
 #### 4. Installer les fichiers qui sont sur GitHub et indiquer le chemin des fichiers avec la commande "cd".
 Par exemple : `cd C:\Program Files\Test\JePensesQueVousComprenezMaintenant`
-	
+
 Si vous devez changez de disque, écrivez simplement sa lettre suivi de ":".
 Par exemple : `E:`
 #### 5. Installer les dépendances.
@@ -48,12 +48,14 @@ Voici ceux que nous avons utilisé pour l'instant :
 
 `npm install @react-navigation/bottom-tabs`
 
+`npm install react-native-table-component`
+
 #### 6. Écrire `expo start`. Ceci va commencer un serveur LAN. Si l'écran affiche plusieurs options pour continuer, l'installation du projet fonctionne.
 
 ## Tester l'application avec Expo.
 
 ### Une fois que vous avez fait tous les étapes pour installer le projet avec les fichiers sur la page GitHub, il y a trois façons de tester.
- 
+
 #### 1. Tester avec votre téléphone.
 Pour faire cela, vous devez installer l'application Expo Go sur votre téléphone.
 Sur Android, vous devez scanner le QR code avec l'application.

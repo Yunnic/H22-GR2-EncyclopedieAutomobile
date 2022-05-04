@@ -73,9 +73,9 @@ export default class MenuPage extends LoadableComponent {
 
           <MenuButton
             pageFunction = {() => this.props.navigation.navigate("Compare")}
-            color = "green"
+            color = "blue"
             title = "Comparaison"
-            imageSource = {{uri : 'https://cdn.pixabay.com/photo/2016/12/18/11/01/star-1915448_1280.png'}}
+            imageSource = {{uri : 'https://cdn.pixabay.com/photo/2017/04/20/22/11/scale-2247167_1280.png'}}
           />
 
         </View>
