@@ -58,6 +58,16 @@ const ApiCommunicator = {
     return null;
   },
 
+  //À peu près search mais avec un meilleur algorithme (ça utilise OpenSearch)
+  openSearch: async function(searchText) {
+    const urlPath = `open-search`;
+
+    const body = {"searchText" : searchText}
+
+    const json = await ApiCommunicator.getInfoFromApi('POST', urlPath, JSON.stringify(body));
+    return json;
+  },
+
   search: async function(urlPath, prjExpr, filtExpr, exprAttNames, exprAttVal,
     exclStartKey, keyCondiExpr) {
 

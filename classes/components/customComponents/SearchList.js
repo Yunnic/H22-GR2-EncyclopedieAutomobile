@@ -14,27 +14,37 @@ export default class SearchList extends CustomList {
   async load() {
 
     if (!this.canSearch || this.searchText != null){
-      const prjExpr = "ShownName, #pe, Brand, Model, #sn";
-      const exprAttNames = {
-        "#pe": "Photo extérieur",
-        "#sn": "SearchName",
-      }
-
-      let filtExpr;
-      let exprAttVal;
+      let dataFound;
 
       if (this.canSearch) {
-        exprAttVal = { ":snText": this.searchText };
-        filtExpr = "contains(#sn, :snText)";
+        let apiData = await ApiCommunicator.openSearch(this.searchText);
+
+        //J'ai codé ce système avant d'utiliser OpenSearch, je dois donc restructurer les données
+        dataFound = {
+          "Count" : apiData.hits.total.value,
+          "Items" : []
+        }
+
+        for (const item of apiData.hits.hits) {
+          dataFound.Items.push(item["_source"]);
+        }
+
+        //this.lastResult = dataFound.LastEvaluatedKey;
+        //this.hasMoreResults = dataFound.LastEvaluatedKey != null;
+        this.hasMoreResults = false;
+
       } else {
-        filtExpr = null;
-        exprAttVal = null;
+        const prjExpr = "ShownName, #pe, Brand, Model, #sn";
+        const exprAttNames = {
+          "#pe": "Photo extérieur",
+          "#sn": "SearchName",
+        }
+
+        dataFound = await ApiCommunicator.searchModels(prjExpr, null, exprAttNames, null, this.lastResult);
+
+        this.lastResult = dataFound.LastEvaluatedKey;
+        this.hasMoreResults = dataFound.LastEvaluatedKey != null;
       }
-
-      const dataFound = await ApiCommunicator.searchModels(prjExpr, filtExpr, exprAttNames, exprAttVal, this.lastResult);
-
-      this.lastResult = dataFound.LastEvaluatedKey;
-      this.hasMoreResults = dataFound.LastEvaluatedKey != null;
 
       const newData = {
         "dataFound": dataFound
