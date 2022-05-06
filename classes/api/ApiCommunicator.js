@@ -59,10 +59,13 @@ const ApiCommunicator = {
   },
 
   //À peu près search mais avec un meilleur algorithme (ça utilise OpenSearch)
-  openSearch: async function(searchText) {
+  openSearch: async function(searchText, filters) {
     const urlPath = `open-search`;
 
-    const body = {"searchText" : searchText}
+    const body = {
+      "searchText" : searchText,
+      "filters" : filters
+    }
 
     const json = await ApiCommunicator.getInfoFromApi('POST', urlPath, JSON.stringify(body));
     return json;

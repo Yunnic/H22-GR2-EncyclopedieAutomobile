@@ -43,7 +43,7 @@ export default class ComparePage extends LoadableComponent {
             textAlignVertical: "center",
             color : "white",
         },
-        head: { height: 40, backgroundColor: '#111111df' },
+        head: { height: 40, backgroundColor: '#111161ef' },
         rowText: { margin: 6 },
         dataWrapper: { marginTop: -1 },
     });

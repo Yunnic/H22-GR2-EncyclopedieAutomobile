@@ -17,6 +17,22 @@ export default class SearchList extends CustomList {
       let dataFound;
 
       if (this.canSearch) {
+
+        //test pour l'instant
+        let filterTest = [
+          {
+            "term" : {
+              "Brand.keyword" : "bmw"
+            }
+          },
+
+          {
+            "term" : {
+              "Brakes.Type.keyword" : "Conventionnel / Carbone céramique"
+            }
+          }
+        ]
+        //let apiData = await ApiCommunicator.openSearch(this.searchText, filterTest);
         let apiData = await ApiCommunicator.openSearch(this.searchText);
 
         //J'ai codé ce système avant d'utiliser OpenSearch, je dois donc restructurer les données
