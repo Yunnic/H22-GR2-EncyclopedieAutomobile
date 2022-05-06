@@ -33,7 +33,7 @@ export default class MenuPage extends LoadableComponent {
 
   loadedView(data) {
     return(
-      <ScrollView contentContainerStyle = {this.baseStyle.container}>
+      <View style = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Encyclopedie Automobile </Text>
         <View style = {this.baseStyle.horizontal}>
           <MenuButton
@@ -79,7 +79,7 @@ export default class MenuPage extends LoadableComponent {
           />
 
         </View>
-      </ScrollView>
+      </View>
     )
   }
 };

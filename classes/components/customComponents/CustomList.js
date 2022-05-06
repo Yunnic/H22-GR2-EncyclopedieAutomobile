@@ -16,9 +16,13 @@ export default class CustomList extends LoadableComponent {
         alignItems : 'center',
         justifyContent : 'flex-start',
       },
+      horizontal : {
+        flexDirection : 'row',
+        alignItems : 'center',
+      },
       input: {
         height: 40,
-        width: 300,
+        width: 225,
         margin: 12,
         borderWidth: 1,
         padding: 10,
@@ -26,6 +30,21 @@ export default class CustomList extends LoadableComponent {
         backgroundColor : "rgba(225,225,225,.25)",
         borderRadius : 15,
       },
+      filtersButton: {
+        height: 40,
+        width: 120,
+        borderWidth: 1,
+        color : "white",
+        backgroundColor : "rgba(125,125,125,.25)",
+        borderRadius : 15,
+        alignItems : 'center',
+        justifyContent : 'center',
+      },
+      text : {
+        fontSize : 15,
+        color: "white",
+        padding : 4
+      }
     });
 
     this.listComponents = [];
@@ -34,6 +53,7 @@ export default class CustomList extends LoadableComponent {
     this.canSearch = props.canSearch;
     this.searchText = null;
     this.hasMoreResults = false;
+    this.filters = [];
   }
 
   handleScroll(event, component) {
@@ -63,6 +83,7 @@ export default class CustomList extends LoadableComponent {
     let newItems = (dataFound) ? data.dataFound.Items : null;
     const lastModelIsLoad = count > 0 && this.listComponents[count-1].Model == "load";
     const buttonFunction = this.props.buttonFunction;
+    const filterFunction = this.props.filterFunction;
 
     if (newItems){
       if (lastModelIsLoad) {
@@ -84,7 +105,14 @@ export default class CustomList extends LoadableComponent {
     return(
       <View style = {this.baseStyle.list}>
         {(this.canSearch)
-          ? <TextInput style = {this.baseStyle.input} onSubmitEditing={(event) => this.onSubmit(event.nativeEvent.text.toLowerCase(), this)}/>
+          ? <View style = {this.baseStyle.horizontal}>
+            <TextInput style = {this.baseStyle.input} onSubmitEditing={(event) => this.onSubmit(event.nativeEvent.text.toLowerCase(), this)}/>
+            <Pressable
+            style = {this.baseStyle.filtersButton}
+            onPress = {() => filterFunction(this)}>
+              <Text style = {this.baseStyle.text}> Filtres </Text>
+            </Pressable>
+          </View>
           : null}
         <FlatList
           showsVerticalScrollIndicator={false}

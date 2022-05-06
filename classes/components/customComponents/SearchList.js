@@ -17,7 +17,7 @@ export default class SearchList extends CustomList {
       let dataFound;
 
       if (this.canSearch) {
-
+        console.log(this.props.filters);
         //test pour l'instant
         let filterTest = [
           {
