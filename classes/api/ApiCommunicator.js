@@ -25,7 +25,6 @@ const ApiCommunicator = {
       );
 
       const json = await response.json();
-      console.log(json);
       return json;
 
     } catch (error) {
@@ -37,7 +36,6 @@ const ApiCommunicator = {
     const urlPath = `${brand}/${model}`;
 
     const json = await ApiCommunicator.getInfoFromApi('GET', urlPath, null);
-    console.log(urlPath);
 
     if (json != null && "Item" in json) {
       const vehicle = new Vehicle(json.Item);
@@ -92,8 +90,6 @@ const ApiCommunicator = {
           body[optionalIndice] = optionalValue;
         }
       }
-
-      console.log(body);
 
       const json = await ApiCommunicator.getInfoFromApi('POST', urlPath, JSON.stringify(body));
       return json;

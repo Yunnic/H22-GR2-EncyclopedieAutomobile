@@ -94,7 +94,6 @@ export default class CompareButton extends LoadableComponent {
   async getOnState() {
     try {
       let fav = await AsyncStorage.getItem('compare');
-      console.log(fav);
       if (fav != null) {
         fav = JSON.parse(fav);
         return fav[this.brand] != null && fav[this.brand][this.model] != null;

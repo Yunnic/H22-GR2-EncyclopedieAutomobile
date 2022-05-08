@@ -15,6 +15,7 @@ import SearchPage from './classes/components/pages/SearchPage.js';
 import FavoritePage from './classes/components/pages/FavoritePage.js';
 import VehiclePage from './classes/components/pages/VehiclePage.js';
 import ComparePage from './classes/components/pages/ComparePage.js';
+import FilterPage from './classes/components/pages/FilterPage.js';
 
 export default class App extends Component {
   constructor(props) {
@@ -72,6 +73,7 @@ export default class App extends Component {
               <Stack.Screen name="Favorite" component={FavoritePage}/>
               <Stack.Screen name="Vehicle" component={VehiclePage}/>
               <Stack.Screen name="Compare" component={ComparePage}/>
+              <Stack.Screen name="Filter" component={FilterPage}/>
             </Stack.Navigator>
           </NavigationContainer>
         </LinearGradient>

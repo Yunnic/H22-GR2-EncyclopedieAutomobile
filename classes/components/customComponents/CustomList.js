@@ -51,6 +51,7 @@ export default class CustomList extends LoadableComponent {
 
     this.buttonFunction = null;
     this.canSearch = props.canSearch;
+    this.canUseFilters = props.canUseFilters;
     this.searchText = null;
     this.hasMoreResults = false;
     this.filters = [];
@@ -107,11 +108,13 @@ export default class CustomList extends LoadableComponent {
         {(this.canSearch)
           ? <View style = {this.baseStyle.horizontal}>
             <TextInput style = {this.baseStyle.input} onSubmitEditing={(event) => this.onSubmit(event.nativeEvent.text.toLowerCase(), this)}/>
-            <Pressable
+            {(this.canUseFilters) ? <Pressable
             style = {this.baseStyle.filtersButton}
             onPress = {() => filterFunction(this)}>
               <Text style = {this.baseStyle.text}> Filtres </Text>
             </Pressable>
+          :null}
+
           </View>
           : null}
         <FlatList

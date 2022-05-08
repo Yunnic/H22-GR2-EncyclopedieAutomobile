@@ -45,7 +45,7 @@ export default class Automobile{
               ["Width", "Width"]
             ]
           ],
-          ["Top speed", "Top speed"],
+          ["Vitesse maximale", "Top speed"],
           ["Temps d'accélération", "Acceleration times",
             [
               ["0-100 km/h", "0-100 km/h"],
@@ -99,7 +99,6 @@ export default class Automobile{
       let counter = 0;
 
       for (const statInfo of this.shownStats) {
-        console.log(statInfo);
         if (statInfo != null && statInfo.length > 1) {
           let statName = statInfo[1];
           let statValue = this.caracteristiques[statName];

@@ -108,7 +108,6 @@ export default class LoadableComponent extends Component {
   //Montre le component
   render() {
     const { data, isLoading, canUseLoadLogo} = this.state;
-    console.log(data);
     //le truc après ? est si ça n'a pas chargé, truc après : est si c'est chargé
     if (!isLoading || !canUseLoadLogo) {
       return this.loadedView(data);

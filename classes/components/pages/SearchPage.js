@@ -37,7 +37,9 @@ export default class SearchPage extends LoadableComponent {
   }
 
   goToFilters(page, searchList) {
-    page.props.navigation.navigate('Authors');
+    page.props.navigation.navigate('Filter', {
+        "searchPage": page,
+    });
   }
 
   loadedView(data) {
@@ -49,6 +51,7 @@ export default class SearchPage extends LoadableComponent {
           buttonFunction = {(info) => this.goToOtherPage(this, info)}
           filterFunction = {(searchList) => this.goToFilters(this, searchList)}
           canSearch = {true}
+          canUseFilters = {true}
         />
       </View>
     )

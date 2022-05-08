@@ -43,7 +43,6 @@ export default class FavoriteList extends CustomList {
     if (this.allFavs.length > 0) {
       while (counter < this.amountPerLoad && this.allFavs.length > 0) {
         let carInfo = this.allFavs.pop()
-        console.log(carInfo);
         let carFound = await ApiCommunicator.getCar(carInfo.brand, carInfo.model);
 
         if (carFound) {
