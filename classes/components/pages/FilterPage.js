@@ -10,6 +10,8 @@ export default class FilterPage extends LoadableComponent {
   constructor(props) {
     super(props);
 
+    this.selected = []
+
     this.filters = [
       {
         name : "Marque",
@@ -18,7 +20,7 @@ export default class FilterPage extends LoadableComponent {
         //Les choix ont été pris d'ici : https://www.ultimatespecs.com/advanced-search
         //Il se peut qu'il y ait des fautes. J'ai tout écrit à la main.
         choices : [
-          "a d Tramontana", "Abarth", "Acura", "Alfa Romeo", "Alpina", "Alpine",
+          "Abarth", "Acura", "Alfa Romeo", "Alpina", "Alpine",
           "Aston Martin", "Audi", "Austin", "Autobianchi", "Bentley", "BMW",
           "Bugatti", "Buick", "Cadillac", "Caterham", "Chevrolet", "Chrysler",
           "Citroen", "Cupra", "Dacia", "Daewoo", "Daihatsu", "Datsun",
@@ -81,28 +83,24 @@ export default class FilterPage extends LoadableComponent {
         name : "Prix",
         statName : "Starting Price",
         type : "Min-Max",
-        forcedMinimum : "0",
         value : null
       },
       {
         name : "Nombre de sièges",
         statName : "Number of seats",
         type : "Min-Max",
-        forcedMinimum : "1",
         value : null
       },
       {
         name : "Volume du coffre",
         statName : "Trunk volume",
         type : "Min-Max",
-        forcedMinimum : "0",
         value : null
       },
       {
         name : "Vitesse maximale",
         statName : "Top speed",
         type : "Min-Max",
-        forcedMinimum : "0",
         value : null
       },
     ]
@@ -129,7 +127,8 @@ export default class FilterPage extends LoadableComponent {
           fontWeight: "bold",
           textAlignVertical: "center",
           color : "white",
-          paddingTop : 30
+          paddingTop : 30,
+          paddingBottom : 10
         },
         text : {
           textAlign: "left",
@@ -168,19 +167,57 @@ export default class FilterPage extends LoadableComponent {
           justifyContent : 'center',
           marginTop : 50
         },
+        list : {
+          alignItems : 'center',
+          height : 150,
+          width : 200,
+          borderRadius : 20
+        },
+        listText : {
+          textAlign: "left",
+          fontSize : 20,
+          color: "white",
+        },
+        listContainer : {
+          width : 200,
+          paddingTop : 5,
+          paddingBottom : 5,
+          flexGrow : 1,
+          textAlign: "center  ",
+          alignItems : 'center',
+        },
     });
 
     const params = this.props.route.params;
-    this.searchPage = params.searchPage;
+    this.searchList = params.searchList;
+  }
+
+  setObjectValueAsInt(text, object, valueName) {
+    const newInt = Number(text);
+
+    if (Number.isInteger(newInt)) {
+      if (!object.value) {
+        object.value = {};
+      }
+
+      object.value[valueName] = newInt;
+      console.log("set " + valueName + " to " + text);
+    } else {
+      object.value[valueName] = null;
+    }
   }
 
   insertFilters() {
     let texts = [];
+    let counter = 0;
+
     for (let i = 0; i < this.filters.length; i++) {
       let filterObject = this.filters[i];
+      let choiceList = [];
+      const isMinMax = filterObject.type === "Min-Max"
 
       texts.push(
-        <View key = {i}>
+        <View key = {counter++}>
 
           <Text
           style = {this.baseStyle.secondTitle}>
@@ -188,27 +225,114 @@ export default class FilterPage extends LoadableComponent {
           </Text>
 
           {
-            (filterObject.type === "Min-Max") ?
+            (isMinMax) ?
               <View style = {this.baseStyle.horizontalLeft}>
                 <Text style = {this.baseStyle.text}> Min : </Text>
-                <TextInput style = {this.baseStyle.input}/>
+                <TextInput
+                style = {this.baseStyle.input}
+                onChangeText = {(newText) => this.setObjectValueAsInt(newText, this.filters[i], "Min")}
+                />
 
                 <Text style = {this.baseStyle.text}> Max : </Text>
-                <TextInput style = {this.baseStyle.input}/>
+                <TextInput
+                style = {this.baseStyle.input}
+                onChangeText = {(newText) => this.setObjectValueAsInt(newText, this.filters[i], "Max")}
+                />
               </View>
             : null
           }
 
         </View>
       )
+
+      if (!isMinMax) {
+        let selected = -1;
+
+        for (let j = 0; j < filterObject.choices.length; j++) {
+
+          choiceList.push(
+            <Pressable
+            key = {j}
+            style = {(this.state[i] == j) ? {backgroundColor : "rgba(225,225,225,.25)", width : 200,} : {backgroundColor : "rgba(0,0,0,.25)", width : 200,}}
+            onPress = {() => {
+              filterObject.value = filterObject.choices[j]
+              this.selected[i] = j;
+              this.setState({[i] : this.selected[i]})
+            }}
+            >
+              <Text
+              style = {this.baseStyle.text}>
+                {filterObject.choices[j]}
+              </Text>
+            </Pressable>
+          )
+        }
+
+        texts.push(
+          <View key = {counter++} style = {this.baseStyle.list}>
+            <ScrollView contentContainerStyle = {this.baseStyle.listContainer} nestedScrollEnabled = {true}>
+              {choiceList}
+            </ScrollView>
+          </View>
+        )
+      }
     }
 
     return texts
   }
 
   confirm(page) {
-    //page.searchPage.blablabla
-    page.props.navigation.goBack()
+    let allFilters = [];
+
+    for (const filter of this.filters) {
+      const filterValue = filter.value;
+      const filterName = filter.statName;
+
+      if (filterValue) {
+        if (filter.type == "Choice") {
+
+          if (filterName == "Brand") {
+            filterValue = filterValue.toLowerCase();
+          }
+
+          allFilters.push({
+            "term" : {
+              [filterName + ".keyword"] : filterValue
+            }
+          })
+
+        } else {
+          let hasChangedOnce = false;
+
+          let newFilter = {
+            "range": {
+              [filterName] : {}
+            }
+          }
+
+          let filterNameTable = newFilter.range[filterName]
+
+          if (filterValue.Max) {
+            hasChangedOnce = true;
+            //lte veut dire "less than or equal"
+            filterNameTable.lte = filterValue.Max
+          }
+
+          if (filterValue.Min) {
+            hasChangedOnce = true;
+            //gte veut dire "greater than or equal"
+            filterNameTable.gte = filterValue.Min
+          }
+
+          if (hasChangedOnce) {
+            allFilters.push(newFilter);
+          }
+        }
+      }
+    }
+
+    this.searchList.filters = allFilters;
+    page.props.navigation.goBack();
   }
 
   loadedView(data) {
@@ -216,7 +340,6 @@ export default class FilterPage extends LoadableComponent {
       <ScrollView contentContainerStyle = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Filtres </Text>
         {this.insertFilters()}
-
         <Pressable
         style = {this.baseStyle.confirmButton}
         onPress={() => this.confirm(this)}>

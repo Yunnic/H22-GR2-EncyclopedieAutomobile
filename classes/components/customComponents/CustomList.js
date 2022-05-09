@@ -54,7 +54,6 @@ export default class CustomList extends LoadableComponent {
     this.canUseFilters = props.canUseFilters;
     this.searchText = null;
     this.hasMoreResults = false;
-    this.filters = [];
   }
 
   handleScroll(event, component) {
@@ -92,7 +91,6 @@ export default class CustomList extends LoadableComponent {
       }
 
       for (const newItem of newItems) {
-
         this.listComponents.push(newItem)
       }
     } else if (this.state.isLoading && !lastModelIsLoad) {

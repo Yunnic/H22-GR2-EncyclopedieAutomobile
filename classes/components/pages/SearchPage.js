@@ -38,12 +38,11 @@ export default class SearchPage extends LoadableComponent {
 
   goToFilters(page, searchList) {
     page.props.navigation.navigate('Filter', {
-        "searchPage": page,
+        "searchList": searchList,
     });
   }
 
   loadedView(data) {
-
     return(
       <View style = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Recherche </Text>
