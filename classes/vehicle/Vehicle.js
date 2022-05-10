@@ -11,7 +11,7 @@ export default class Automobile{
         //Ceci sont la plupart des informations qui seront affichées à l'écran.
         //[Nom français, Nom sur la base de données, données supplémentaires]
         this.shownStats = [
-          ["Prix", "Starting Price"],
+          ["Prix (CA$)", "Starting Price (CA$)"],
           ["Type de corps", "Body type"],
           ["Génération", "Generation"],
           ["Trim", "Trim"],
@@ -36,7 +36,7 @@ export default class Automobile{
             ]
           ],
           ["Poids", "Weight"],
-          ["Volume du coffre", "Trunk volume"],
+          ["Volume du coffre (L)", "Trunk volume (L)"],
           ["Dimensions", "Dimensions",
             [
               ["Wheelbase length", "Wheelbase length"],
@@ -45,7 +45,7 @@ export default class Automobile{
               ["Width", "Width"]
             ]
           ],
-          ["Vitesse maximale", "Top speed"],
+          ["Vitesse maximale (km/h)", "Top speed (km/h)"],
           ["Temps d'accélération", "Acceleration times",
             [
               ["0-100 km/h", "0-100 km/h"],

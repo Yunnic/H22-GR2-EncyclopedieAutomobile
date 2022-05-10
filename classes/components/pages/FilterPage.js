@@ -80,8 +80,8 @@ export default class FilterPage extends LoadableComponent {
         value : null
       },
       {
-        name : "Prix",
-        statName : "Starting Price",
+        name : "Prix (CA$)",
+        statName : "Starting Price (CA$)",
         type : "Min-Max",
         value : null
       },
@@ -92,14 +92,14 @@ export default class FilterPage extends LoadableComponent {
         value : null
       },
       {
-        name : "Volume du coffre",
-        statName : "Trunk volume",
+        name : "Volume du coffre (L)",
+        statName : "Trunk volume (L)",
         type : "Min-Max",
         value : null
       },
       {
-        name : "Vitesse maximale",
-        statName : "Top speed",
+        name : "Vitesse maximale (km/h)",
+        statName : "Top speed (km/h)",
         type : "Min-Max",
         value : null
       },
