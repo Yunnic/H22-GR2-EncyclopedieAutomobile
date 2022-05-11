@@ -9,7 +9,7 @@ Ceci est un projet d'intégration en Informatique pour le Collège de Bois-De-Bo
 ## Auteurs :
 - ##### Yannick Lafontaine ([Yunnic](https://github.com/Yunnic))
 - ##### Maxime Rainville ([MaXijo264](https://github.com/MaXijo264))
-- ##### Severyn Tynkalyuk ([NuclearToilet2022](https://github.com/NuclearToilet2022))
+- ##### Severyn Tynkalyuk ([Sever2412](https://github.com/Sever2412))
 
 ## Installation de l'application.
 Il y a deux façons d'installer l'application.
