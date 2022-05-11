@@ -29,7 +29,7 @@ Voici les étapes :
 #### 4. Installer les fichiers qui sont sur GitHub et indiquer le chemin des fichiers avec la commande "cd".
 Par exemple : `cd C:\Program Files\Test\JePensesQueVousComprenezMaintenant`
 
-Si vous devez changez de disque, écrivez simplement sa lettre suivi de ":".
+Si vous devez changer de disque, écrivez simplement sa lettre suivie de ":".
 Par exemple : `E:`
 #### 5. Installer les dépendances.
 Voici ceux que nous avons utilisé pour l'instant :
@@ -64,4 +64,4 @@ Sur IOS, vous devez scanner le QR code avec la caméra.
 #### 2. Tester avec un émulateur
 Nous n'avions pas utilisé cette option pour le moment, mais nous pensons que c'est une très bonne option en cas qu'il n'y a pas d'internet.
 #### 3. Tester avec un navigateur Internet.
-Si possible, évitez de tester avec le navigateur Internet, car cette méthode cause souvent des problèmes qui n'existe pas dans les deux autres méthodes pour tester.
+Si possible, évitez de tester avec le navigateur Internet, car cette méthode cause souvent des problèmes qui n'existent pas dans la version mobile.
