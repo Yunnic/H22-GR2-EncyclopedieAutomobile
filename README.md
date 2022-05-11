@@ -1,9 +1,9 @@
 # Encyclopédie Automobile - Une application mobile à propos des automobiles
-Le but de cette application est d'aider les gens à apprendre davantages sur les automobiles sans devoir naviguer sur plusieurs différents sites.
+Le but de cette application est d'aider les gens d'apprendre davantage sur les automobiles sans devoir naviguer sur plusieurs sites différents.
 
 L'application utilise React Native comme framework.
 
-Ceci est un projet d'intégration en Informatique pour le Collège de Bois-De-Boulogne.
+Ceci est un projet d'intégration du programme "Sciences informatiques et mathématiques" offert par le Collège de Bois-De-Boulogne.
 
 
 ## Auteurs :
