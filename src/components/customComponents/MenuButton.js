@@ -8,7 +8,7 @@ export default class MenuButton extends Component {
 
     this.placeHolderText = "Texte"
     this.placeHolderImage = {uri : 'https://c.tenor.com/-O0Xii3GomgAAAAM/pug-dance.gif'}
-    let color = props.color ? props.color : "orange";
+    let color = props.color ? props.color : "#121212be";
 
     this.baseStyle = StyleSheet.create({
         text: {

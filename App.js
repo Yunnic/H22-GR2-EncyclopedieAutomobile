@@ -7,15 +7,15 @@ import * as ScreenOrientation from 'expo-screen-orientation';
 import { LinearGradient } from 'expo-linear-gradient';
 
 //pages
-import ErrorPage from './classes/components/pages/ErrorPage.js';
-import MenuPage from './classes/components/pages/MenuPage.js';
-import AuthorsPage from './classes/components/pages/AuthorsPage.js';
-import CatalogPage from './classes/components/pages/CatalogPage.js';
-import SearchPage from './classes/components/pages/SearchPage.js';
-import FavoritePage from './classes/components/pages/FavoritePage.js';
-import VehiclePage from './classes/components/pages/VehiclePage.js';
-import ComparePage from './classes/components/pages/ComparePage.js';
-import FilterPage from './classes/components/pages/FilterPage.js';
+import ErrorPage from './src/components/pages/ErrorPage.js';
+import MenuPage from './src/components/pages/MenuPage.js';
+import AuthorsPage from './src/components/pages/AuthorsPage.js';
+import CatalogPage from './src/components/pages/CatalogPage.js';
+import SearchPage from './src/components/pages/SearchPage.js';
+import FavoritePage from './src/components/pages/FavoritePage.js';
+import VehiclePage from './src/components/pages/VehiclePage.js';
+import ComparePage from './src/components/pages/ComparePage.js';
+import FilterPage from './src/components/pages/FilterPage.js';
 
 export default class App extends Component {
   constructor(props) {

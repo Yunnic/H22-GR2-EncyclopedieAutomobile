@@ -10,8 +10,8 @@ export default class FavoriteButton extends LoadableComponent {
 
     this.brand = props.brand;
     this.model = props.model;
-    this.imageOn = {uri : "https://cdn-icons-png.flaticon.com/512/20/20626.png"};
-    this.imageOff = {uri : "https://cdn0.iconfinder.com/data/icons/thin-voting-awards/57/thin-231_star_favorite-512.png"};
+    this.imageOn = require("../../images/StarFilled.png");
+    this.imageOff = require("../../images/StarEmpty.png");
     this.isOn = false;
     this.change = false;
     this.hasLoadedOnce = false;
