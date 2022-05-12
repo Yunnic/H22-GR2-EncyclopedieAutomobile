@@ -5,6 +5,12 @@ import CustomList from './CustomList.js';
 
 export default class SearchList extends CustomList {
 
+
+  /**
+   * Construit la liste de recherche.
+   *
+   * @param  {Object} props Les propriétés de la liste.
+   */
   constructor(props) {
     super(props);
 
@@ -12,6 +18,13 @@ export default class SearchList extends CustomList {
     this.filters = null
   }
 
+
+  /**
+   * Le chargement de la liste.
+   *
+   * @async
+   * @return {Object} Les données obtenues durant le chargement.
+   */
   async load() {
 
     if (!this.canSearch || this.searchText != null){

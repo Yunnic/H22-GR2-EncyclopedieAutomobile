@@ -3,6 +3,12 @@ import { ActivityIndicator, StyleSheet, Text, View, Image, Pressable } from 'rea
 
 export default class MenuButton extends Component {
 
+
+  /**
+   * Création d'un bouton pour le menu.
+   *
+   * @param {Object} props Les propriétés du bouton.
+   */
   constructor(props) {
     super(props);
 
@@ -41,8 +47,12 @@ export default class MenuButton extends Component {
     });
   }
 
-  //À noter : à chaque fois que la classe change, cette fonction est appelée
-  //Montre la page
+
+  /**
+   * Gère l'affichage du bouton.
+   *
+   * @return {Object}  Les components qui seront affichés à l'écran.
+   */
   render() {
 
     let buttonStyle =

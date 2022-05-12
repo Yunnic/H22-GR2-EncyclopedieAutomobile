@@ -4,6 +4,12 @@ import LoadingIcon from './LoadingIcon.js';
 
 export default class LoadableComponent extends Component {
 
+
+  /**
+   * Création d'un Component qui est capable de charger des données.
+   *
+   * @param  {Object} props Les propriétés choisies du Component.
+   */
   constructor(props) {
     super(props);
 
@@ -31,6 +37,13 @@ export default class LoadableComponent extends Component {
     });
   }
 
+
+  /**
+   * Navigue d'une page à une autre.
+   *
+   * @param  {Object} pageName Le nom de la nouvelle page.
+   * @param  {Object} params   Les paramètres pour la nouvelle page.
+   */
   navigate(pageName, params) {
     //S'assure qu'une autre page n'a pas déjà été chargée.
     if (this.routeLength && this.props.navigation.getState().routes.length <= this.routeLength) {
@@ -38,7 +51,11 @@ export default class LoadableComponent extends Component {
     }
   }
 
-  //Charge le component après que tous les données sont obtenues
+  /**
+   * Charge le component après que tous les données sont obtenues
+   *
+   * @async
+   */
   async loadComponent() {
     const newData = await this.load()
     const catchedError = this.errorCatcher(newData);
@@ -52,12 +69,25 @@ export default class LoadableComponent extends Component {
     }
   }
 
-  //Charge le component. Normalement, cette fonction est remplacé par une autre.
+
+  /**
+   * Charge le component. Normalement, cette fonction est remplacé
+   * dans la sous-classe.
+   *
+   * @async
+   * @return {Object}  Les données obtenues durant le chargement.
+   */
   async load() {
     return null;
   }
 
-  //Recharge le component sans mettre le logo de chargement.
+
+  /**
+   * Recharge le component sans mettre le logo de chargement.
+   *
+   * @async
+   * @param  {bool} useLoadingIcon Détermine si l'icone de chargement est placée.
+   */
   async reload(useLoadingIcon) {
     this.setState({
       canUseLoadLogo : useLoadingIcon
@@ -65,7 +95,12 @@ export default class LoadableComponent extends Component {
     this.componentDidMount();
   }
 
-  //S'occupe des erreurs.
+
+  /**
+   * S'occupe des erreurs.
+   *
+   * @param  {String} catchedError L'erreur qui a été attrapée.
+   */
   errorHandler(catchedError) {
     if (this.goToError) {
       this.props.navigation.reset({
@@ -75,7 +110,13 @@ export default class LoadableComponent extends Component {
     }
   }
 
-  //Créer erreur lorsqu'il manque une valeur.
+
+  /**
+   * Création d'une erreur lorsqu'il manque une valeur.
+   *
+   * @param  {type} newData Les données obtenues après le chargement.
+   * @return {String}       Donne une erreur s'il y en a une.
+   */
   errorCatcher(newData) {
     for (const indice in newData) {
       if (newData[indice] == undefined) {
@@ -84,7 +125,10 @@ export default class LoadableComponent extends Component {
     }
   }
 
-  //Cette fonction est appelée après que la classe est inséré dans la vue.
+
+  /**
+   * Cette fonction est appelée après que la classe est inséré dans la vue.
+   */
   componentDidMount() {
     try {
 
@@ -99,7 +143,13 @@ export default class LoadableComponent extends Component {
     }
   }
 
-  //La vue du component lorsqu'elle est chargé.
+
+  /**
+   * L'affichage du component lorsqu'elle est chargée.
+   *
+   * @param  {Object} data Les données obtenues durant le chargement.
+   * @return {Object}      Les components qui seront affichées.
+   */
   loadedView(data) {
     return (
       <View>
@@ -108,7 +158,12 @@ export default class LoadableComponent extends Component {
     )
   };
 
-  //La vue du component lorsqu'elle charge
+
+  /**
+   * La vue du component lorsqu'elle charge
+   *
+   * @return {Object}  Les components qui seront affichées.
+   */
   loadingView() {
     return (
       <View style = {this.baseStyle.container}>
@@ -117,8 +172,12 @@ export default class LoadableComponent extends Component {
     )
   };
 
-  //À noter : à chaque fois que la classe change, cette fonction est appelée
-  //Montre le component
+
+  /**
+   * Gère l'affichage du Component.
+   *
+   * @return {Object}  Les components qui seront affichées.
+   */
   render() {
     const { data, isLoading, canUseLoadLogo} = this.state;
     //le truc après ? est si ça n'a pas chargé, truc après : est si c'est chargé

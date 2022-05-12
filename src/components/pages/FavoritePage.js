@@ -5,6 +5,11 @@ import FavoriteList from '../customComponents/FavoriteList.js';
 
 export default class FavoritePage extends LoadableComponent {
 
+  /**
+   * Construction de la page de favoris.
+   *
+   * @param {Object} props Les propriétés de la page.
+   */
   constructor(props) {
     super(props);
 
@@ -27,6 +32,12 @@ export default class FavoritePage extends LoadableComponent {
     });
   }
 
+  /**
+   * L'affichage de la page lorsqu'elle est chargée.
+   *
+   * @param  {Object} data Les données obtenues durant le chargement.
+   * @return {Object}      Les components qui sont affichés.
+   */
   loadedView(data) {
 
     return(

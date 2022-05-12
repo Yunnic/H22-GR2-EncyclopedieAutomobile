@@ -4,7 +4,13 @@ import { getCurrentTimestamp } from 'react-native/Libraries/Utilities/createPerf
 import FavoriteButton from '../components/customComponents/FavoriteButton';
 import CompareButton from '../components/customComponents/CompareButton';
 
-export default class Automobile{
+export default class Vehicle{
+
+    /**
+     * Construction de la classe qui contient les information sur une automobile.
+     *
+     * @param  {Object} json Les informations de l'automobile en json.
+     */
     constructor(json) {
         this.caracteristiques = json;
 
@@ -93,6 +99,12 @@ export default class Automobile{
         });
     }
 
+
+    /**
+     * Création d'un Array qui retourne les components qui affichent les caractéristiques.
+     *
+     * @return {Array}  Un array avec les components qui affichent les caractéristiques.
+     */
     createComponentArray() {
       let array = [];
       // On doit utiliser un counter car il se peut qu'un loop retourne 2 components
@@ -133,6 +145,12 @@ export default class Automobile{
       return array;
     }
 
+
+    /**
+     * Affiche les caractéristiques de l'automobile à l'écran.
+     *
+     * @return {Object}  Les components qui sont affichés.
+     */
     render(){
       //Il doit au moins posséder cette caractéristique.
       if (!this.caracteristiques.ShownName) {

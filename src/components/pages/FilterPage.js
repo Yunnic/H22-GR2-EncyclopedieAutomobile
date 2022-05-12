@@ -7,6 +7,11 @@ import SearchList from '../customComponents/SearchList.js';
 
 export default class FilterPage extends LoadableComponent {
 
+  /**
+   * Construction de la page de filtres.
+   *
+   * @param {Object} props Les propriétés de la page.
+   */
   constructor(props) {
     super(props);
 
@@ -192,6 +197,14 @@ export default class FilterPage extends LoadableComponent {
     this.searchList = params.searchList;
   }
 
+
+  /**
+   * Retourne la valeur en un nombre entier si possible.
+   *
+   * @param  {String} text      Le texte qui serait converti en nombre.
+   * @param  {Object} object    L'objet qui contient la valeur.
+   * @param  {String} valueName Le nom de la valeur.
+   */
   setObjectValueAsInt(text, object, valueName) {
     const newInt = Number(text);
 
@@ -207,6 +220,12 @@ export default class FilterPage extends LoadableComponent {
     }
   }
 
+
+  /**
+   * Création d'un array avec des components qui montre une liste de filtres.
+   *
+   * @return {Array}  Un array avec des components qui montre une liste de filtres.
+   */
   insertFilters() {
     let texts = [];
     let counter = 0;
@@ -281,7 +300,11 @@ export default class FilterPage extends LoadableComponent {
     return texts
   }
 
-  confirm(page) {
+
+  /**
+   * Gère ce qui arrive lorsque le bouton de confirmation est appuyé.
+   */
+  confirm() {
     let allFilters = [];
 
     for (const filter of this.filters) {
@@ -332,9 +355,16 @@ export default class FilterPage extends LoadableComponent {
     }
 
     this.searchList.filters = allFilters;
-    page.props.navigation.goBack();
+    this.props.navigation.goBack();
   }
 
+
+  /**
+   * L'affichage de la page lorsqu'elle est chargée.
+   *
+   * @param  {Object} data Les données obtenues durant le chargement.
+   * @return {Object}      Les components qui sont affichés.
+   */
   loadedView(data) {
     return(
       <ScrollView contentContainerStyle = {this.baseStyle.container}>
@@ -342,7 +372,7 @@ export default class FilterPage extends LoadableComponent {
         {this.insertFilters()}
         <Pressable
         style = {this.baseStyle.confirmButton}
-        onPress={() => this.confirm(this)}>
+        onPress={() => this.confirm()}>
           <Text style = {this.baseStyle.text}> Confirm </Text>
         </Pressable>
 

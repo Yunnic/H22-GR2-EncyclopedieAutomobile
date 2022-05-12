@@ -7,6 +7,12 @@ import SearchList from '../customComponents/SearchList.js';
 
 export default class CatalogPage extends LoadableComponent {
 
+
+  /**
+   * Construction de la page catalogue.
+   *
+   * @param {Object} props Les propriétés de la page.
+   */
   constructor(props) {
     super(props);
 
@@ -28,6 +34,12 @@ export default class CatalogPage extends LoadableComponent {
     });
   }
 
+  /**
+   * Affiche la page lorsqu'elle est chargée.
+   *
+   * @param  {Object} data Les données obtenues durant le chargement.
+   * @return {Object}      Les components qui seront affichés.
+   */
   loadedView(data) {
 
     return(

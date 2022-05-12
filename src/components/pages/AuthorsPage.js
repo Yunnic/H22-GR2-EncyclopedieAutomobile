@@ -4,6 +4,12 @@ import LoadableComponent from '../customComponents/LoadableComponent.js';
 
 export default class AuthorsPage extends LoadableComponent {
 
+
+  /**
+   * Construction de la page d'auteurs.
+   *
+   * @param {Object} props Les propriétés de la page.
+   */
   constructor(props) {
     super(props);
 
@@ -42,6 +48,13 @@ export default class AuthorsPage extends LoadableComponent {
     });
   }
 
+
+  /**
+   * l'affichage de la page lorsqu'elle est chargée.
+   *
+   * @param  {Object} data Les données qui ont été obtenus durant le chargement.
+   * @return {Object}      Les components qui sont affichées.
+   */
   loadedView(data) {
     return(
       <ScrollView contentContainerStyle = {this.baseStyle.container}>

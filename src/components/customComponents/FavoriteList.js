@@ -6,6 +6,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default class FavoriteList extends CustomList {
 
+
+  /**
+   * Construit une liste de favoris
+   *
+   * @param  {Object} props Les propriétés de la liste.
+   */
   constructor(props) {
     super(props);
 
@@ -13,6 +19,12 @@ export default class FavoriteList extends CustomList {
     this.amountPerLoad = 10;
   }
 
+
+  /**
+   * Charge la liste.
+   * @async
+   * @return {Object} Les données obtenues durant le chargement.
+   */
   async load() {
     if (this.allFavs == undefined) {
       try {

@@ -6,6 +6,11 @@ import MenuButton from '../customComponents/MenuButton.js';
 
 export default class MenuPage extends LoadableComponent {
 
+  /**
+   * Construit la page du menu.
+   *
+   * @param {Object} props Les propriétés de la page.
+   */
   constructor(props) {
     super(props);
 
@@ -31,6 +36,13 @@ export default class MenuPage extends LoadableComponent {
     });
   }
 
+
+  /**
+   * Affiche la page lorsqu'elle est chargée.
+   *
+   * @param  {Object} data Les données obtenues durant le chargement.
+   * @return {Object}      Les components qui seront affichés.
+   */
   loadedView(data) {
     return(
       <View style = {this.baseStyle.container}>
@@ -73,7 +85,6 @@ export default class MenuPage extends LoadableComponent {
             title = "Comparaison"
             imageSource = {require("../../images/Compare.png")}
           />
-
         </View>
       </View>
     )

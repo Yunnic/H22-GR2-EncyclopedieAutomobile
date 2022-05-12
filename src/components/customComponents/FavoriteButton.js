@@ -5,6 +5,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default class FavoriteButton extends LoadableComponent {
 
+
+  /**
+   * Construit un bouton qui s'occupe de la liste des favoris.
+   *
+   * @param {Object} props Les propriétés du bouton.
+   */
   constructor(props) {
     super(props);
 
@@ -29,6 +35,12 @@ export default class FavoriteButton extends LoadableComponent {
     })
   }
 
+
+  /**
+   * Ajoute une automobile dans la liste de favoris.
+   *
+   * @async
+   */
   async add() {
     try {
       let fav = await AsyncStorage.getItem('favorite');
@@ -52,6 +64,12 @@ export default class FavoriteButton extends LoadableComponent {
     }
   }
 
+
+  /**
+   * Enlève une automobile de la liste de favoris.
+   *
+   * @async
+   */
   async remove() {
     try {
       let fav = await AsyncStorage.getItem('favorite');
@@ -75,6 +93,11 @@ export default class FavoriteButton extends LoadableComponent {
   }
 
 
+  /**
+   * Vérifie si le bouton est déjà activé.
+   *
+   * @return {bool} Si le bouton est activé.
+   */
   async getOnState() {
     try {
       let fav = await AsyncStorage.getItem('favorite');
@@ -91,6 +114,13 @@ export default class FavoriteButton extends LoadableComponent {
     }
   }
 
+
+  /**
+   * Charge le bouton de favoris
+   *
+   * @async
+   * @return {Array}  Retourne les données chargées à donner (rien)
+   */
   async load() {
 
     if (this.change) {
@@ -108,14 +138,23 @@ export default class FavoriteButton extends LoadableComponent {
     return [];
   }
 
-  onClick(button) {
-    button.change = true;
 
-    button.reload(false);
+  /**
+   * Gère ce qui arrive après un clic.
+   */
+  onClick() {
+    this.change = true;
+
+    this.reload(false);
   }
 
-  //À noter : à chaque fois que la classe change, cette fonction est appelée
-  //Montre la page
+
+  /**
+   * Affice le bouton lorsqu'il est chargé
+   *
+   * @param  {Object} data Les données obtenues durant le chargement.
+   * @return {Object}      Les components qui seront affichés.
+   */
   loadedView(data) {
 
     const image = (this.isOn) ? this.imageOn : this.imageOff;
@@ -123,7 +162,7 @@ export default class FavoriteButton extends LoadableComponent {
     return (
       <Pressable
       style = {this.baseStyle.container}
-      onPress = {() => this.onClick(this)}>
+      onPress = {() => this.onClick()}>
         <Image
           style = {this.baseStyle.logo}
           source = {image}

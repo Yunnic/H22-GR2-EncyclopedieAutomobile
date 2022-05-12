@@ -5,6 +5,11 @@ import ApiCommunicator from '../../api/ApiCommunicator.js';
 
 export default class VehiclePage extends LoadableComponent {
 
+  /**
+   * Construction de la page d'automobiles'.
+   *
+   * @param {Object} props Les propriétés de la page.
+   */
   constructor(props) {
     super(props);
 
@@ -22,6 +27,12 @@ export default class VehiclePage extends LoadableComponent {
     this.vehicle = null;
   }
 
+  /**
+   * Charge la page d'automobile.
+   *
+   * @async
+   * @return {Object}  Les données obtenues lors du chargement qui sont retournées.
+   */
   async load() {
     const {brand, model} = this.props.route.params;
     this.vehicle = await ApiCommunicator.getCar(brand, model);
@@ -33,6 +44,12 @@ export default class VehiclePage extends LoadableComponent {
     return null;
   }
 
+  /**
+   * L'affichage de la page lorsqu'elle est chargée.
+   *
+   * @param  {Object} data Les données obtenues durant le chargement.
+   * @return {Object}      Les components qui sont affichés.
+   */
   loadedView(data) {
     return(
       <ScrollView contentContainerStyle = {this.baseStyle.container}>

@@ -3,6 +3,12 @@ import { ActivityIndicator, StyleSheet, Text, View, Image, Pressable } from 'rea
 
 export default class CustomListButton extends Component {
 
+
+  /**
+   * Construit un bouton pour la liste d'automobiles.
+   *
+   * @param  {Object} props Les propriétés du bouton.
+   */
   constructor(props) {
     super(props);
 
@@ -31,12 +37,12 @@ export default class CustomListButton extends Component {
     })
   }
 
-  test() {
-    console.log("?")
-  }
 
-  //À noter : à chaque fois que la classe change, cette fonction est appelée
-  //Montre la page
+  /**
+   * Affiche le bouton à l'écran.
+   *
+   * @return {Object} Les components qui seront affichés.
+   */
   render() {
 
     let viewStyle =

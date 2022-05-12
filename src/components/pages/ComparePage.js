@@ -7,6 +7,11 @@ import ApiCommunicator from '../../api/ApiCommunicator.js';
 
 export default class ComparePage extends LoadableComponent {
 
+  /**
+   * Construction de la page de comparaison.
+   *
+   * @param {Object} props Les propriétés de la page.
+   */
   constructor(props) {
     super(props);
 
@@ -53,8 +58,18 @@ export default class ComparePage extends LoadableComponent {
     this.hasLoaded = false;
   }
 
-  addDataToTable(statInfo, statValue, validVehicleCount, validStatCount, prefix) {
 
+  /**
+   * Ajoute de l'information dans le tableau.
+   *
+   * @param  {Object} statInfo          Une liste d'information sur une caractéristique.
+   * @param  {String} statValue         La valeur d'une caractéristique.
+   * @param  {Number} validVehicleCount Le numéro de l'automobile lors du comptage.
+   * @param  {Number} validStatCount    Le numéro du caractéristique lors du comptage.
+   * @param  {String} prefix            Texte à ajouter devant la valeur.
+   * @return {Number}                   Le nouveau numéro du caractéristique.
+   */
+  addDataToTable(statInfo, statValue, validVehicleCount, validStatCount, prefix) {
     if (prefix) {
       prefix = "(" + prefix + ") ";
     } else {
@@ -87,6 +102,12 @@ export default class ComparePage extends LoadableComponent {
   }
 
 
+  /**
+   * Charge le tableau de comparaison.
+   *
+   * @async
+   * @return {Object}  Les données obtenues lors du chargement qui sont retournées.
+   */
   async load() {
     if (!this.hasLoaded) {
       try {
@@ -134,7 +155,15 @@ export default class ComparePage extends LoadableComponent {
     return [];
   }
 
-  //https://www.npmjs.com/package/react-native-table-component
+
+  //Tutoriel pour le tableau : https://www.npmjs.com/package/react-native-table-component
+
+  /**
+   * Affiche la page lorsqu'elle est chargée.
+   *
+   * @param  {Object} data Les données obtenues durant le chargement.
+   * @return {Object}      Les components qui seront affichés.
+   */
   loadedView(data) {
     let widthArr = [100]
 

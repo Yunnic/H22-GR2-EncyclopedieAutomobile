@@ -6,6 +6,12 @@ import LoadingIcon from './LoadingIcon.js';
 
 export default class CustomList extends LoadableComponent {
 
+
+  /**
+   * Création d'une liste qui a été créé pour afficher des automobiles.
+   *
+   * @param {Object} props Les propriétés choisies de la liste.
+   */
   constructor(props) {
     super(props);
 
@@ -56,27 +62,50 @@ export default class CustomList extends LoadableComponent {
     this.hasMoreResults = false;
   }
 
-  handleScroll(event, component) {
+
+  /**
+   * Gère ce qui arrive lorsqu'on bouge l'écran.
+   *
+   * @param  {Object} event   Les valeurs importantes durant le bougement de l'écran.
+   */
+  handleScroll(event) {
     const scrollHeight = event.nativeEvent.contentOffset.y;
     const screenHeight = event.nativeEvent.contentSize.height;
     const screenCurrentHeight = event.nativeEvent.layoutMeasurement.height;
-    if (component.hasMoreResults && !component.state.isLoading && scrollHeight + screenCurrentHeight + 20 > screenHeight) {
-      component.reload(false);
+    if (this.hasMoreResults && !this.state.isLoading && scrollHeight + screenCurrentHeight + 20 > screenHeight) {
+      this.reload(false);
     }
   }
 
-  onSubmit(text, list) {
-    list.searchText = text;
+
+  /**
+   * Gère la recherche lorsque l'utilisateur entre du texte dans la barre de recherche.
+   *
+   * @param  {String} text Le texte entré dans la barre de recherche.
+   */
+  onSubmit(text) {
+    this.searchText = text;
     this.listComponents = [];
-    list.reload(true);
+    this.reload(true);
   }
 
+
+  /**
+   * Gère ce qui arrive lorsque la liste est mise à jour.
+   */
   componentDidUpdate() {
     if (this.hasMoreResults && !this.state.isLoading && this.listComponents.length < 8) {
       this.reload(false);
     }
   }
 
+
+  /**
+   * Gère la manière dont la liste est affichée lorsqu'elle est chargée.
+   *
+   * @param  {Object} data Les données obtenues durant le chargement.
+   * @return {Object}      Les components qui seront affichés
+   */
   loadedView(data) {
     let count = this.listComponents.length;
     let dataFound = data.dataFound
@@ -105,7 +134,7 @@ export default class CustomList extends LoadableComponent {
       <View style = {this.baseStyle.list}>
         {(this.canSearch)
           ? <View style = {this.baseStyle.horizontal}>
-            <TextInput style = {this.baseStyle.input} onSubmitEditing={(event) => this.onSubmit(event.nativeEvent.text.toLowerCase(), this)}/>
+            <TextInput style = {this.baseStyle.input} onSubmitEditing={(event) => this.onSubmit(event.nativeEvent.text.toLowerCase())}/>
             {(this.canUseFilters) ? <Pressable
             style = {this.baseStyle.filtersButton}
             onPress = {() => filterFunction(this)}>
@@ -119,7 +148,7 @@ export default class CustomList extends LoadableComponent {
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
           contentContainerStyle = {this.baseStyle.list}
-          onScroll = {(event) => this.handleScroll(event, this)}
+          onScroll = {(event) => this.handleScroll(event)}
           data = {this.listComponents}
 
           renderItem = {({item}) => {
