@@ -47,8 +47,7 @@ export default class CustomListButton extends Component {
       (this.props.imageSource) ? this.props.imageSource : this.placeHolderImage;
     let title =
       (this.props.title) ? this.props.title : this.placeHolderText;
-    let pageFunction =
-      (this.props.pageFunction) ? this.props.pageFunction : this.test;
+    let pageFunction = this.props.pageFunction;
 
     let imageStyle = this.baseStyle.tinyLogo;
 
@@ -61,7 +60,11 @@ export default class CustomListButton extends Component {
     return (
       <Pressable
       style = {viewStyle}
-      onPress = {pageFunction}>
+      onPress = {() => {
+        if (pageFunction) {
+          pageFunction();
+        }
+      }}>
         <Image
           style = {imageStyle}
           source = {imageSource}

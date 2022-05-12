@@ -29,26 +29,18 @@ export default class SearchPage extends LoadableComponent {
     });
   }
 
-  goToOtherPage(page, info) {
-    page.props.navigation.navigate('Vehicle', {
-        "brand": info.Brand,
-        "model": info.Model
-    });
-  }
-
-  goToFilters(page, searchList) {
-    page.props.navigation.navigate('Filter', {
-        "searchList": searchList,
-    });
-  }
-
   loadedView(data) {
     return(
       <View style = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Recherche </Text>
         <SearchList
-          buttonFunction = {(info) => this.goToOtherPage(this, info)}
-          filterFunction = {(searchList) => this.goToFilters(this, searchList)}
+          buttonFunction = {(info) => this.navigate('Vehicle', {
+              "brand": info.Brand,
+              "model": info.Model
+          })}
+          filterFunction = {(searchList) => this.navigate('Filter', {
+              "searchList": searchList,
+          })}
           canSearch = {true}
           canUseFilters = {true}
         />

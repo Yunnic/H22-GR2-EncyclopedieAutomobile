@@ -145,16 +145,19 @@ export default class ComparePage extends LoadableComponent {
     return(
       <View style = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Comparaison </Text>
-        <ScrollView horizontal = {true}>
-          <View>
-            <ScrollView vertical = {true} >
-              <Table borderStyle={{borderWidth: 1, borderColor: 'white'}}>
-                <Row data={this.tableHead} style={this.baseStyle.head} widthArr = {widthArr} textStyle = {{color: "white", fontSize: 9,}}/>
-                <Rows data={this.tableData} style = {{backgroundColor : '#0000009f'}} widthArr = {widthArr} textStyle = {{color: "white", fontSize: 9,}}/>
-              </Table>
-            </ScrollView>
-          </View>
-        </ScrollView>
+        {(this.tableData.length > 0) ?
+          <ScrollView horizontal = {true}>
+            <View>
+              <ScrollView vertical = {true} >
+                <Table borderStyle={{borderWidth: 1, borderColor: 'white'}}>
+                  <Row data={this.tableHead} style={this.baseStyle.head} widthArr = {widthArr} textStyle = {{color: "white", fontSize: 9,}}/>
+                  <Rows data={this.tableData} style = {{backgroundColor : '#0000009f'}} widthArr = {widthArr} textStyle = {{color: "white", fontSize: 9,}}/>
+                </Table>
+              </ScrollView>
+            </View>
+          </ScrollView>
+        : <Text style = {{color: "white", fontSize: 16,}}> Vous n'avez pas encore ajouté de voitures!</Text>
+        }
       </View>
     )
   }

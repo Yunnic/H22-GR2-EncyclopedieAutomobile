@@ -40,19 +40,14 @@ export default class MenuButton extends Component {
       },
     });
   }
+
   //À noter : à chaque fois que la classe change, cette fonction est appelée
   //Montre la page
-
-  test() {
-    console.log("?")
-  }
-
   render() {
 
     let buttonStyle =
       (this.props.buttonStyle) ? this.props.buttonStyle : this.baseStyle.button;
-    let pageFunction =
-      (this.props.pageFunction) ? this.props.pageFunction : this.test;
+    let pageFunction = this.props.pageFunction;
     let textStyle =
       (this.props.textStyle) ? this.props.textStyle : this.baseStyle.text;
     let imageSource =
@@ -63,7 +58,11 @@ export default class MenuButton extends Component {
       (this.props.imageStyle) ? this.props.imageStyle : this.baseStyle.tinyLogo;
 
     return (
-      <Pressable style = {buttonStyle} onPress = {pageFunction}>
+      <Pressable style = {buttonStyle} onPress = {() => {
+        if (pageFunction) {
+          pageFunction();
+        }
+      }}>
         <Image
           style = {imageStyle}
           source = {imageSource}

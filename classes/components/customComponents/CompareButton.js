@@ -18,8 +18,6 @@ export default class CompareButton extends LoadableComponent {
     this.change = false;
     this.hasLoadedOnce = false;
 
-    this.maximumElements = 5;
-
     this.baseStyle = StyleSheet.create({
       container: {
         width: 100,
@@ -47,19 +45,15 @@ export default class CompareButton extends LoadableComponent {
         fav.length = 0;
       }
 
-      if (fav.length < this.maximumElements) {
-        if (fav[this.brand] == null) {
-          fav[this.brand] = {};
-        }
-
-        fav[this.brand][this.model] = true;
-
-        fav.length++;
-
-        await AsyncStorage.setItem('compare', JSON.stringify(fav));
-      } else {
-        this.isOn = false;
+      if (fav[this.brand] == null) {
+        fav[this.brand] = {};
       }
+
+      fav[this.brand][this.model] = true;
+
+      fav.length++;
+
+      await AsyncStorage.setItem('compare', JSON.stringify(fav));
 
     } catch (error) {
       console.log(error);

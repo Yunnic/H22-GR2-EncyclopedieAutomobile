@@ -27,20 +27,16 @@ export default class FavoritePage extends LoadableComponent {
     });
   }
 
-  goToOtherPage(page, info) {
-    page.props.navigation.navigate('Vehicle', {
-        "brand": info.Brand,
-        "model": info.Model
-    });
-  }
-
   loadedView(data) {
 
     return(
       <View style = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Liste de favoris </Text>
         <FavoriteList
-          buttonFunction = {(info) => this.goToOtherPage(this, info)}
+          buttonFunction = {(info) => this.navigate('Vehicle', {
+              "brand": info.Brand,
+              "model": info.Model
+          })}
           canSearch = {false}
         />
       </View>

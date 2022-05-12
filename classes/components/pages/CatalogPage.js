@@ -28,20 +28,16 @@ export default class CatalogPage extends LoadableComponent {
     });
   }
 
-  goToOtherPage(page, info) {
-    page.props.navigation.navigate('Vehicle', {
-        "brand": info.Brand,
-        "model": info.Model
-    });
-  }
-
   loadedView(data) {
 
     return(
       <View style = {this.baseStyle.container}>
         <Text style = {this.baseStyle.title}> Catalogue </Text>
         <SearchList
-          buttonFunction = {(info) => this.goToOtherPage(this, info)}
+          buttonFunction = {(info) => this.navigate('Vehicle', {
+              "brand": info.Brand,
+              "model": info.Model
+          })}
         />
       </View>
     )

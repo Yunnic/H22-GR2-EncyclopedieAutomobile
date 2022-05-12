@@ -17,12 +17,25 @@ export default class LoadableComponent extends Component {
 
     this.goToError = true;
 
+    this.routeLength = null;
+
+    if (this.props.navigation) {
+      this.routeLength = this.props.navigation.getState().routes.length
+    }
+
     this.baseStyle = StyleSheet.create({
       container: {
         flexGrow: 1,
         justifyContent: 'center',
       }
     });
+  }
+
+  navigate(pageName, params) {
+    //S'assure qu'une autre page n'a pas déjà été chargée.
+    if (this.routeLength && this.props.navigation.getState().routes.length <= this.routeLength) {
+      this.props.navigation.navigate(pageName, params);
+    }
   }
 
   //Charge le component après que tous les données sont obtenues
