@@ -15,7 +15,7 @@ Ceci est un projet d'intégration du programme "Sciences informatiques et mathé
 Il y a deux façons d'installer l'application.
 
 ## Installer l'application avec le fichier .apk ou .ipa sur votre téléphone ou émulateur.
-#### (Les fichiers ne sont pas disponibles pour l'instant.)
+#### (Le fichier .apk est disponible sur Teams ou Léa.)
 Ceci est la façon attendue d'installer l'application.
 Pour installer l'application, vous avez seulement besoin d'exécuter le fichier sur votre appareil.
 
