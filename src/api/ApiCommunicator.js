@@ -23,7 +23,7 @@ const ApiCommunicator = {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       }
-    }
+    };
 
     if (body != null) {
       infoRequest.body = body;
@@ -101,7 +101,7 @@ const ApiCommunicator = {
     const body = {
       "searchText" : searchText,
       "filters" : filters
-    }
+    };
 
     const json = await ApiCommunicator.getInfoFromApi('POST', urlPath, JSON.stringify(body));
     return json;
@@ -134,7 +134,7 @@ const ApiCommunicator = {
 
       const body = {
         "prjExpr": prjExpr,
-      }
+      };
 
       for (const optionalIndice in optional) {
         const optionalValue = optional[optionalIndice]

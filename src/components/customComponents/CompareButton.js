@@ -32,7 +32,7 @@ export default class CompareButton extends LoadableComponent {
         height: 100,
         borderRadius: 5,
       },
-    })
+    });
   }
 
 

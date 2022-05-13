@@ -41,7 +41,7 @@ export default class LoadableComponent extends Component {
   /**
    * Navigue d'une page à une autre.
    *
-   * @param  {Object} pageName Le nom de la nouvelle page.
+   * @param  {String} pageName Le nom de la nouvelle page.
    * @param  {Object} params   Les paramètres pour la nouvelle page.
    */
   navigate(pageName, params) {
