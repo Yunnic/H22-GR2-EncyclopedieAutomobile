@@ -1,4 +1,10 @@
 # Encyclopédie Automobile - Une application mobile à propos des automobiles
+
+#### ABANDONNÉ / ABANDONED
+##### La base de données et plusieurs autres services utilisés pour ce projet ne sont plus disponibles.
+##### Voici une vidéo démonstrant ce projet : https://www.youtube.com/watch?v=T8lu6FPT1FI
+
+## Description :
 Le but de cette application est d'aider les gens d'apprendre davantage sur les automobiles sans devoir naviguer sur plusieurs sites différents.
 
 L'application utilise React Native comme framework.
